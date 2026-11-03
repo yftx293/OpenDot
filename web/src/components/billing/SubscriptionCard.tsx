@@ -1,0 +1,162 @@
+import { useEffect } from 'react';
+import { Package, Zap, Clock, Star } from 'lucide-react';
+import { useBillingStore } from '../../stores/billing';
+import { useCurrency, formatTokens } from './utils';
+
+export default function SubscriptionCard() {
+  const {
+    subscription,
+    plan,
+    access,
+    billingMinStartBalanceUsd,
+    loadMySubscription,
+    loadMyAccess,
+  } = useBillingStore();
+  const fmt = useCurrency();
+
+  useEffect(() => {
+    loadMySubscription();
+    loadMyAccess();
+  }, [loadMyAccess, loadMySubscription]);
+
+  const isTrialing =
+    subscription?.trial_ends_at &&
+    new Date(subscription.trial_ends_at) > new Date();
+  const isCancelled = subscription?.status === 'cancelled';
+  const isExpired = subscription?.status === 'expired';
+  const isFallback = subscription?.id.startsWith('fallback_');
+
+  return (
+    <div className="bg-surface rounded-lg border border-border p-5">
+      <div className="flex items-center gap-2 mb-4">
+        <Package className="w-5 h-5 text-primary" />
+        <h3 className="font-semibold">当前套餐</h3>
+      </div>
+
+      {plan ? (
+        <div>
+          {/* Plan name + badges */}
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-2xl font-bold text-primary">{plan.name}</span>
+            {isFallback && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full bg-muted text-muted-foreground">
+                默认
+              </span>
+            )}
+            {isCancelled && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full bg-error-bg text-error">
+                已取消
+              </span>
+            )}
+            {isExpired && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full bg-muted text-muted-foreground">
+                已过期
+              </span>
+            )}
+            {isTrialing && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full bg-warning-bg text-warning">
+                <Clock className="w-3 h-3" />
+                试用中
+              </span>
+            )}
+          </div>
+
+          {/* Display price */}
+          {plan.display_price && (
+            <p className="text-sm text-brand-700 dark:text-brand-400 font-medium mb-1">
+              {plan.display_price}
+            </p>
+          )}
+
+          {plan.description && (
+            <p className="text-sm text-muted-foreground mb-3">
+              {plan.description}
+            </p>
+          )}
+
+          {/* Rate multiplier */}
+          {plan.rate_multiplier !== 1 && (
+            <div className="flex items-center gap-1.5 text-sm text-warning mb-3">
+              <Zap className="w-4 h-4" />
+              <span>费率倍数: {plan.rate_multiplier}x</span>
+            </div>
+          )}
+
+          {/* Quota grid */}
+          <div className="grid grid-cols-2 gap-2 text-sm">
+            {plan.monthly_cost_quota != null && (
+              <div>
+                <span className="text-muted-foreground">月度费用上限</span>
+                <div className="font-medium">
+                  {fmt(plan.monthly_cost_quota)}
+                </div>
+              </div>
+            )}
+            {plan.monthly_token_quota != null && (
+              <div>
+                <span className="text-muted-foreground">月度 Token 上限</span>
+                <div className="font-medium">
+                  {formatTokens(plan.monthly_token_quota)}
+                </div>
+              </div>
+            )}
+            {plan.daily_cost_quota != null && (
+              <div>
+                <span className="text-muted-foreground">日度费用上限</span>
+                <div className="font-medium">{fmt(plan.daily_cost_quota)}</div>
+              </div>
+            )}
+            {plan.weekly_cost_quota != null && (
+              <div>
+                <span className="text-muted-foreground">周度费用上限</span>
+                <div className="font-medium">{fmt(plan.weekly_cost_quota)}</div>
+              </div>
+            )}
+            {plan.max_groups != null && (
+              <div>
+                <span className="text-muted-foreground">工作区上限</span>
+                <div className="font-medium">{plan.max_groups}</div>
+              </div>
+            )}
+            {plan.max_im_channels != null && (
+              <div>
+                <span className="text-muted-foreground">IM 通道上限</span>
+                <div className="font-medium">{plan.max_im_channels}</div>
+              </div>
+            )}
+          </div>
+
+          {/* Trial / expiry info */}
+          <div className="mt-3 space-y-1">
+            {isTrialing && subscription?.trial_ends_at && (
+              <p className="text-xs text-warning flex items-center gap-1">
+                <Star className="w-3 h-3" />
+                试用截止:{' '}
+                {new Date(subscription.trial_ends_at).toLocaleDateString()}
+              </p>
+            )}
+            {subscription?.expires_at && (
+              <p className="text-xs text-muted-foreground">
+                到期时间:{' '}
+                {new Date(subscription.expires_at).toLocaleDateString()}
+              </p>
+            )}
+            <div className="pt-2 border-t border-border-subtle mt-2 space-y-2">
+              <p className="text-xs text-muted-foreground">
+                钱包优先模式下，套餐决定费率和资源上限；是否可以继续使用，取决于当前余额是否达到{' '}
+                {fmt(access?.minBalanceUsd ?? billingMinStartBalanceUsd)}。
+              </p>
+              {!access?.allowed && (
+                <p className="text-xs text-error">
+                  {access?.reason || '当前不可用，请联系管理员处理。'}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <p className="text-muted-foreground">未订阅任何套餐</p>
+      )}
+    </div>
+  );
+}

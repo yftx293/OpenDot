@@ -1,0 +1,602 @@
+@import 'tailwindcss';
+@import 'shadcn/tailwind.css';
+/* DM Sans is the primary UI font — loaded locally below (no CDN dependency) */
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+/* DM Sans — primary UI font (local, no CDN dependency) */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/DMSans-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/DMSans-latin-ext.woff2') format('woff2');
+  unicode-range:
+    U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Alibaba PuHuiTi 3.0 — Chinese text fallback */
+@font-face {
+  font-family: 'Alibaba PuHuiTi 3';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Alibaba PuHuiTi 3 55 Regular'), local('AlibabaPuHuiTi_3_55_Regular');
+  unicode-range:
+    U+4E00-9FFF, U+3400-4DBF, U+3000-303F, U+FF00-FFEF, U+2E80-2EFF,
+    U+3100-312F, U+FE30-FE4F, U+F900-FAFF, U+2F800-2FA1F;
+}
+@font-face {
+  font-family: 'Alibaba PuHuiTi 3';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Alibaba PuHuiTi 3 65 Medium'), local('AlibabaPuHuiTi_3_65_Medium');
+  unicode-range:
+    U+4E00-9FFF, U+3400-4DBF, U+3000-303F, U+FF00-FFEF, U+2E80-2EFF,
+    U+3100-312F, U+FE30-FE4F, U+F900-FAFF, U+2F800-2FA1F;
+}
+@font-face {
+  font-family: 'Alibaba PuHuiTi 3';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Alibaba PuHuiTi 3 75 SemiBold'), local('AlibabaPuHuiTi_3_75_SemiBold');
+  unicode-range:
+    U+4E00-9FFF, U+3400-4DBF, U+3000-303F, U+FF00-FFEF, U+2E80-2EFF,
+    U+3100-312F, U+FE30-FE4F, U+F900-FAFF, U+2F800-2FA1F;
+}
+
+/* =====================================================
+   Tailwind CSS 4 Theme — shadcn/ui CSS variable mapping
+   Maps semantic CSS variables → Tailwind utility classes
+   e.g. --color-primary → bg-primary, text-primary, etc.
+   ===================================================== */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted-surface);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent-surface);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Brand color scale — available as bg-brand-500, text-brand-300, etc. */
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+
+  /* Feedback semantic colors — bg-success, text-warning, etc. */
+  --color-success: var(--success-foreground);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning-foreground);
+  --color-warning-bg: var(--warning-bg);
+  --color-error: var(--error);
+  --color-error-bg: var(--error-bg);
+  --color-surface: var(--surface);
+  --shadow-card: var(--card-shadow);
+
+  /* Border radius tokens */
+  --radius-sm: var(--radius-control);
+  --radius-md: var(--radius-control);
+  --radius-lg: var(--radius-control);
+  --radius-xl: var(--radius-compact);
+  /* Prefer system CJK fonts before optional local PuHuiTi. */
+  --font-sans:
+    'DM Sans', -apple-system, 'PingFang SC', 'Microsoft YaHei',
+    'Noto Sans CJK SC', 'Alibaba PuHuiTi 3', sans-serif;
+  --font-serif:
+    'DM Sans', -apple-system, 'PingFang SC', 'Microsoft YaHei',
+    'Noto Sans CJK SC', 'Alibaba PuHuiTi 3', sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  --radius-2xl: var(--radius-surface);
+  --radius-3xl: var(--radius-surface);
+  --radius-4xl: var(--radius-surface);
+}
+
+/* =====================================================
+   Design Token values — Teal theme (classic Miniclaw)
+   Primary: #0d9488 (Teal) | Base: Slate
+   ===================================================== */
+/* Semantic values are defined in product.css. */
+
+/* =====================================================
+   Neutral theme — white/gray based design system
+   html prefix ensures specificity beats :root (0,1,0)
+   ===================================================== */
+/* Semantic values are defined in product.css. */
+
+/* Semantic values are defined in product.css. */
+
+/* =====================================================
+   Orange theme — warm orange accent
+   Primary: Orange | Base: Warm Neutral
+   ===================================================== */
+/* Semantic values are defined in product.css. */
+
+/* Semantic values are defined in product.css. */
+
+/* Orange floating nav active state */
+html.theme-orange .floating-nav-item.active {
+  background: rgba(249, 115, 22, 0.15);
+  box-shadow:
+    0 2px 8px rgba(249, 115, 22, 0.15),
+    var(--glass-inner-shadow);
+}
+html.theme-orange .floating-nav-item.active::before {
+  background: radial-gradient(
+    circle,
+    rgba(249, 115, 22, 0.2) 0%,
+    transparent 70%
+  );
+}
+
+/* =====================================================
+   Anthropic font style — serif AI responses
+   Uses direct font-family overrides because @theme inline
+   bakes values into utilities at build time.
+   ===================================================== */
+html.font-anthropic body,
+html.font-anthropic input,
+html.font-anthropic textarea,
+html.font-anthropic button {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC',
+    'Microsoft YaHei', 'Noto Sans CJK SC', 'Alibaba PuHuiTi 3', system-ui,
+    sans-serif;
+}
+html.font-anthropic .font-serif {
+  font-family: Georgia, 'Noto Serif SC', 'Times New Roman', serif;
+}
+html.font-anthropic code,
+html.font-anthropic pre,
+html.font-anthropic .font-mono {
+  font-family: 'Fira Code', ui-monospace, monospace;
+}
+
+/* AI response typography: semibold (600) instead of bold (700) for cleaner readability */
+.font-serif strong,
+.font-serif b {
+  font-weight: 600;
+}
+
+/* =====================================================
+   Dark mode token overrides
+   ===================================================== */
+/* Semantic values are defined in product.css. */
+
+/* =====================================================
+   Base styles
+   ===================================================== */
+
+/* Tailwind v4 默认 border 使用 currentColor（黑色），
+   覆盖为设计系统的 border 色 */
+*,
+::after,
+::before,
+::backdrop,
+::file-selector-button {
+  border-color: var(--border, #e2e8f0);
+}
+
+/* Lucide icons: nav items set strokeWidth inline (1.75 default, 2 active).
+   No global CSS override — it would conflict with inline SVG attributes. */
+
+/* Welcome avatar animations */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.15;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[breathe_3s_ease-in-out_infinite\],
+  .animate-\[float_4s_ease-in-out_infinite\],
+  .animate-\[orbit_6s_linear_infinite\] {
+    animation: none !important;
+  }
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+  /* 声明式禁双指缩放（替代全局非 passive touchmove 监听）：
+     允许单指平移滚动，pinch-zoom 不在允许列表内即被浏览器拦截。 */
+  touch-action: pan-x pan-y;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Native scrollbar styling is deliberately scoped to the chat context panes.
+ * Mobile engines may still hide their overlay scrollbar while idle; those
+ * panes render an in-flow edge hint instead of changing every scroller in the
+ * application. */
+.hc-scroll-pane {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--muted-foreground) 40%, transparent)
+    transparent;
+}
+
+.hc-scroll-pane::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.hc-scroll-pane::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hc-scroll-pane::-webkit-scrollbar-thumb {
+  background-color: color-mix(
+    in srgb,
+    var(--muted-foreground) 35%,
+    transparent
+  );
+  border-radius: 9999px;
+}
+
+.hc-scroll-pane::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--muted-foreground) 60%,
+    transparent
+  );
+}
+
+.hc-scroll-pane::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Code highlighting theme override — GitHub light */
+pre code.hljs {
+  background: #f6f8fa !important;
+  border-radius: 8px;
+  padding: 16px !important;
+}
+
+/* Dark mode syntax highlighting — GitHub Dark Dimmed */
+.dark pre code.hljs {
+  background: #22272e !important;
+  color: #adbac7 !important;
+}
+.dark .hljs-doctag,
+.dark .hljs-keyword,
+.dark .hljs-meta .hljs-keyword,
+.dark .hljs-template-tag,
+.dark .hljs-template-variable,
+.dark .hljs-type,
+.dark .hljs-variable.language_ {
+  color: #f47067 !important;
+}
+.dark .hljs-title,
+.dark .hljs-title.class_,
+.dark .hljs-title.class_.inherited__,
+.dark .hljs-title\.function_ {
+  color: #dcbdfb !important;
+}
+.dark .hljs-attr,
+.dark .hljs-attribute,
+.dark .hljs-literal,
+.dark .hljs-meta,
+.dark .hljs-number,
+.dark .hljs-operator,
+.dark .hljs-variable,
+.dark .hljs-selector-attr,
+.dark .hljs-selector-class,
+.dark .hljs-selector-id {
+  color: #6cb6ff !important;
+}
+.dark .hljs-regexp,
+.dark .hljs-string,
+.dark .hljs-meta .hljs-string {
+  color: #96d0ff !important;
+}
+.dark .hljs-built_in,
+.dark .hljs-symbol {
+  color: #f69d50 !important;
+}
+.dark .hljs-comment,
+.dark .hljs-code,
+.dark .hljs-formula {
+  color: #768390 !important;
+}
+.dark .hljs-name,
+.dark .hljs-quote,
+.dark .hljs-selector-tag,
+.dark .hljs-selector-pseudo {
+  color: #8ddb8c !important;
+}
+.dark .hljs-subst {
+  color: #adbac7 !important;
+}
+.dark .hljs-section {
+  color: #316dca !important;
+  font-weight: bold;
+}
+.dark .hljs-bullet {
+  color: #eac55f !important;
+}
+.dark .hljs-emphasis {
+  color: #adbac7 !important;
+  font-style: italic;
+}
+.dark .hljs-strong {
+  color: #adbac7 !important;
+  font-weight: bold;
+}
+.dark .hljs-addition {
+  color: #b4f1b4 !important;
+  background-color: #1b4721 !important;
+}
+.dark .hljs-deletion {
+  color: #ffd8d3 !important;
+  background-color: #78191b !important;
+}
+
+/* KaTeX dark mode — inherit text color from theme */
+.dark .katex {
+  color: inherit;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Safe area insets for iOS */
+@supports (padding: env(safe-area-inset-top)) {
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* =====================================================
+   iOS PWA: 防止底部 TabBar 触发 Safari 工具栏
+
+   问题根因：
+   1. URL 变化（History API）会触发工具栏
+   2. 底部边缘触摸会触发系统工具栏（iOS 保留区域）
+
+   核心策略：
+   - 底部边缘是 iOS 系统保留区域，Web 无法完全阻止
+   - 解决方案：将交互元素移离底部边缘 + 触摸吸收层
+   - TabBar 内容必须完全在安全区域内（距底部 > 44px）
+   ===================================================== */
+
+/* PWA standalone 模式专用优化 */
+@media all and (display-mode: standalone) {
+  /* 全局禁止双击缩放 */
+  body {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+  }
+
+  /*
+   * 关键方案：底部触摸吸收层
+   * 这个透明层位于屏幕最底部，高度 44px（iOS 手势区域高度）
+   * 它会拦截所有底部边缘的触摸事件，防止触发系统工具栏
+   */
+  .pwa-bottom-guard {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: env(safe-area-inset-bottom, 0px);
+    background: transparent;
+    touch-action: manipulation;
+    z-index: 9999;
+    pointer-events: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Bottom padding for content above floating nav — accounts for safe area */
+.pb-nav-safe {
+  padding-bottom: calc(7rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* Floating Navigation (Liquid Glass Capsule) */
+.floating-nav-container {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  transition:
+    transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-nav-container.compact {
+  transform: translateX(-50%) scale(0.85) translateY(8px);
+  opacity: 0.7;
+}
+
+.floating-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 8px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  border: 1px solid var(--glass-border);
+  border-radius: 9999px;
+  box-shadow: var(--glass-shadow), var(--glass-inner-shadow);
+  pointer-events: auto;
+}
+
+.floating-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 44px;
+  border-radius: 9999px;
+  color: rgba(100, 116, 139, 0.7);
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.floating-nav-item:active {
+  transform: scale(0.92);
+}
+
+.floating-nav-item.active {
+  background: rgba(13, 148, 136, 0.15);
+  color: var(--primary);
+  box-shadow:
+    0 2px 8px rgba(13, 148, 136, 0.15),
+    var(--glass-inner-shadow);
+  transition: all 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: scale(1.08);
+}
+
+.floating-nav-item.active::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(13, 148, 136, 0.2) 0%,
+    transparent 70%
+  );
+  animation: glass-ripple 400ms ease-out;
+}
+
+@keyframes glass-ripple {
+  from {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .floating-nav-container {
+    display: none;
+  }
+}
+
+@supports (padding: env(safe-area-inset-bottom)) {
+  .floating-nav-container {
+    bottom: max(24px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Terminal visual safety: avoid last line clipping at the bottom edge */
+.terminal-panel .xterm-viewport {
+  padding-bottom: 8px;
+  box-sizing: border-box;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}

@@ -1,0 +1,155 @@
+.bot-avatar {
+  --avatar-shell: #b8c9e3;
+  --avatar-ink: #202c3c;
+  display: inline-flex;
+  position: relative;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  min-width: var(--avatar-size);
+  flex: 0 0 var(--avatar-size);
+  vertical-align: middle;
+  isolation: isolate;
+}
+.bot-avatar[data-palette='1'] {
+  --avatar-shell: #becdc6;
+}
+.bot-avatar[data-palette='2'] {
+  --avatar-shell: #cec5db;
+}
+.dark .bot-avatar[data-palette='0'] {
+  --avatar-shell: #9aaccb;
+}
+.dark .bot-avatar[data-palette='1'] {
+  --avatar-shell: #a4bbb0;
+}
+.dark .bot-avatar[data-palette='2'] {
+  --avatar-shell: #b5a9c7;
+}
+.bot-avatar-visual {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+}
+.bot-avatar-visual > svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.bot-avatar-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.bot-avatar-shell {
+  fill: var(--avatar-shell);
+}
+.bot-avatar-face {
+  fill: var(--avatar-ink);
+}
+.bot-avatar-body {
+  transform-box: view-box;
+  transform-origin: 32px 32px;
+  transform: rotate(var(--avatar-tilt));
+}
+.bot-avatar[data-state='idle'] .bot-avatar-visual {
+  animation: bot-breathe 6.4s ease-in-out var(--avatar-phase) infinite;
+}
+.bot-avatar[data-state='working'] .bot-avatar-visual {
+  animation: bot-work 2.8s ease-in-out var(--avatar-phase) infinite;
+}
+.bot-avatar[data-state='thinking'] .bot-avatar-visual {
+  animation: bot-think 4.5s ease-in-out var(--avatar-phase) infinite;
+}
+.bot-avatar[data-state='attention'] .bot-avatar-visual {
+  animation: bot-notice 240ms ease-out 1;
+}
+.bot-avatar[data-state='completed'] .bot-avatar-visual {
+  animation:
+    bot-settle 220ms ease-out 1,
+    bot-breathe 6.4s ease-in-out 220ms infinite;
+}
+.bot-avatar-status {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 42%;
+  height: 42%;
+  color: var(--text-secondary);
+}
+.bot-avatar-status circle {
+  fill: var(--surface);
+  stroke: var(--border-default);
+  stroke-width: 1;
+}
+.bot-avatar-status path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+.bot-avatar[data-state='attention'] .bot-avatar-status {
+  color: var(--warning);
+}
+.bot-avatar[data-state='error'] .bot-avatar-status {
+  color: var(--danger);
+}
+.bot-avatar[data-state='completed'] .bot-avatar-status {
+  color: var(--success);
+}
+.bot-avatar[data-visible='false'] .bot-avatar-visual {
+  animation-play-state: paused;
+}
+@keyframes bot-breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-0.4px) scale(1.045, 1.025);
+  }
+}
+@keyframes bot-work {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: rotate(3deg) translateY(-1px) scale(1.025, 0.985);
+  }
+}
+@keyframes bot-think {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-3deg) translateX(0.8px);
+  }
+}
+@keyframes bot-notice {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+@keyframes bot-settle {
+  from {
+    transform: translateY(-1px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bot-avatar,
+  .bot-avatar * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
