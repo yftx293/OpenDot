@@ -1,0 +1,31 @@
+{
+  "name": "@miniclaw/cloud-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "typecheck": "tsc --noEmit",
+    "build": "node ../../scripts/run-node-cli.mjs wrangler deploy --dry-run --outdir dist",
+    "test": "node scripts/test-runtime.mjs",
+    "deploy": "wrangler deploy",
+    "test:live": "node --use-env-proxy --import tsx scripts/test-live.ts"
+  },
+  "dependencies": {
+    "@earendil-works/chord": "1.3.0",
+    "@earendil-works/pi-ai": "1.3.0",
+    "@earendil-works/pi-durable": "1.3.0",
+    "agents": "0.28.1",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.4.4",
+    "@cloudflare/workers-types": "5.20261013.1",
+    "miniflare": "5.20261012.1-beta",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "4.1.8",
+    "wrangler": "4.151.1"
+  },
+  "description": "Cloudflare durable session runtime for OpenDot."
+}

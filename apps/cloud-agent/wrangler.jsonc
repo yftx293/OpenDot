@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "miniclaw-cloud-agent",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-10-13",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "durable_objects": {
+    "bindings": [{ "name": "SESSIONS", "class_name": "CloudSession" }],
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["CloudSession"] }],
+  "vars": { "MINICLAW_CLOUD_ADMISSION": "false" },
+  "observability": { "enabled": true },
+}
