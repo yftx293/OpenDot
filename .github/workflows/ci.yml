@@ -1,0 +1,119 @@
+# CI paused 2026-10-25 (Actions minutes exhausted). Restore the original triggers to re-enable.
+name: CI
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    # The existing main run already takes ~19m on hosted runners, including
+    # natural lease/process recovery. Keep every test and its own timeout.
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            web/package-lock.json
+            container/agent-runner/package-lock.json
+            apps/cloud-agent/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm --prefix web ci
+          npm --prefix container/agent-runner ci
+          npm --prefix apps/cloud-agent ci
+
+      - name: Install Playwright Chromium
+        working-directory: web
+        run: npx playwright install --with-deps chromium
+
+      - name: Check changed-file formatting
+        run: npm run format:check
+        env:
+          FORMAT_BASE_REF: ${{ github.event.pull_request.base.sha || github.event.before }}
+
+      - name: Verify generated type sources
+        run: |
+          make sync-types
+          git diff --exit-code -- shared/stream-event.ts src/stream-event.types.ts web/src/stream-event.types.ts container/agent-runner/src/stream-event.types.ts
+          npx prettier --check shared/stream-event.ts src/stream-event.types.ts web/src/stream-event.types.ts container/agent-runner/src/stream-event.types.ts
+
+      - name: Typecheck
+        run: make typecheck
+
+      - name: Test
+        run: npm test -- --run
+
+      - name: Build
+        run: npm run build:all
+
+      - name: Bundle Cloud Runtime for product browser acceptance
+        run: npm --prefix apps/cloud-agent run build
+
+      - name: Mobile browser interaction tests
+        run: npm --prefix web run test:e2e
+
+      - name: Agent runner self-test
+        run: npm run self-test:agent-runner
+
+  cloud-agent:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: apps/cloud-agent
+    env:
+      WRANGLER_SEND_METRICS: 'false'
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: apps/cloud-agent/package-lock.json
+      - name: Install locked Cloud Runtime dependencies
+        run: npm ci
+      - name: Audit Cloud Runtime production dependencies
+        run: npm audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org
+      - name: Cloud Runtime Typecheck
+        run: npm run typecheck
+      - name: Actual workerd SQLite and lifecycle fault tests
+        run: npm test
+      - name: Wrangler bundle without deployment
+        run: npm run build
+
+  cloud-authority:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      WRANGLER_SEND_METRICS: 'false'
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            apps/cloud-agent/package-lock.json
+      - name: Install locked Node authority and Cloud Runtime dependencies
+        run: |
+          npm ci
+          npm --prefix apps/cloud-agent ci
+      - name: Bundle actual Worker without deployment
+        run: npm --prefix apps/cloud-agent run build
+      - name: Actual workerd to Node authority and encrypted Provider HTTP integration
+        run: npm run test:cloud-authority
