@@ -1,6 +1,6 @@
 # Persistent Group Dot sessions and bounded discussion
 
-Implements [Issue #69](https://github.com/helsome/OpenDot/issues/69). A Group
+Implements Issue `#69`. A Group
 owner explicitly enables discussion, selects participants and a coordinator, then
 sends an undirected question. Outside a live discussion, directed `@Dot` Handoffs keep their single-request
 behavior. During a live discussion, dispatched user additions (including

@@ -2,7 +2,7 @@
 
 当前版本 Chrome 实聊首次请求遇到四次真实上游 HTTP 429，随后页面空闲，
 只有用户消息，没有助手回复和错误提示。原始截图与失败记录保留在
-[PR #100 的验收目录](https://github.com/helsome/OpenDot/tree/cc82920/docs/screenshots/workbuddy-current-2026-10-26)。
+[PR #100（`cc82920`）的验收记录](../../screenshots/workbuddy-current-2026-10-26/README.md)。
 
 Pi 的错误帧没有显式 providerFailure 标记；既有兼容分类器漏掉
 `rate_limit_error` 的下划线边界和仅含 HTTP 429 的错误。修复仅补充错误通道

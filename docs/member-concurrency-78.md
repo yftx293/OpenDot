@@ -80,7 +80,7 @@ payload，不放宽旧 owner 或 pending-turn 约束。
 编译器尚未执行。随后使用 Node 直接调用相同 TypeScript/Vite 入口，后端、Web、Runner
 三项构建分别通过；不将这个替代结果描述为原始 Make 命令通过。
 
-父分支 `97c4` 的 CI [run 127](https://github.com/helsome/OpenDot/actions/runs/40130523548)
+父分支 `97c4` 的 CI run 127（运行 ID `40130523548`）
 为 failure，三个 job 的步骤与日志均不可读，原因未确认。上述属于该阶段记录；后续父实现的
 [完整本地门禁](verification/runtime-gates-2026-10-25.md) 已通过，但不能代替当前
 改动的完整回归或远程 CI。

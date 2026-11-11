@@ -29,6 +29,6 @@ Vitest 2016.37 秒。CI 尚未通过，新成员模式的自然模型与发布�
 机器可读命令状态与本地日志 hash 见 [gate-results.json](gate-results.json)。
 私有原始日志保留在本机，不把凭据、Endpoint 或未经脱敏回复提交到仓库。
 
-提交 `ecbbdaf` 的 [CI 137](https://github.com/helsome/OpenDot/actions/runs/40172480269)
+提交 `ecbbdaf` 的 [CI 137（运行 ID `40172480269`）](gate-results.json)
 三个 job 均失败，接口未返回步骤或可下载日志。Chrome 当前不可用，内置浏览器未登录，
 本次页面 annotation 的原因未能确认；较早运行的账号限制不能当作本次已确认原因。

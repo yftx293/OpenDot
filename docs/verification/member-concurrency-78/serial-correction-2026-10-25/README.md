@@ -1,8 +1,8 @@
 # 用户更正后的串行群聊修复与真实三轮复测
 
-实现来源为 [`12a0f0f`](https://github.com/helsome/OpenDot/commit/12a0f0fd1817866850fa48ac91050cbb560ba1e6)，
-见 [PR #96](https://github.com/helsome/OpenDot/pull/96)。使用用户已授权的本机
-Magpie → WorkBuddy 配置，经实际产品 HTTP、持久 Node Pi Session 和原生 Task 执行。
+实现来源为 PR `#96` 的提交 `12a0f0fd1817866850fa48ac91050cbb560ba1e6`。
+使用用户已授权的本机 Magpie → WorkBuddy 配置，经实际产品 HTTP、持久 Node Pi
+Session 和原生 Task 执行。
 隔离实例通过正常 API 创建两个 Dot、群聊、授权和设置，没有预先写入期望消息或 grant。
 
 ## 复现与修复

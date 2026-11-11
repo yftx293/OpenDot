@@ -1,16 +1,15 @@
 # Frontend product redesign
 
 Five incremental presentation slices preserve the existing product authority.
-Historical entries below record evidence at each commit; PR checks are the source
-for current exact-head remote status.
+The entries below record the evidence available at the time of each review.
 
-| Slice                 | Review                                                                                   | Dependency                |
-| --------------------- | ---------------------------------------------------------------------------------------- | ------------------------- |
-| Design system / shell | [#52](https://github.com/helsome/miniclaw/pull/52)                                       | main                      |
-| Chief / Bots          | [#53](https://github.com/helsome/miniclaw/pull/53)                                       | product #49 and shell #52 |
-| Group conversation    | [#54](https://github.com/helsome/miniclaw/pull/54)                                       | #53                       |
-| Work / Attention      | [#55](https://github.com/helsome/miniclaw/pull/55)                                       | #54                       |
-| Settings / polish     | [review branch](https://github.com/helsome/miniclaw/tree/agent/frontend-advanced-polish) | #55                       |
+| Slice                 | Review                           | Dependency                |
+| --------------------- | -------------------------------- | ------------------------- |
+| Design system / shell | `#52`                            | main                      |
+| Chief / Bots          | `#53`                            | product #49 and shell #52 |
+| Group conversation    | `#54`                            | #53                       |
+| Work / Attention      | `#55`                            | #54                       |
+| Settings / polish     | `agent/frontend-advanced-polish` | #55                       |
 
 #52–#55 passed their three exact-head remote CI jobs and are ready. The final
 branch is submitted separately after local gates; its PR links the exact-head CI
@@ -371,7 +370,7 @@ typecheck. The same case passed the local full regression and earlier slices.
 Only failed jobs were rerun on the identical commit; no timeout, assertion, skip,
 Runtime or workflow setting was changed. Attempt 2 passed all three jobs on
 `f409edaf6635dd589f99de4e638be2e9cf9ab2ba` and #55 was marked ready:
-[CI evidence](https://github.com/helsome/miniclaw/actions/runs/39312610460).
+CI run `39312610460`.
 
 ## Reproduce the product review
 

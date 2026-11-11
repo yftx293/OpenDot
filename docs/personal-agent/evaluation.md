@@ -61,7 +61,7 @@ Live Provider/model, deployed Cloudflare, physical device/Safari, real IM and
 Cloud Group execution remain unverified/unimplemented as described above.
 The original October 15 backend and separate original M4 worktree edits remain
 untouched. #38 passed **all three** remote checks at 1debc6a in
-[run 39127754920](https://github.com/helsome/OpenDot/actions/runs/39127754920),
+run `39127754920`,
 superseding its earlier Pending marker below. #39's remote validate is still
 running; do not attribute #38's CI result to another head.
 
@@ -148,7 +148,7 @@ queue-edit/Steer and inherited Memory/MCP/device capabilities are not implemente
 by this slice. Remote CI for this new increment is pending its pushed head.
 
 Earlier PR #37 is independently Draft/reviewable and all three remote checks
-passed in [run 39120866213](https://github.com/helsome/OpenDot/actions/runs/39120866213).
+passed in run `39120866213`.
 That supersedes its older remote-CI Pending statement below. PR #36 likewise
 passed all three checks in run 39118093373; main remains unchanged.
 
@@ -213,7 +213,7 @@ journeys also pass (53.1 seconds), preserving generic Workspace tab restoration
 while fencing explicit Bot entry to main. Runtime/HTTP/Cookie/SQLite/private-process and
 reverse-proxy infrastructure is real local execution. Model output and the
 explicit empty-Profile-list UI fault are simulated; iOS flags run in Chromium.
-Remote CI for Draft PR #36 commit `99227bd3d199abed84698277f9f283d43378abb3` passed all three jobs (`validate`, `cloud-agent`, `cloud-authority`): [run 39118093373](https://github.com/helsome/OpenDot/actions/runs/39118093373). Physical iOS, live vendor and production deployment remain unverified.
+Remote CI run `39118093373` for Draft PR #36 commit `99227bd3d199abed84698277f9f283d43378abb3` passed all three jobs (`validate`, `cloud-agent`, `cloud-authority`). Physical iOS, live vendor and production deployment remain unverified.
 
 ## Explicit Cloud Goal admission and background recovery — 2026-10-18
 
@@ -889,7 +889,7 @@ The HTTP fault suite additionally injects a product completion receipt ahead of 
 
 Failures found and fixed by integration: missing chat-container creation inside Goal provisioning; the legacy Goal-state gate rejecting an already-charged approval wait during recovery; and Scheduler lookup using a stale process workspace cache after first-time setup. Current code resolves managed Goal ownership from the database and requires a live started claim in the executing process before Harness activation. Stale or unbound executors cannot activate it.
 
-Approval [Draft PR #6](https://github.com/helsome/OpenDot/pull/6), commit `0914ca7`, passed actual GitHub CI [run 38910266533](https://github.com/helsome/OpenDot/actions/runs/38910266533). Main is unchanged. Goal follow-up CI is separate from that result.
+Approval Draft PR `#6`, commit `0914ca7`, passed actual GitHub CI run `38910266533`. Main is unchanged. Goal follow-up CI is separate from that result.
 
 ## Controlled artifact approval follow-up
 
@@ -897,7 +897,7 @@ Schema v72 and the formal tool/API/UI now support exact-content private-artifact
 
 Five focused tests check owner/parameter/decision binding, persisted pending consent, a post-effect receipt gap without file rewrite, partial effects becoming uncertain, current authorization before writes, and a private pre-v72 migration backup. An additional `product-artifact-recovery.test.ts` SIGKILLs an actual process immediately after file fsync but before the receipt; a fresh process reconciles the same file inode/mtime and completes one receipt. The exception seam also remains covered. These are process-crash tests, not power-loss tests. The pending-approval case kills the actual server process. Existing Makefile backup/restore tests now round-trip a real private artifact with mode 0600. Initial HTTP fixture failure was traced to creating a Session after intentionally disabling the creation flag; the fixture now creates it while enabled and asserts its persisted runtime kind.
 
-Foundation [Draft PR #4](https://github.com/helsome/OpenDot/pull/4), commit `77a96b6`, passed actual GitHub CI [run 38908341650](https://github.com/helsome/OpenDot/actions/runs/38908341650); its isolated archived tree also passed Typecheck and all 9 focused migration/store tests. Formal dispatch [Draft PR #5](https://github.com/helsome/OpenDot/pull/5), commit `4078084`, passed actual GitHub CI [run 38908396420](https://github.com/helsome/OpenDot/actions/runs/38908396420). These results do not establish Goal/Scheduler execution, a live external model or general external-write safety.
+Foundation Draft PR `#4`, commit `77a96b6`, passed actual GitHub CI run `38908341650`. Its isolated archived tree also passed Typecheck and all 9 focused migration/store tests. Formal dispatch Draft PR `#5`, commit `4078084`, passed actual GitHub CI run `38908396420`. These results do not establish Goal/Scheduler execution, a live external model or general external-write safety.
 
 ## Formal product Session Durable integration
 
@@ -911,7 +911,7 @@ Local gates: `make typecheck`, `npm run build:all`, changed-file Prettier/docs c
 
 Store/migration tests verify immutable runtime/owner bindings, cross-owner denial, flag-independent recovery, private pre-v71 backup and preservation of JSONL Session IDs. Backup tests snapshot committed WAL state and exclude coordinators/sidecars. Adapter negative tests reject a missing bound root or foreign conversations before activation. Backup/restore was tested only with temporary data; no production restore was performed.
 
-Pocket integration is available as [Draft PR #3](https://github.com/helsome/OpenDot/pull/3), commit `7950668`. Its actual GitHub `validate` job passed: [run 38902022615](https://github.com/helsome/OpenDot/actions/runs/38902022615). Results below describe earlier branches and are historical evidence, not CI results for the product-session changes.
+Pocket integration was recorded in Draft PR `#3`, commit `7950668`. Its actual GitHub `validate` job passed in run `38902022615`. Results below describe earlier branches and are historical evidence, not CI results for the product-session changes.
 
 ## Pocket + Goal integration acceptance
 

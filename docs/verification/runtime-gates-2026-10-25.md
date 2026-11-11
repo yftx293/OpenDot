@@ -44,7 +44,7 @@ uncaught/Unhandled 输出检查也通过。标准 `make test` 为 434 文件全�
 机器可读结果与原始本地日志 hash 见
 [模型故障门禁记录](member-cloud-78/model-errors-2026-10-25/gate-results.json)。
 
-`a187764` 的 [CI 138](https://github.com/helsome/OpenDot/actions/runs/40173518325)
+`a187764` 的 CI 138（运行 ID `40173518325`）
 三个 job 均失败，接口没有返回步骤和可下载日志；本次页面 annotation 原因未确认。
 较早运行确认过的账号限制不当作本次已确认原因。完整本地检查不能代替远程 CI。
 #75–#78 的全部目标仍在推进，

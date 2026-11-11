@@ -134,7 +134,7 @@ Its original shared harness logs console errors as warnings and may still return
 failed check. The original created-Profile screenshot also captured a transient
 draft/saving state; the new path waits for the saved editor before capturing.
 
-Latest inspected [hosted CI](https://github.com/helsome/OpenDot/actions/runs/39536730814)
+Latest inspected hosted CI run `39536730814`
 for `9cce601` failed before any job steps; no failure log was available through
 the connected API. Its underlying scheduling/execution cause is unconfirmed.
 
@@ -179,7 +179,7 @@ for this Node Group path is no longer missing. Deployed Cloud Group lifecycle,
 update/rollback/cost, physical phone/PWA behavior, native Electron and real IM
 remain separate. No issues were closed and no new Cloud resources were deployed.
 
-The prior head `c5853f8` [hosted CI run](https://github.com/helsome/OpenDot/actions/runs/39447739069)
+The prior head `c5853f8` hosted CI run `39447739069`
 failed before any job steps, with no downloadable job log. Its scheduling failure
 reason is not established through the connected API. It must not be confused
 with the earlier fixed TypeScript error or reported as a hosted pass.
@@ -201,14 +201,14 @@ No issues were closed by this audit.
 | #35           | Open         | Real isolated Goal/model/tool recovery has passed separately; complete Bot Team, external IM, physical phone and native Electron acceptance remains incomplete.                                                                                          |
 | #30           | Open         | Epic retains the #34/#35 release gates.                                                                                                                                                                                                                  |
 
-The latest main [CI run](https://github.com/helsome/OpenDot/actions/runs/39434444946)
+The latest main CI run `39434444946`
 failed during the personal-agent TypeScript check: `randomUUID()` narrowed the
 optional session argument to a UUID template literal. The follow-up explicitly
 types the argument as `string`, preserving arbitrary stable conversation IDs.
 `make typecheck` now passes locally; that is distinct from hosted validation of
 the next pushed revision. Both hosted cloud jobs passed on the inspected head.
 
-The independent [image publish run](https://github.com/helsome/OpenDot/actions/runs/39434444957)
+The independent image publish run `39434444957`
 failed at Docker Hub login with “Username and password required”. No registry
 credentials were created or changed. This publication blocker is still open.
 
@@ -230,7 +230,7 @@ Remote main inspected at `e890e0240137a3c1de1beedf3de26e75a274a040` includes
 #46, #47, #48 and #52. Historical feature PR heads are not necessarily ancestors
 because integration copied/squashed reviewed trees; inspect current source too.
 
-Main's [product CI](https://github.com/helsome/OpenDot/actions/runs/39361827293)
+Main's product CI run `39361827293`
 passed on that exact SHA. Its separate Docker Publish workflow failed at Docker Hub login (annotation: Username and password required); that is a
 release/publication blocker and must not be described as a product test failure.
 No image publication or credential repair is claimed here.
