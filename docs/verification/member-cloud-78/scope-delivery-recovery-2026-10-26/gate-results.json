@@ -1,0 +1,179 @@
+{
+  "current_targeted": {
+    "source_commit": "89e5e4d3e569eaf8019e8417bd45a2693240cdd3",
+    "steps": [
+      {
+        "name": "types",
+        "command": [
+          "make",
+          "typecheck"
+        ],
+        "exit_code": 0,
+        "output_guard": 0,
+        "seconds": 69.26,
+        "log_sha256": "7d1e92063fad0f96c32fdb3bffc0563f08a8a24cd91b1229adcb0454754d45ba"
+      },
+      {
+        "name": "native",
+        "command": [
+          "node",
+          "scripts/run-node-cli.mjs",
+          "vitest",
+          "run",
+          "--config",
+          "vitest.cloud-authority.config.ts",
+          "tests/group-member-authority-offline-cloud-http.test.ts",
+          "tests/group-member-input-ack-cloud-http.test.ts",
+          "tests/group-member-policy-cloud-http.test.ts"
+        ],
+        "exit_code": 0,
+        "output_guard": 0,
+        "seconds": 338.8,
+        "log_sha256": "8bf67f3dfda8cc7166ea2ba4940be9271dc94934aa813dfcd621ce37ee421d49"
+      }
+    ],
+    "running": null,
+    "started_at": "2026-10-25T18:34:37.813789+00:00",
+    "exit_code": 0,
+    "finished_at": "2026-10-25T18:41:25.866867+00:00"
+  },
+  "source_byte_audit": {
+    "source_commit": "89e5e4d3e569eaf8019e8417bd45a2693240cdd3",
+    "tracked_files_checked": 1995,
+    "result": "pass",
+    "checked_at": "2026-10-25T18:37:30.870466+00:00"
+  },
+  "previous_attempts": {
+    "workspace-reassign-first": {
+      "source_commit": "4b8ade105c35b6ddf581760e57dd8bc4e32def3d",
+      "steps": [
+        {
+          "name": "worker-build",
+          "exit_code": 0,
+          "output_guard": 0,
+          "seconds": 7.4,
+          "command": [
+            "node",
+            "../../scripts/run-node-cli.mjs",
+            "wrangler",
+            "deploy",
+            "--dry-run",
+            "--outdir",
+            "dist"
+          ],
+          "log_sha256": "ca32eca9abac51f7f8979f5b95e611bd2097829a54b237a882b177c1910ffd0e"
+        },
+        {
+          "name": "scope-probe",
+          "exit_code": 1,
+          "output_guard": 0,
+          "seconds": 32.01,
+          "command": [
+            "node",
+            "scripts/run-node-cli.mjs",
+            "vitest",
+            "run",
+            "--config",
+            "vitest.cloud-authority.config.ts",
+            "tests/group-member-policy-cloud-http.test.ts",
+            "-t",
+            "node-durable \u2192 cloudflare-durable: reassigned-workspace-profile"
+          ],
+          "log_sha256": "f6c61ae0323c53f7280ca6bddc91c4f65be5bd7a25540a5153a9aa77c834d8c6"
+        }
+      ]
+    },
+    "workspace-reassign-fixed-all": {
+      "source_commit": "e844cd6f74190a531acceaba2de7f215cf1aae64",
+      "exit_code": 0,
+      "output_guard": 0,
+      "seconds": 169.32,
+      "log_sha256": "c968b07d5e17cced8dbd9a42cf76a1fd3dae961e13faf74147b3a2fdc9446778",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "--config",
+        "vitest.cloud-authority.config.ts",
+        "tests/group-member-policy-cloud-http.test.ts"
+      ]
+    },
+    "member-input-ack-first": {
+      "source_commit": "830e8dba48fa8b524a6e870253bf2c5cab06dbc1",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "--config",
+        "vitest.cloud-authority.config.ts",
+        "tests/group-member-input-ack-cloud-http.test.ts",
+        "-t",
+        "node-durable \u2192 cloudflare-durable"
+      ],
+      "exit_code": 1,
+      "output_guard": 0,
+      "seconds": 33.81,
+      "log_sha256": "812ba39111875df3e969e558cc19c4ff90962584765345b0eb94cdde3397535b"
+    },
+    "member-input-ack-fixed-all": {
+      "source_commit": "eb61a80bd365dbd260ef46dd359cdd8e4ccd2e2c",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "--config",
+        "vitest.cloud-authority.config.ts",
+        "tests/group-member-input-ack-cloud-http.test.ts"
+      ],
+      "running": false,
+      "started_at": "2026-10-25T18:24:03.208391+00:00",
+      "exit_code": 1,
+      "output_guard": 0,
+      "seconds": 94.56,
+      "log_sha256": "6b1e24549e86ad1c6aa34dc8e59ab05c4db5f89a03d4b7aa46cc9d46ac7876db",
+      "finished_at": "2026-10-25T18:25:37.779232+00:00"
+    },
+    "member-input-ack-associated-all": {
+      "source_commit": "5338ca462df170f97dabd8a82f1d5ec84b6514ee",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "--config",
+        "vitest.cloud-authority.config.ts",
+        "tests/group-member-input-ack-cloud-http.test.ts"
+      ],
+      "running": false,
+      "started_at": "2026-10-25T18:26:38.907322+00:00",
+      "exit_code": 0,
+      "output_guard": 0,
+      "seconds": 116.14,
+      "log_sha256": "d63d3acbc50fc37d5ad5acbaf78399079da3f2a403ad687f59665bbd8f9b2c97",
+      "finished_at": "2026-10-25T18:28:35.048327+00:00"
+    },
+    "member-authority-offline-first-all": {
+      "source_commit": "8bf056c79e6c3954bb8c6be98c79eb30fb2375c9",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "--config",
+        "vitest.cloud-authority.config.ts",
+        "tests/group-member-authority-offline-cloud-http.test.ts"
+      ],
+      "running": false,
+      "started_at": "2026-10-25T18:30:11.450551+00:00",
+      "exit_code": 1,
+      "output_guard": 0,
+      "seconds": 76.84,
+      "log_sha256": "caaa52c5aab04bd3bfea1beb566ac8af122525f931993e9332aa5ecab64d410a",
+      "finished_at": "2026-10-25T18:31:28.292562+00:00"
+    }
+  },
+  "complete_current_authority_root_browser": "pending; targeted tests are not a complete gate"
+}

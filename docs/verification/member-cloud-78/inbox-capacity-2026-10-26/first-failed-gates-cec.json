@@ -1,0 +1,63 @@
+{
+  "source_commit": "cec4bff149b7776fd62ccd41dd0f0ba968f52ee5",
+  "byte_audit_files": 2055,
+  "started_at": "2026-10-25T22:57:59.403940+00:00",
+  "steps": [
+    {
+      "name": "types",
+      "cwd": ".",
+      "command": [
+        "make",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 61.79,
+      "log_sha256": "6af760840320972e27ffe54f7df2ab21dafed278f07e77b2ffd0bb0677e934b2",
+      "finished_at": "2026-10-25T22:59:01.202354+00:00"
+    },
+    {
+      "name": "client",
+      "cwd": ".",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "tests/bot-group-client.test.tsx",
+        "--bail=1"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 22.94,
+      "log_sha256": "c3f9be87c8b96535c06528729e57c81c79c6e016f91b1109c792ad5053276b3f",
+      "finished_at": "2026-10-25T22:59:24.149000+00:00"
+    },
+    {
+      "name": "authority",
+      "cwd": ".",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "--config",
+        "vitest.cloud-authority.config.ts",
+        "tests/group-member-byte-limits-cloud-http.test.ts",
+        "tests/group-member-input-capacity-cloud-http.test.ts",
+        "tests/group-member-mail-bytes-cloud-http.test.ts",
+        "--bail=1"
+      ],
+      "exit_code": 1,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 247.03,
+      "log_sha256": "0626f2f11471f0794667e922cfd0a9e430773a180c23257f5d5ca84858cf2fe0",
+      "finished_at": "2026-10-25T23:03:31.178287+00:00"
+    }
+  ],
+  "running": null,
+  "scope": "Native Inbox capacity and shared error feedback: typecheck, full client file, three complete native files14 cases, Web build, default Group browser8. Not full Authority/Root/CI/vendor acceptance.",
+  "running_started_at": "2026-10-25T22:59:24.149060+00:00",
+  "exit_code": 1,
+  "finished_at": "2026-10-25T23:03:31.178371+00:00"
+}

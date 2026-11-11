@@ -1,0 +1,61 @@
+{
+  "source_commit": "63614924555915cff52ef1addd9bd52dbe9ccda4",
+  "byte_audit_files": 2041,
+  "started_at": "2026-10-25T22:45:06.716776+00:00",
+  "steps": [
+    {
+      "name": "types",
+      "cwd": ".",
+      "command": [
+        "make",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 62.27,
+      "log_sha256": "3fba64c3656ec8aa133d0b060e94cb051a85280165d6979353f01d302b9e6234",
+      "finished_at": "2026-10-25T22:46:09.000105+00:00"
+    },
+    {
+      "name": "authority",
+      "cwd": ".",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "--config",
+        "vitest.cloud-authority.config.ts",
+        "tests/group-member-boundary-cloud-http.test.ts",
+        "--bail=1"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 112.53,
+      "log_sha256": "9fd3429272747ca08110689def57b2db97b9986b24a9c701cdbb8a3030868e89",
+      "finished_at": "2026-10-25T22:48:01.531903+00:00"
+    },
+    {
+      "name": "node-controls",
+      "cwd": ".",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "tests/group-member-inbox-controls-http.test.ts",
+        "--bail=1"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 114.32,
+      "log_sha256": "71e6bc71d3de2836bf6a9566818186edb2f686de6ff9b6d420656b2d5557acfd",
+      "finished_at": "2026-10-25T22:49:55.855328+00:00"
+    }
+  ],
+  "running": null,
+  "scope": "Targeted cycle-driver repair only: complete typecheck, full four-placement boundary file and complete Node controls file. Not a full Authority/Root/browser pass.",
+  "running_started_at": "2026-10-25T22:48:01.531979+00:00",
+  "exit_code": 0,
+  "finished_at": "2026-10-25T22:49:55.855395+00:00"
+}

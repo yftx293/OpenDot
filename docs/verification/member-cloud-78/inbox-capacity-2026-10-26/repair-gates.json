@@ -1,0 +1,97 @@
+{
+  "source_commit": "6b506657a91ab72e5c924854bd66df5aa96faef6",
+  "byte_audit_files": 2055,
+  "started_at": "2026-10-25T23:12:45.151738+00:00",
+  "steps": [
+    {
+      "name": "types",
+      "cwd": ".",
+      "command": [
+        "make",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 65.29,
+      "log_sha256": "6af760840320972e27ffe54f7df2ab21dafed278f07e77b2ffd0bb0677e934b2",
+      "finished_at": "2026-10-25T23:13:50.566578+00:00"
+    },
+    {
+      "name": "authority",
+      "cwd": ".",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "--config",
+        "vitest.cloud-authority.config.ts",
+        "tests/group-member-byte-limits-cloud-http.test.ts",
+        "tests/group-member-input-capacity-cloud-http.test.ts",
+        "tests/group-member-mail-bytes-cloud-http.test.ts",
+        "tests/group-member-input-ack-cloud-http.test.ts",
+        "--bail=1"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 342.39,
+      "log_sha256": "b1279fb024c145735b99a0a541f296e12b806b5a2ad857798423bfd48336dfe3",
+      "finished_at": "2026-10-25T23:19:32.966879+00:00"
+    },
+    {
+      "name": "root-related",
+      "cwd": ".",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "tests/product-runtime-http.test.ts",
+        "tests/group-member-inbox-http.test.ts",
+        "--bail=1"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 165.1,
+      "log_sha256": "2677b22de15c2d74207e8ba71920f957124342fe2c59056111790340c2cd4fd8",
+      "finished_at": "2026-10-25T23:22:18.072504+00:00"
+    },
+    {
+      "name": "web-build",
+      "cwd": "web",
+      "command": [
+        "node",
+        "../scripts/run-node-cli.mjs",
+        "vite",
+        "build"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 99.29,
+      "log_sha256": "1d9c327395a8bf1faf3e9cf614543fe7dbf2002f0a46393a6c745bf1a4f7ffa7",
+      "finished_at": "2026-10-25T23:23:57.370713+00:00"
+    },
+    {
+      "name": "browser",
+      "cwd": "web",
+      "command": [
+        "node",
+        "../scripts/run-node-cli.mjs",
+        "playwright",
+        "test",
+        "--config",
+        "playwright.groups.config.ts"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 131.48,
+      "log_sha256": "c6d74e8bf301243c760c79b729b4ca8f826c017dbc47a4a1fe489729b456abdf",
+      "finished_at": "2026-10-25T23:26:08.854833+00:00"
+    }
+  ],
+  "running": null,
+  "scope": "Native ACK optimization: full typecheck; three capacity files14 plus original lostACK4; complete private Runtime and Node member files; Webbuild; defaultGroup8. Not full Authority/Root/CI/vendor acceptance.",
+  "running_started_at": "2026-10-25T23:23:57.370776+00:00",
+  "exit_code": 0,
+  "finished_at": "2026-10-25T23:26:08.854898+00:00"
+}

@@ -1,0 +1,100 @@
+{
+  "source_commit": "f71c302bad8f7a40bf3bd863351a423b938a4b9c",
+  "steps": [
+    {
+      "name": "transients-all",
+      "command": [
+        "npm",
+        "run",
+        "test:cloud-authority",
+        "--",
+        "tests/group-member-resilience-cloud-http.test.ts"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 168.16,
+      "log_sha256": "57075eab2c6d4e739e8fe44990e4fff24cf0f22f22e0ad222b0786a8ef78d70d",
+      "repository_output_guard_exit_code": 0
+    },
+    {
+      "name": "effect-first-node",
+      "command": [
+        "npm",
+        "run",
+        "test:cloud-authority",
+        "--",
+        "tests/group-member-effect-recovery-cloud-http.test.ts",
+        "-t",
+        "node-durable → node-durable: an authority crash"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 47.83,
+      "log_sha256": "59e2e3f61a98a9a18e8858bcd89bb2fc684e91960819ec0e7bb436bb220d38f9",
+      "repository_output_guard_exit_code": 0
+    },
+    {
+      "name": "effect-all",
+      "command": [
+        "npm",
+        "run",
+        "test:cloud-authority",
+        "--",
+        "tests/group-member-effect-recovery-cloud-http.test.ts"
+      ],
+      "exit_code": 0,
+      "test_files": 1,
+      "passed_tests": 4,
+      "vitest_seconds": 225.38,
+      "log_sha256": "248358f0fe03d35fef46b5a2f26b9fb85d4519fd709f4ee51aad72f00df9f7a9",
+      "repository_output_guard_exit_code": 0
+    },
+    {
+      "name": "resilience-draft-types",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "effect-recovery-complete-draft-types",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "resilience-cloud-build-node",
+      "exit_code": 0,
+      "log_sha256": "9a1c774b689a54c4a47379de7e34dd8e62b2641d135140fa15a2aae99c5a8850"
+    },
+    {
+      "name": "full-typecheck",
+      "command": [
+        "make",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "log_sha256": "261906fdbad1bbc735c3f7aba798063c8a18cdedbeed894a6005f85d608c83bd",
+      "note": "Includes both new native files, Web, E2E, Runner, sync/prompt and 91-file docs checks."
+    }
+  ],
+  "running": null,
+  "full_parent_source": "34c17f4810cf94f6dc231c53f96e910c86fd53fc",
+  "full_parent_authority_passed": 70,
+  "full_parent_root_passed": 3352,
+  "full_parent_root_existing_skips": 23,
+  "current_complete_authority": {
+    "source_commit": "df304dd196cc2b0777137c2fa3c1938e35d6e89f",
+    "command": [
+      "npm",
+      "run",
+      "test:cloud-authority"
+    ],
+    "exit_code": 0,
+    "test_files": 15,
+    "passed_tests": 82,
+    "vitest_seconds": 1344.65,
+    "duration_seconds": 1346.32,
+    "log_sha256": "9d8ea89b8c47a1355fbed8e81c7401033d9148dbd303ed521230beb018fef08d",
+    "repository_output_guard_exit_code": 0,
+    "started_at": "2026-10-25T11:17:49Z",
+    "finished_at": "2026-10-25T11:40:15Z"
+  },
+  "remote_ci": "manual-only; no current-head pass claimed",
+  "integration_source_before_evidence": "026de24b9620c9821cd97166ed370edab141662e"
+}

@@ -1,0 +1,72 @@
+{
+  "source_commit": "5038a636a3ff541286febd56cbfcda3643405ac5",
+  "byte_audit_files": 1950,
+  "steps": [
+    {
+      "name": "regressions",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "tests/agent-output-parser.test.ts",
+        "tests/runner-openai-conversation-http.test.ts",
+        "tests/provider-failure-policy.test.ts",
+        "tests/provider-pool-recovery.test.ts",
+        "tests/provider-model-fallback.test.ts",
+        "tests/host-ipc-output-router.test.ts",
+        "tests/agent-runner-ipc-delivery.test.ts"
+      ],
+      "exit_code": 0,
+      "output_guard": 0,
+      "duration_seconds": 68.09,
+      "log_sha256": "28ee4c0898cb63a0211fc4bfd51d161ac7ba6385e3d07a2006396192283d1f7f"
+    },
+    {
+      "name": "types",
+      "command": [
+        "make",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "output_guard": 0,
+      "duration_seconds": 69.59,
+      "log_sha256": "bd5e1ba220c652eeaf37c08c9f43438d32debdc5ded83bec0ab4ef8b271e00bb"
+    }
+  ],
+  "exit_code": 0,
+  "regression_counts": {
+    "files": 7,
+    "passed": 100,
+    "vitest_seconds": 66.98
+  },
+  "source_files": {
+    "src/agent-output-parser.ts": "fb0d05a20c52632ac59de3103d168acb3bc016d84eb47f924b0b5173b95d1120",
+    "tests/agent-output-parser.test.ts": "dc7c47404a850a0bb037368d355a0f9e376858fce116f555f8905647a2f39e3e",
+    "tests/runner-openai-conversation-http.test.ts": "e82038c24909eb52636569dc26833b5a928eedfadfb1d38f409df096490aeb67"
+  },
+  "original_red": {
+    "base_commit": "d46381cb35ebd344c0be33bcac76e42f2c734e9f",
+    "exit_code": 1,
+    "failed": 7,
+    "passed": 53,
+    "duration_seconds": 107.37,
+    "log_sha256": "fc952f911a1ab85d6bf36c97be56bb6e0e31f2679e607b73d8cd8e9c72a1dd6e",
+    "failures": [
+      "native Host HTTP visible failure notice did not arrive within 60000ms",
+      "five error classifier variants were not detected",
+      "warm error frame did not receive providerFailure flag"
+    ],
+    "unreached_test_observation_correction": "Before the fixed test reached process-close observation, its placeholder exit log was replaced with actual existing Host Agent close logs. Product deadlines and the notice assertion were unchanged."
+  },
+  "first_fixed_before_longer_restart_observation": {
+    "exit_code": 0,
+    "output_guard": 0,
+    "files": 7,
+    "passed": 100,
+    "vitest_seconds": 61.92,
+    "command_seconds": 63.19,
+    "log_sha256": "d51b65b6f1350c3a87a826451ae65c5dde315d1daf57249d151c2ccb2465ba9e"
+  },
+  "scope": "Owned production Host Pi runner with controlled provider HTTP 429, not vendor inference. Native notice persisted exactly once, process closed, same input and notice retained after real backend restart, no requests during more than two polling intervals. Current Chrome real-vendor failed attempt remains in PR100; no new three-round, warm IPC, complete Root or deployment claim."
+}

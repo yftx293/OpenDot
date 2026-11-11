@@ -1,0 +1,63 @@
+{
+  "source_commit": "0f8ecd6abc9451c458de881e3ce9ef8349c66687",
+  "steps": [
+    {
+      "name": "types",
+      "command": ["make", "typecheck"],
+      "exit_code": 0,
+      "output_guard": 0,
+      "seconds": 62.56,
+      "log_sha256": "6869fe6b1c6125dbec8bda5f2b1bcad3e89b90366b04fb33012bed39f85a4379"
+    },
+    {
+      "name": "ui-unit",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "tests/bot-mention-composer.test.ts",
+        "tests/bot-group-client.test.tsx",
+        "tests/conversation-surface.test.tsx",
+        "tests/conversation-entry-links.test.ts"
+      ],
+      "exit_code": 0,
+      "output_guard": 0,
+      "seconds": 26.92,
+      "log_sha256": "9af4371c16c0877e4ab20b2ac18aa5d347f7070daf191ae19778ed7593d474bb"
+    },
+    {
+      "name": "web-build",
+      "command": ["node", "../scripts/run-node-cli.mjs", "vite", "build"],
+      "exit_code": 0,
+      "output_guard": 0,
+      "seconds": 97.67,
+      "log_sha256": "2d738e4545287c05026e033756ceff391d5f04512a17de5b860225003ea01156"
+    },
+    {
+      "name": "remaining-browser",
+      "command": [
+        "node",
+        "../scripts/run-node-cli.mjs",
+        "playwright",
+        "test",
+        "--config",
+        "$PRIVATE_EVIDENCE/member-recovery-browser-history.config.ts"
+      ],
+      "exit_code": 1,
+      "output_guard": 0,
+      "seconds": 131.45,
+      "log_sha256": "a5b80968c87c0ae23f945b77d2ffb12e30d8e541501a57db73e1d9ac4e1da8e4"
+    }
+  ],
+  "exit_code": 1,
+  "running": null,
+  "running_started_at": "2026-10-25T20:37:15.673417+00:00",
+  "observed_browser_results": {
+    "passed": 7,
+    "failed": 1,
+    "history_back_forward": "passed; Group and private chat recover correct route",
+    "failure": "After admin permission change, the phone had not yet read revoked Group state; the test measured its normal sr-only control as1px instead of the unverified touch action.",
+    "classification": "test state precondition; 864f1d5 explicitly reloads and observes the actual denied read, then retains44x44minimum and all no-resubmit assertions."
+  }
+}

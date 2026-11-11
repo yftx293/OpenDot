@@ -1,0 +1,46 @@
+{
+  "source_commit": "c8a51e7a406555c23cce96656cfe720525bf594a",
+  "steps": [
+    {
+      "name": "types",
+      "command": ["make", "typecheck"],
+      "exit_code": 0,
+      "output_guard": 0,
+      "seconds": 63.12,
+      "log_sha256": "6869fe6b1c6125dbec8bda5f2b1bcad3e89b90366b04fb33012bed39f85a4379"
+    },
+    {
+      "name": "web-build",
+      "command": ["node", "../scripts/run-node-cli.mjs", "vite", "build"],
+      "exit_code": 0,
+      "output_guard": 0,
+      "seconds": 100.32,
+      "log_sha256": "cd2cc4a9ece9601aa479fbba25047b0aff22c6216f727ed1479aae4ebde135a2"
+    },
+    {
+      "name": "remaining-browser",
+      "command": [
+        "node",
+        "../scripts/run-node-cli.mjs",
+        "playwright",
+        "test",
+        "--config",
+        "$PRIVATE_EVIDENCE/member-recovery-browser-retest.config.ts"
+      ],
+      "exit_code": 1,
+      "output_guard": 0,
+      "seconds": 247.88,
+      "log_sha256": "964e67564e37c8df02e24d9ee15df5826721bc645488ccd37d974471adf8009d"
+    }
+  ],
+  "exit_code": 1,
+  "running": null,
+  "running_started_at": "2026-10-25T20:18:02.642191+00:00",
+  "observed_browser_results": {
+    "passed": 7,
+    "failed": 1,
+    "menu_geometry": "passes at desktop and phone with original threshold",
+    "remaining_failure": "The older recovery test clicked an sr-only refresh action after reconnection, then expected normal sync-success text removed by #75."
+  },
+  "followup": "65dd6b1 uses explicit browser reload and authoritative verified snapshot, current unified mobile navigation, and a visible 44px reconnect action while unverified. Retest recorded separately."
+}

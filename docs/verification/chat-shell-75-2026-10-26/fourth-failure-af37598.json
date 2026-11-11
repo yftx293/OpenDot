@@ -1,0 +1,29 @@
+{
+  "source_commit": "af3759805ae67bf7b6eb11625ca77ef3e66d6146",
+  "steps": [
+    {
+      "name": "remaining-browser",
+      "command": [
+        "node",
+        "../scripts/run-node-cli.mjs",
+        "playwright",
+        "test",
+        "--config",
+        "$PRIVATE_EVIDENCE/member-recovery-browser-post-selector.config.ts"
+      ],
+      "exit_code": 1,
+      "output_guard": 0,
+      "seconds": 135.06,
+      "log_sha256": "4fef59b42288b17a0bc94010dfae3f6cee920070d68e03ab4e4d9616a3649455"
+    }
+  ],
+  "exit_code": 1,
+  "running": null,
+  "running_started_at": "2026-10-25T20:30:25.243195+00:00",
+  "observed_browser_results": {
+    "passed": 7,
+    "failed": 1,
+    "failure": "Mobile picker opened the selected Dot, but Back reached the /bots authority resolver and immediately navigated into private chat again instead of returning to the Group.",
+    "classification": "product history defect; 0f8ecd6 replaces the automatic entry redirect, preserving team-view explicit navigation and the original back/forward assertions."
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "source_commit": "12a0f0fd1817866850fa48ac91050cbb560ba1e6",
+  "steps": [
+    {
+      "name": "build",
+      "command": ["make", "build"],
+      "exit_code": 0,
+      "duration_seconds": 124.19,
+      "log_sha256": "c2ca2066e6cea13dfdc44c56098bd2209a9bf209877e84ffb7092b374d36d385"
+    },
+    {
+      "name": "cloud-build",
+      "command": ["npm", "--prefix", "apps/cloud-agent", "run", "build"],
+      "exit_code": 2,
+      "duration_seconds": 0.59,
+      "log_sha256": "9e9c303b50f3d3087bec915ebb17108b8f95c693ac075e74f506d028dad03e8e"
+    },
+    {
+      "name": "cloud-build-node",
+      "command": [
+        "node",
+        "../../scripts/run-node-cli.mjs",
+        "wrangler",
+        "deploy",
+        "--dry-run",
+        "--outdir",
+        "dist"
+      ],
+      "cwd": "apps/cloud-agent",
+      "exit_code": 0,
+      "duration_seconds": 6.6,
+      "log_sha256": "5fb91c5472e0f618823f8839b8155769638c2ec01b1c41044b88d025fb4a1bb4"
+    },
+    {
+      "name": "cloud",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--run",
+        "--config",
+        "vitest.cloud-authority.config.ts",
+        "tests/group-discussion-cloud-http.test.ts"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "duration_seconds": 80.46,
+      "log_sha256": "2ddea2c48f691a1532230ced99f9629dc01303767a6bcfd8e1f5bcc18ab12ef2"
+    },
+    {
+      "name": "real",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/test-group-member-live.ts"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "duration_seconds": 88.9,
+      "log_sha256": "c650a737ed299cc8b6166bdd4cd70c844f11eff8a402bca7377bd22d919ef230"
+    },
+    {
+      "name": "red",
+      "exit_code": 1,
+      "test_files": 1,
+      "test_cases": 1,
+      "vitest_seconds": 40.61,
+      "log_sha256": "aae240fe8e45446a5cecc3fc8d203e40ed732f3c649ffb093ed16435b001aeda"
+    },
+    {
+      "name": "fixed",
+      "exit_code": 1,
+      "test_files": 1,
+      "test_cases": 5,
+      "vitest_seconds": 66.04,
+      "log_sha256": "90cca29345100a2b6e0da212f42d449ffc86aa62af392a33ddb9c2e4e4eac111"
+    },
+    {
+      "name": "regression",
+      "exit_code": 0,
+      "test_files": 5,
+      "test_cases": 43,
+      "vitest_seconds": 264.5,
+      "log_sha256": "44236882b3706815eb92fc801a499d4e7d0ca4e1d8bdb9edab61080b5ef17c2a"
+    },
+    {
+      "name": "work",
+      "exit_code": 0,
+      "test_files": 1,
+      "test_cases": 3,
+      "vitest_seconds": 75.28,
+      "log_sha256": "29d2934b9aeaa0c3480cdacd5eee481f0bf466024ec85bf71f8c23881eb7a0c2"
+    },
+    {
+      "name": "types",
+      "exit_code": 0,
+      "test_files": null,
+      "test_cases": null,
+      "vitest_seconds": null,
+      "log_sha256": "f9346ebc063a445dc82b4df00448c25e6aa86ddff3264c166e86881e585a01b4"
+    }
+  ],
+  "full_root": "passed: 435 files, 3352 tests, 23 existing skips; source 34c17f4",
+  "full_authority": "passed: 13 files, 70 tests; source 34c17f4",
+  "remote_ci": "manual-only; no exact-head pass claimed",
+  "browser": "Mac locked; current-head Chrome not tested",
+  "first_fixed_failure": "Three cap cases passed; two answer cases failed at the test oracle because product normalization adds origin:null. Final tests assert the exact normalized payload and captured original native record.",
+  "full_suite_source_commit": "34c17f4810cf94f6dc231c53f96e910c86fd53fc",
+  "full_suite_started_at": "2026-10-25T09:57:17Z",
+  "full_suite_finished_at": "2026-10-25T10:39:41Z",
+  "full_suite_steps": [
+    {
+      "name": "authority",
+      "command": ["npm", "run", "test:cloud-authority"],
+      "exit_code": 0,
+      "duration_seconds": 991.9,
+      "log_sha256": "465b51767a1fc908370493fcdefa95ecaf907d04d6a58bc343e7f06c0b7c282e",
+      "uncaught_output_guard_passed": true,
+      "repository_output_guard_exit_code": 0,
+      "test_files": 13,
+      "passed_tests": 70,
+      "existing_skipped_tests": 0,
+      "vitest_seconds": 990.36
+    },
+    {
+      "name": "root",
+      "command": ["make", "test"],
+      "exit_code": 0,
+      "duration_seconds": 1552.12,
+      "log_sha256": "11e93fbff6f4bed5b52ccce3a0ab27a0fcfcfd5677364e648aae6f7d5087ba5e",
+      "uncaught_output_guard_passed": true,
+      "repository_output_guard_exit_code": 0,
+      "test_files": 435,
+      "passed_tests": 3352,
+      "existing_skipped_tests": 23,
+      "vitest_seconds": 1549.47
+    }
+  ],
+  "targeted_repository_output_guards": [
+    {
+      "name": "regression",
+      "exit_code": 0,
+      "output": "No uncaught or unhandled failure found in the supplied output."
+    },
+    {
+      "name": "work",
+      "exit_code": 0,
+      "output": "No uncaught or unhandled failure found in the supplied output."
+    },
+    {
+      "name": "cloud",
+      "exit_code": 0,
+      "output": "No uncaught or unhandled failure found in the supplied output."
+    },
+    {
+      "name": "real",
+      "exit_code": 0,
+      "output": "No uncaught or unhandled failure found in the supplied output."
+    }
+  ]
+}

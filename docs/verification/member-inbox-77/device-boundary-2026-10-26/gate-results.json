@@ -1,0 +1,84 @@
+{
+  "native": {
+    "source_commit": "58f5dfa780a8082290478e8ac54e0a8acfe756ef",
+    "command": [
+      "node",
+      "scripts/run-node-cli.mjs",
+      "vitest",
+      "run",
+      "--config",
+      "vitest.cloud-authority.config.ts",
+      "tests/cloud-device.integration.ts"
+    ],
+    "files": 1,
+    "tests": 2,
+    "exit_code": 0,
+    "output_guard": 0,
+    "vitest_seconds": 41.79,
+    "test_seconds": 21.92,
+    "log_sha256": "027ca2dca22b68636b357e5f0c5780ae07a558bf8b4b6a469cae493c0bfa15ee",
+    "proof_sha256": "4f641912d704109c15d295f2327e0dfbf6c2e4032d4b13e4bfbf284771ee5db1"
+  },
+  "types_client_web_browser": {
+    "source_commit": "325421e9bc355fd11cf91a20fa29d04d810b770d",
+    "steps": [
+      {
+        "name": "types",
+        "command": ["make", "typecheck"],
+        "exit_code": 0,
+        "output_guard": 0,
+        "seconds": 61.33,
+        "log_sha256": "731482e23328c4b1f96522615b745dd3a31dcb4a85bf200f8d1e591b4c5a6f22"
+      },
+      {
+        "name": "client-unit",
+        "command": [
+          "node",
+          "scripts/run-node-cli.mjs",
+          "vitest",
+          "run",
+          "tests/bot-group-client.test.tsx",
+          "tests/group-discussion-ui.test.tsx",
+          "tests/conversation-surface.test.tsx"
+        ],
+        "exit_code": 0,
+        "output_guard": 0,
+        "seconds": 30.31,
+        "log_sha256": "a2d8d9e03eb19a0d1fae8d08b5073c502eb00e2a401fd6ae618b9febdd3447f8"
+      },
+      {
+        "name": "web-build",
+        "command": ["node", "../scripts/run-node-cli.mjs", "vite", "build"],
+        "exit_code": 0,
+        "output_guard": 0,
+        "seconds": 99.81,
+        "log_sha256": "8a5e4e10d679e814a664c33f5286304af72ddc3b64c42827a2af33c34e842c08"
+      },
+      {
+        "name": "group-browser",
+        "command": [
+          "node",
+          "../scripts/run-node-cli.mjs",
+          "playwright",
+          "test",
+          "--config",
+          "playwright.groups.config.ts"
+        ],
+        "exit_code": 0,
+        "output_guard": 0,
+        "seconds": 129.95,
+        "log_sha256": "7caa1ff53a976a6c650d973ada62e0e49fafa1bc80b576f3e887840451a631ff"
+      }
+    ],
+    "exit_code": 0,
+    "running": null,
+    "running_started_at": "2026-10-25T21:07:12.509551+00:00",
+    "finished_at": "2026-10-25T21:09:22.457878+00:00"
+  },
+  "source_equivalence": "After325421e, only the Device test adds stricter original-input and zero-Session assertions. Production error text, client units and Web build sources are unchanged.",
+  "bounds": [
+    "Controlled inference; actual Node and local workerd, not deployed Cloudflare.",
+    "The Goal owns the device Task. Member-device execution remains unsupported.",
+    "These targeted gates are not a full current Root or Authority run."
+  ]
+}

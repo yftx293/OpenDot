@@ -1,0 +1,58 @@
+{
+  "source_commit": "8c389742e556003e59c55304b2a92bb70a01db30",
+  "standard_existing_ui_suites": {
+    "source_commit": "8c389742e556003e59c55304b2a92bb70a01db30",
+    "command": [
+      "node",
+      "scripts/run-node-cli.mjs",
+      "vitest",
+      "run",
+      "tests/conversation-surface.test.tsx",
+      "tests/group-discussion-ui.test.tsx"
+    ],
+    "exit_code": 0,
+    "output_guard": 0,
+    "seconds": 26.98,
+    "log_sha256": "fed360bcf1379fb99d646253abead0053e9a1a46885277aaa2a52e5a1da442ef",
+    "files": 2,
+    "passed": 5,
+    "vitest_seconds": 25.68
+  },
+  "web_gates": [
+    {
+      "name": "web-types",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "web/tsconfig.json",
+        "--noEmit"
+      ],
+      "exit_code": 0,
+      "output_guard": 0,
+      "duration_seconds": 12.37,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "web-build",
+      "command": [
+        "node",
+        "../scripts/run-node-cli.mjs",
+        "vite",
+        "build"
+      ],
+      "exit_code": 0,
+      "output_guard": 0,
+      "duration_seconds": 106.67,
+      "log_sha256": "49a5dfcf5006db0e43c72a8816767b01cb8bf40d56f5cbca2149f54ee11365f3"
+    }
+  ],
+  "auxiliary_existing_ui_suites_without_backend_global_build": {
+    "name": "ui-regressions",
+    "exit_code": 0,
+    "output_guard": 0,
+    "duration_seconds": 10.43,
+    "log_sha256": "ba627893934cc319159f57cfbe97fdf56aad1a64cabfaa55b92193be6ab7f40f"
+  },
+  "auxiliary_scope": "Same two existing UI suites and original aliases; isolated configuration omitted only backend compilation while the own Chrome server was live. Standard configuration rerun passed after that server stopped."
+}

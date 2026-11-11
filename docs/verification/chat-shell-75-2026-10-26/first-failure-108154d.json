@@ -1,0 +1,49 @@
+{
+  "source_commit": "108154dc578ad729b921b19574e962ce400860b3",
+  "steps": [
+    {
+      "name": "types",
+      "command": ["make", "typecheck"],
+      "exit_code": 0,
+      "output_guard": 0,
+      "seconds": 61.9,
+      "log_sha256": "14137f117b20764259a7e76b747d7ce4a93e0ece81cf7022f6557c0a4931fc75"
+    },
+    {
+      "name": "remaining-browser",
+      "command": [
+        "node",
+        "../scripts/run-node-cli.mjs",
+        "playwright",
+        "test",
+        "--config",
+        "$PRIVATE_EVIDENCE/member-recovery-browser-remaining.config.ts"
+      ],
+      "exit_code": 1,
+      "output_guard": 0,
+      "seconds": 260.32,
+      "log_sha256": "99ad1fee24f2e7f0ddf05e624b84e27ba0091de27425a1a04f564e16e44b2d0b"
+    }
+  ],
+  "exit_code": 1,
+  "running": null,
+  "running_started_at": "2026-10-25T20:08:51.236636+00:00",
+  "observed_results": {
+    "test_count": 8,
+    "passed": 6,
+    "failed": 2,
+    "failures": [
+      {
+        "test": "bot-groups.spec.ts",
+        "reason": "Default-open member settings were clicked shut, then invitation input fill waited until unchanged 150s timeout.",
+        "classification": "test interaction error; recovered with conditional visible UI expansion and guaranteed fixture cleanup"
+      },
+      {
+        "test": "conversation-shell.spec.ts",
+        "reason": "Mention picker bottom760 exceeds dock top719 plus16; picker overlaps dock controls.",
+        "classification": "product layout defect; repaired by measuring full dock offset, original geometry assertion retained"
+      }
+    ]
+  },
+  "privacy": "Raw traces stay private because they contain isolated fixture cookies. This report omits request headers and credentials."
+}

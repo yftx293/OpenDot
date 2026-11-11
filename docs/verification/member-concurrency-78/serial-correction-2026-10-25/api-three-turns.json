@@ -1,0 +1,2590 @@
+{
+  "version": 1,
+  "scope": "actual-node-product-api-and-authorized-real-inference",
+  "source_commit": "12a0f0fd1817866850fa48ac91050cbb560ba1e6",
+  "source_sha256": {
+    "src/bot-groups/member-inbox-store.ts": "ffba68f2ee8956da558d5203de05456815632a4f19823acbd458517a9a87bf4b",
+    "src/bot-groups/member-model-store.ts": "ee3a74262da10ecfd7e810d98499a8f5b6db388ba3e56a49104649f91c4802fa",
+    "src/bot-groups/discussion-service.ts": "0422dc53e51aa0b2443eb90ed55053fb0e1613622089121badb195457631914d",
+    "src/bot-groups/discussion-store.ts": "41436db6137930deeb67ca2fbae81599bbedcd454373ba115312c6889d53fa26",
+    "src/bot-groups/discussion-context.ts": "7f0835c3216f430f414b4722518c8704c822dd2e0b192596507d233253c621d0",
+    "src/bot-groups/discussion-protocol.ts": "eb35b9839bffcb59d3510f42a660861d63961387bdd03d2bc57b14d10b129448",
+    "src/personal-agent/durable-runtime.ts": "de6986742748e3e25746b419ef4e85a808672c34501f076d937b41b128027269",
+    "src/personal-agent/product-runtime.ts": "fd9e297043a71ea7d907f9a0f61c81dcdc2660932794ea67c918eda8979a3c5d",
+    "scripts/lib/discussion-real-provider.ts": "30a2ccce24560ed9d1e5bf666ece42a3e760390ac9f87be7937c0d7ae3c29e73",
+    "tests/helpers/bot-handoff-http-fixture.ts": "e29598f8c30618937a54b077f7c25176bf436057913b8be95f32d6b5d813c64c",
+    "tests/helpers/member-envelopes.ts": "9dea3c481c50e58db6ed4c51f8ede65ed5bfcd39e77d5683729d25b127bd2f0b",
+    "package-lock.json": "81cfddeda24b007d450b6c4a146e18cbf27f3f2702971e18e45c4c0be2176fde",
+    "scripts/test-group-member-live.ts": "09c6ae915794cc417472e6705fde9498a30330dc3e211e2174004283d6fe55ce"
+  },
+  "private_report_sha256": "c66c46797726b95707aac256d365f66d98c3ef76313fdc34691f05fc8180f98e",
+  "combined_comparison_passed": true,
+  "full_acceptance_complete": false,
+  "browser_acceptance": false,
+  "deployed_cloudflare_acceptance": false,
+  "physical_phone_acceptance": false,
+  "started_at": "2026-10-25T09:49:22.604Z",
+  "finished_at": "2026-10-25T09:50:50.755Z",
+  "actual_provider_attempts": 20,
+  "synthetic_requests": 0,
+  "cases": [
+    {
+      "mode": "member-inbox-v1",
+      "group_id": "97e725e3-d501-4614-8324-8b8af381473d",
+      "project": "青禾760016",
+      "rounds": [
+        {
+          "round": 1,
+          "passed": true,
+          "run_id": "e9af806e-afec-48b4-a128-9687a4aa723d",
+          "run": {
+            "policy": "relay-v1",
+            "protocol_version": 2,
+            "execution_contract": "member-inbox-v1",
+            "deadline_at": 1792925369657,
+            "max_turns": 6,
+            "max_turns_per_dot": 3,
+            "max_model_attempts": 12,
+            "model_attempts": 6,
+            "turn_count": 3
+          },
+          "correction_id": "5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac",
+          "restart_evidence": null,
+          "expected": [310, 88, 222],
+          "answers": [
+            {
+              "id": "group-member:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+              "author_id": "343916d8-cfc7-4261-b5be-840701438e45",
+              "content": "关于印刷费 14 的评审结论（按最新更正）：该笔已取消、不计支出，因此不属于“已支出”，也不构成“承诺支出”。原“102 还是 88”的二分已失效，正确累计为 88。\n\n理由：\n- 原始口径只说“已支出场地61、摄影27、印刷14”，未单独标注印刷的付款状态，因此“按笔计入”与“已下单未付”在旧信息下都自洽，属真实不确定点，不能武断定为 102。\n- 用户更正具有更高的权威性，明确“已取消且不计支出”，这就从源头消除了该不确定项，无需再推断付款状态。\n- 剩余 = 310 −（61+27）= 222，与 102 口径下的 208 相差正好 14，可作为一致性校验。\n\n核对结果（预览，未执行任何写入/付款/部署）：\n- 项目：青禾760016\n- 负责人：林岚\n- 总预算：310\n- 累计已用：88（场地61 + 摄影27）\n- 剩余预算：222\n\n建议在最终表述中注明“按最新更正口径”，避免与旧数据混淆。",
+              "digest": "3a56bcaac2f37c011400cc9e9f9b4a46faefd91e35ba29d402cff5670f0322e4",
+              "source": {
+                "run_id": "e9af806e-afec-48b4-a128-9687a4aa723d",
+                "execution_contract": "member-inbox-v1",
+                "kind": "group_member_reply",
+                "message_id": "reply:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+                "in_reply_to": "eaf24c28-6195-4105-9d69-d13bfce9ace5",
+                "source_task_id": 18,
+                "source_input_id": "c14799e7-6aee-4b20-9d6f-324ce7f784d7",
+                "answer_entry_id": 19
+              }
+            },
+            {
+              "id": "member-answer:7daddc97-1fd6-4523-bd33-d12167a84bf2:28",
+              "author_id": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "content": "已收到 Reviewer 的实际审查回复（seq 12），其结论与我独立核算一致，我采纳并复核通过：\n\n- 一致点：印刷 14 已取消、不计支出，既不属“已支出”也不构成“承诺支出”，原“102 还是 88”的二分失效。\n- 算术校验：累计已用 61+27=88；310−88=222；与旧口径 208 恰差 14，交叉验证成立。\n- 可行性：剩余 222 > 0，预算充足，方案可行；仅预览，未写入、未付款、未部署。\n\n最终核对（按最新更正口径）\n- 项目：青禾760016\n- 负责人：林岚\n- 总预算：310\n- 累计已用：88（场地61 + 摄影27；印刷14已取消，不计入）\n- 剩余预算：222",
+              "digest": "8cda21ea978d51d29ebbf7f855c98c6fb3873e0fb459f1f3c91364b43de80462",
+              "source": {
+                "run_id": "e9af806e-afec-48b4-a128-9687a4aa723d",
+                "execution_contract": "member-inbox-v1",
+                "kind": "group_member_final",
+                "source_task_id": 27,
+                "source_input_id": "78227527-c72e-4118-bf48-adc8322575ba",
+                "answer_entry_id": 28,
+                "causal_root_message_id": "0910b409-62aa-4afc-b769-542649089079"
+              }
+            }
+          ],
+          "model_calls": 6,
+          "provider_peak": 2,
+          "elapsed_ms": 16575,
+          "reported_tokens": 24032,
+          "usage_complete": true,
+          "identical_same_author_outputs": 0,
+          "native_mail": [
+            {
+              "id": "eaf24c28-6195-4105-9d69-d13bfce9ace5",
+              "kind": "question",
+              "in_reply_to": null,
+              "sender_profile_id": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "recipient_profile_id": "343916d8-cfc7-4261-b5be-840701438e45",
+              "source_input_id": "f19c481e-7a6b-4b0b-8c18-a9dc61531a4e",
+              "source_task_id": 14,
+              "source_generation_id": 10,
+              "source_inputs": "[{\"submissionId\":9,\"requestId\":\"member-root:0910b409-62aa-4afc-b769-542649089079:f38d1f95-cbd7-4813-95e3-554daf1a931c\",\"entryId\":8}]",
+              "delivery_request_id": "member-question:eaf24c28-6195-4105-9d69-d13bfce9ace5:343916d8-cfc7-4261-b5be-840701438e45",
+              "deadline_at": 1792921895424,
+              "state": "replied",
+              "message_id": "group-member:eaf24c28-6195-4105-9d69-d13bfce9ace5"
+            },
+            {
+              "id": "reply:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+              "kind": "reply",
+              "in_reply_to": "eaf24c28-6195-4105-9d69-d13bfce9ace5",
+              "sender_profile_id": "343916d8-cfc7-4261-b5be-840701438e45",
+              "recipient_profile_id": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "source_input_id": "c14799e7-6aee-4b20-9d6f-324ce7f784d7",
+              "source_task_id": 18,
+              "source_generation_id": 18,
+              "source_inputs": "[{\"input_id\":\"c14799e7-6aee-4b20-9d6f-324ce7f784d7\",\"submission_id\":13,\"request_id\":\"member-control:5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac:343916d8-cfc7-4261-b5be-840701438e45\",\"payload_digest\":\"389f16f1ba2f3da6ea648cc8bb2039d050cb598f7c9f98a06ba9ea6ccb02c3a6\",\"answer_entry_id\":19}]",
+              "delivery_request_id": "member-reply:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "deadline_at": 1792921895424,
+              "state": "consumed",
+              "message_id": "group-member:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5"
+            }
+          ],
+          "native_inputs": [
+            {
+              "id": "f19c481e-7a6b-4b0b-8c18-a9dc61531a4e",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "request_id": "member-root:0910b409-62aa-4afc-b769-542649089079:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "submission_id": 9,
+              "state": "completed",
+              "payload_digest": "4b876c5798f0a643bab5709caca9ea4ba25270e043a3738ea0f00036903854d2"
+            },
+            {
+              "id": "c02a057a-c529-495d-b2f9-a06d823fccc4",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "request_id": "member-question:eaf24c28-6195-4105-9d69-d13bfce9ace5:343916d8-cfc7-4261-b5be-840701438e45",
+              "submission_id": 9,
+              "state": "completed",
+              "payload_digest": "825e59f322c787bcc5a0f0224958376bfe5926e59f805258b271fa3fcb17dc34"
+            },
+            {
+              "id": "c14799e7-6aee-4b20-9d6f-324ce7f784d7",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "request_id": "member-control:5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac:343916d8-cfc7-4261-b5be-840701438e45",
+              "submission_id": 13,
+              "state": "completed",
+              "payload_digest": "389f16f1ba2f3da6ea648cc8bb2039d050cb598f7c9f98a06ba9ea6ccb02c3a6"
+            },
+            {
+              "id": "53b4dce3-4446-4274-9871-e604704abb01",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "request_id": "member-control:5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "submission_id": 19,
+              "state": "completed",
+              "payload_digest": "5c0dc071a3188412f23599ddcc8a48930181a45221598151a889b673a186504c"
+            },
+            {
+              "id": "78227527-c72e-4118-bf48-adc8322575ba",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "request_id": "member-reply:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "submission_id": 26,
+              "state": "completed",
+              "payload_digest": "28baa4c5e9d21d224d145c8d3d67156e0d96c4fe15b6f1d95ec04b05e3855c70"
+            }
+          ],
+          "serial_turns": [],
+          "native_sources": [
+            {
+              "input_id": "f19c481e-7a6b-4b0b-8c18-a9dc61531a4e",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "answer_entry_id": 20,
+              "task_id": 17,
+              "payload_digest": "4b876c5798f0a643bab5709caca9ea4ba25270e043a3738ea0f00036903854d2",
+              "result_digest": "2d6cb63ff10c0ef366bb131c9f69baa820b9808701cdc0e1af6f93ca903204d5",
+              "created_at": "2026-10-25T09:49:38.388Z"
+            },
+            {
+              "input_id": "53b4dce3-4446-4274-9871-e604704abb01",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "answer_entry_id": 23,
+              "task_id": 22,
+              "payload_digest": "5c0dc071a3188412f23599ddcc8a48930181a45221598151a889b673a186504c",
+              "result_digest": "00fa7806d5a45555cad44745bd70a045da323808cd7d0ed243edc94ae38a03d3",
+              "created_at": "2026-10-25T09:49:40.971Z"
+            },
+            {
+              "input_id": "c02a057a-c529-495d-b2f9-a06d823fccc4",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "answer_entry_id": 19,
+              "task_id": 18,
+              "payload_digest": "825e59f322c787bcc5a0f0224958376bfe5926e59f805258b271fa3fcb17dc34",
+              "result_digest": "3a56bcaac2f37c011400cc9e9f9b4a46faefd91e35ba29d402cff5670f0322e4",
+              "created_at": "2026-10-25T09:49:41.797Z"
+            },
+            {
+              "input_id": "c14799e7-6aee-4b20-9d6f-324ce7f784d7",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "answer_entry_id": 19,
+              "task_id": 18,
+              "payload_digest": "389f16f1ba2f3da6ea648cc8bb2039d050cb598f7c9f98a06ba9ea6ccb02c3a6",
+              "result_digest": "3a56bcaac2f37c011400cc9e9f9b4a46faefd91e35ba29d402cff5670f0322e4",
+              "created_at": "2026-10-25T09:49:41.805Z"
+            },
+            {
+              "input_id": "78227527-c72e-4118-bf48-adc8322575ba",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "answer_entry_id": 28,
+              "task_id": 27,
+              "payload_digest": "28baa4c5e9d21d224d145c8d3d67156e0d96c4fe15b6f1d95ec04b05e3855c70",
+              "result_digest": "8cda21ea978d51d29ebbf7f855c98c6fb3873e0fb459f1f3c91364b43de80462",
+              "created_at": "2026-10-25T09:49:44.697Z"
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "passed": true,
+          "run_id": "30f879bd-3d9d-4b3b-a095-8dd04d815b3e",
+          "run": {
+            "policy": "relay-v1",
+            "protocol_version": 2,
+            "execution_contract": "member-inbox-v1",
+            "deadline_at": 1792925386251,
+            "max_turns": 6,
+            "max_turns_per_dot": 3,
+            "max_model_attempts": 12,
+            "model_attempts": 2,
+            "turn_count": 2
+          },
+          "correction_id": null,
+          "restart_evidence": null,
+          "expected": [310, 111, 199],
+          "answers": [
+            {
+              "id": "member-answer:af709aa8-fa89-4f2a-a328-cdb0d9c1fc83:24",
+              "author_id": "343916d8-cfc7-4261-b5be-840701438e45",
+              "content": "核对结果（按最新口径，仅预览，未写入、未付款、未部署）：\n\n- 项目：青禾760016\n- 负责人：林岚\n- 总预算：310\n- 累计已用：111（场地61 + 摄影27 + 新增已付23；印刷14已取消不计，旧款未重复计入）\n- 剩余预算：199\n\n校验：61+27=88，88+23=111，310−111=199，与上一版 222 恰好相差新增的 23，一致。可行性：剩余 199 > 0，预算充足。",
+              "digest": "ea71a286c30f9ecda5e944dcad042203f7e64a05d3c05db8f0091f9433ae25c0",
+              "source": {
+                "run_id": "30f879bd-3d9d-4b3b-a095-8dd04d815b3e",
+                "execution_contract": "member-inbox-v1",
+                "kind": "group_member_final",
+                "source_task_id": 23,
+                "source_input_id": "5073544e-af25-4dc8-a367-fd51f7a641f2",
+                "answer_entry_id": 24,
+                "causal_root_message_id": "9b2fbf30-4700-4352-8eab-763ddb49c498"
+              }
+            },
+            {
+              "id": "member-answer:7daddc97-1fd6-4523-bd33-d12167a84bf2:33",
+              "author_id": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "content": "独立核算（仅预览，不写文件、不付款、不部署）：\n\n- 沿用上一轮（审核通过）的基座：场地 61 + 摄影 27 = 88，印刷 14 已取消不计入，无重复计入。\n- 本次新增已付 23，属新增、不与旧款项重复。\n- 累计已用 = 88 + 23 = 111，算术无误。\n- 剩余 = 310 − 111 = 199，未超预算，可行。\n\n项目：青禾760016；负责人：林岚；总预算：310；累计已用：111（场地61+摄影27+新增23）；剩余预算：199。",
+              "digest": "a81977b683a49efd0de80ab2530bbf19b349037a9b929d9c623813d6da5b1bde",
+              "source": {
+                "run_id": "30f879bd-3d9d-4b3b-a095-8dd04d815b3e",
+                "execution_contract": "member-inbox-v1",
+                "kind": "group_member_final",
+                "source_task_id": 32,
+                "source_input_id": "740491ea-61b5-4fba-8fc2-9b126ef5dab8",
+                "answer_entry_id": 33,
+                "causal_root_message_id": "9b2fbf30-4700-4352-8eab-763ddb49c498"
+              }
+            }
+          ],
+          "model_calls": 2,
+          "provider_peak": 2,
+          "elapsed_ms": 4821,
+          "reported_tokens": 17276,
+          "usage_complete": true,
+          "identical_same_author_outputs": 0,
+          "native_mail": [],
+          "native_inputs": [
+            {
+              "id": "f19c481e-7a6b-4b0b-8c18-a9dc61531a4e",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "request_id": "member-root:0910b409-62aa-4afc-b769-542649089079:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "submission_id": 9,
+              "state": "completed",
+              "payload_digest": "4b876c5798f0a643bab5709caca9ea4ba25270e043a3738ea0f00036903854d2"
+            },
+            {
+              "id": "c02a057a-c529-495d-b2f9-a06d823fccc4",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "request_id": "member-question:eaf24c28-6195-4105-9d69-d13bfce9ace5:343916d8-cfc7-4261-b5be-840701438e45",
+              "submission_id": 9,
+              "state": "completed",
+              "payload_digest": "825e59f322c787bcc5a0f0224958376bfe5926e59f805258b271fa3fcb17dc34"
+            },
+            {
+              "id": "c14799e7-6aee-4b20-9d6f-324ce7f784d7",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "request_id": "member-control:5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac:343916d8-cfc7-4261-b5be-840701438e45",
+              "submission_id": 13,
+              "state": "completed",
+              "payload_digest": "389f16f1ba2f3da6ea648cc8bb2039d050cb598f7c9f98a06ba9ea6ccb02c3a6"
+            },
+            {
+              "id": "53b4dce3-4446-4274-9871-e604704abb01",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "request_id": "member-control:5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "submission_id": 19,
+              "state": "completed",
+              "payload_digest": "5c0dc071a3188412f23599ddcc8a48930181a45221598151a889b673a186504c"
+            },
+            {
+              "id": "78227527-c72e-4118-bf48-adc8322575ba",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "request_id": "member-reply:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "submission_id": 26,
+              "state": "completed",
+              "payload_digest": "28baa4c5e9d21d224d145c8d3d67156e0d96c4fe15b6f1d95ec04b05e3855c70"
+            },
+            {
+              "id": "5073544e-af25-4dc8-a367-fd51f7a641f2",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "request_id": "member-root:9b2fbf30-4700-4352-8eab-763ddb49c498:343916d8-cfc7-4261-b5be-840701438e45",
+              "submission_id": 22,
+              "state": "completed",
+              "payload_digest": "96f46f812315bacf8d1dee1d81ab90861c8765d823b9de22a7b0e3e3248a5a43"
+            },
+            {
+              "id": "740491ea-61b5-4fba-8fc2-9b126ef5dab8",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "request_id": "member-root:9b2fbf30-4700-4352-8eab-763ddb49c498:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "submission_id": 31,
+              "state": "completed",
+              "payload_digest": "04e9fc0b0153e26637464c7c853ee939f2f0f9dbcd026efb280ff2eca3f5400e"
+            }
+          ],
+          "serial_turns": [],
+          "native_sources": [
+            {
+              "input_id": "f19c481e-7a6b-4b0b-8c18-a9dc61531a4e",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "answer_entry_id": 20,
+              "task_id": 17,
+              "payload_digest": "4b876c5798f0a643bab5709caca9ea4ba25270e043a3738ea0f00036903854d2",
+              "result_digest": "2d6cb63ff10c0ef366bb131c9f69baa820b9808701cdc0e1af6f93ca903204d5",
+              "created_at": "2026-10-25T09:49:38.388Z"
+            },
+            {
+              "input_id": "53b4dce3-4446-4274-9871-e604704abb01",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "answer_entry_id": 23,
+              "task_id": 22,
+              "payload_digest": "5c0dc071a3188412f23599ddcc8a48930181a45221598151a889b673a186504c",
+              "result_digest": "00fa7806d5a45555cad44745bd70a045da323808cd7d0ed243edc94ae38a03d3",
+              "created_at": "2026-10-25T09:49:40.971Z"
+            },
+            {
+              "input_id": "c02a057a-c529-495d-b2f9-a06d823fccc4",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "answer_entry_id": 19,
+              "task_id": 18,
+              "payload_digest": "825e59f322c787bcc5a0f0224958376bfe5926e59f805258b271fa3fcb17dc34",
+              "result_digest": "3a56bcaac2f37c011400cc9e9f9b4a46faefd91e35ba29d402cff5670f0322e4",
+              "created_at": "2026-10-25T09:49:41.797Z"
+            },
+            {
+              "input_id": "c14799e7-6aee-4b20-9d6f-324ce7f784d7",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "answer_entry_id": 19,
+              "task_id": 18,
+              "payload_digest": "389f16f1ba2f3da6ea648cc8bb2039d050cb598f7c9f98a06ba9ea6ccb02c3a6",
+              "result_digest": "3a56bcaac2f37c011400cc9e9f9b4a46faefd91e35ba29d402cff5670f0322e4",
+              "created_at": "2026-10-25T09:49:41.805Z"
+            },
+            {
+              "input_id": "78227527-c72e-4118-bf48-adc8322575ba",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "answer_entry_id": 28,
+              "task_id": 27,
+              "payload_digest": "28baa4c5e9d21d224d145c8d3d67156e0d96c4fe15b6f1d95ec04b05e3855c70",
+              "result_digest": "8cda21ea978d51d29ebbf7f855c98c6fb3873e0fb459f1f3c91364b43de80462",
+              "created_at": "2026-10-25T09:49:44.697Z"
+            },
+            {
+              "input_id": "5073544e-af25-4dc8-a367-fd51f7a641f2",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "answer_entry_id": 24,
+              "task_id": 23,
+              "payload_digest": "96f46f812315bacf8d1dee1d81ab90861c8765d823b9de22a7b0e3e3248a5a43",
+              "result_digest": "ea71a286c30f9ecda5e944dcad042203f7e64a05d3c05db8f0091f9433ae25c0",
+              "created_at": "2026-10-25T09:49:48.552Z"
+            },
+            {
+              "input_id": "740491ea-61b5-4fba-8fc2-9b126ef5dab8",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "answer_entry_id": 33,
+              "task_id": 32,
+              "payload_digest": "04e9fc0b0153e26637464c7c853ee939f2f0f9dbcd026efb280ff2eca3f5400e",
+              "result_digest": "a81977b683a49efd0de80ab2530bbf19b349037a9b929d9c623813d6da5b1bde",
+              "created_at": "2026-10-25T09:49:49.527Z"
+            }
+          ]
+        },
+        {
+          "round": 3,
+          "passed": true,
+          "run_id": "f09d8eba-ca5a-44c4-b46c-fe152ddbe1d4",
+          "run": {
+            "policy": "relay-v1",
+            "protocol_version": 2,
+            "execution_contract": "member-inbox-v1",
+            "deadline_at": 1792925400214,
+            "max_turns": 6,
+            "max_turns_per_dot": 3,
+            "max_model_attempts": 12,
+            "model_attempts": 2,
+            "turn_count": 2
+          },
+          "correction_id": null,
+          "restart_evidence": {
+            "message_ids": [
+              "0910b409-62aa-4afc-b769-542649089079",
+              "group-member:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+              "5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac",
+              "group-member:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+              "member-answer:7daddc97-1fd6-4523-bd33-d12167a84bf2:28",
+              "9b2fbf30-4700-4352-8eab-763ddb49c498",
+              "member-answer:af709aa8-fa89-4f2a-a328-cdb0d9c1fc83:24",
+              "member-answer:7daddc97-1fd6-4523-bd33-d12167a84bf2:33"
+            ],
+            "sessions_before": [
+              {
+                "profile_id": "343916d8-cfc7-4261-b5be-840701438e45",
+                "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83"
+              },
+              {
+                "profile_id": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+                "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2"
+              }
+            ],
+            "sessions_after": [
+              {
+                "profile_id": "343916d8-cfc7-4261-b5be-840701438e45",
+                "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83"
+              },
+              {
+                "profile_id": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+                "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2"
+              }
+            ],
+            "extra_provider_calls": 0
+          },
+          "expected": [293, 111, 182],
+          "answers": [
+            {
+              "id": "member-answer:af709aa8-fa89-4f2a-a328-cdb0d9c1fc83:29",
+              "author_id": "343916d8-cfc7-4261-b5be-840701438e45",
+              "content": "核对结果（沿用上轮数据，不重新初始化；仅预览，未写入、未付款、未部署）：\n\n- 项目：青禾760016\n- 负责人：林岚\n- 总预算：293（原 310 再减 17）\n- 累计已用：111（场地61 + 摄影27 + 新增已付23；印刷14已取消不计）\n- 剩余预算：182\n\n校验：293 − 111 = 182，与上轮剩余 199 恰好相差 17，一致。可行性：剩余 182 > 0，预算仍充足。",
+              "digest": "61454d8a0e1a9c4bb955d758a792860425e19e1bbdc02b6f27db201df8708b1d",
+              "source": {
+                "run_id": "f09d8eba-ca5a-44c4-b46c-fe152ddbe1d4",
+                "execution_contract": "member-inbox-v1",
+                "kind": "group_member_final",
+                "source_task_id": 28,
+                "source_input_id": "b3c5ada7-5ffc-4e9b-9289-939f1c7b1c2f",
+                "answer_entry_id": 29,
+                "causal_root_message_id": "27cf5e2d-04d4-4dfe-973f-6db59f60f962"
+              }
+            },
+            {
+              "id": "member-answer:7daddc97-1fd6-4523-bd33-d12167a84bf2:38",
+              "author_id": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "content": "独立核算（不重新初始化，沿用上轮数据；仅预览，不写文件、不付款、不部署）：\n\n- 上轮已用支出保持不变：111（场地61 + 摄影27 + 新增已付23；印刷14已取消不计入）。\n- 总预算由上轮 310 再减少 17：310 − 17 = 293。\n- 剩余 = 293 − 111 = 182，未超预算，可行。\n\n项目：青禾760016；负责人：林岚；总预算：293；累计已用：111；剩余预算：182。",
+              "digest": "43c83c323dec3bb0c00b6d619ca30ac9a4fcb090cfb54f3c11d00848f36c4241",
+              "source": {
+                "run_id": "f09d8eba-ca5a-44c4-b46c-fe152ddbe1d4",
+                "execution_contract": "member-inbox-v1",
+                "kind": "group_member_final",
+                "source_task_id": 37,
+                "source_input_id": "8b43aff4-a84f-4366-8834-6d39dcb77ded",
+                "answer_entry_id": 38,
+                "causal_root_message_id": "27cf5e2d-04d4-4dfe-973f-6db59f60f962"
+              }
+            }
+          ],
+          "model_calls": 2,
+          "provider_peak": 2,
+          "elapsed_ms": 6197,
+          "reported_tokens": 23752,
+          "usage_complete": true,
+          "identical_same_author_outputs": 0,
+          "native_mail": [],
+          "native_inputs": [
+            {
+              "id": "f19c481e-7a6b-4b0b-8c18-a9dc61531a4e",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "request_id": "member-root:0910b409-62aa-4afc-b769-542649089079:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "submission_id": 9,
+              "state": "completed",
+              "payload_digest": "4b876c5798f0a643bab5709caca9ea4ba25270e043a3738ea0f00036903854d2"
+            },
+            {
+              "id": "c02a057a-c529-495d-b2f9-a06d823fccc4",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "request_id": "member-question:eaf24c28-6195-4105-9d69-d13bfce9ace5:343916d8-cfc7-4261-b5be-840701438e45",
+              "submission_id": 9,
+              "state": "completed",
+              "payload_digest": "825e59f322c787bcc5a0f0224958376bfe5926e59f805258b271fa3fcb17dc34"
+            },
+            {
+              "id": "c14799e7-6aee-4b20-9d6f-324ce7f784d7",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "request_id": "member-control:5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac:343916d8-cfc7-4261-b5be-840701438e45",
+              "submission_id": 13,
+              "state": "completed",
+              "payload_digest": "389f16f1ba2f3da6ea648cc8bb2039d050cb598f7c9f98a06ba9ea6ccb02c3a6"
+            },
+            {
+              "id": "53b4dce3-4446-4274-9871-e604704abb01",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "request_id": "member-control:5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "submission_id": 19,
+              "state": "completed",
+              "payload_digest": "5c0dc071a3188412f23599ddcc8a48930181a45221598151a889b673a186504c"
+            },
+            {
+              "id": "78227527-c72e-4118-bf48-adc8322575ba",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "request_id": "member-reply:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "submission_id": 26,
+              "state": "completed",
+              "payload_digest": "28baa4c5e9d21d224d145c8d3d67156e0d96c4fe15b6f1d95ec04b05e3855c70"
+            },
+            {
+              "id": "5073544e-af25-4dc8-a367-fd51f7a641f2",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "request_id": "member-root:9b2fbf30-4700-4352-8eab-763ddb49c498:343916d8-cfc7-4261-b5be-840701438e45",
+              "submission_id": 22,
+              "state": "completed",
+              "payload_digest": "96f46f812315bacf8d1dee1d81ab90861c8765d823b9de22a7b0e3e3248a5a43"
+            },
+            {
+              "id": "740491ea-61b5-4fba-8fc2-9b126ef5dab8",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "request_id": "member-root:9b2fbf30-4700-4352-8eab-763ddb49c498:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "submission_id": 31,
+              "state": "completed",
+              "payload_digest": "04e9fc0b0153e26637464c7c853ee939f2f0f9dbcd026efb280ff2eca3f5400e"
+            },
+            {
+              "id": "b3c5ada7-5ffc-4e9b-9289-939f1c7b1c2f",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "request_id": "member-root:27cf5e2d-04d4-4dfe-973f-6db59f60f962:343916d8-cfc7-4261-b5be-840701438e45",
+              "submission_id": 27,
+              "state": "completed",
+              "payload_digest": "b15f94143ce25a6a50f1ee6b0a62a05765ba1f1ac11ae2011ab828075024a226"
+            },
+            {
+              "id": "8b43aff4-a84f-4366-8834-6d39dcb77ded",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "request_id": "member-root:27cf5e2d-04d4-4dfe-973f-6db59f60f962:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+              "submission_id": 36,
+              "state": "completed",
+              "payload_digest": "08521ffa60243dbf7150d4ae8008a0d5f838a8a416d0648ac0ab9d433df889e7"
+            }
+          ],
+          "serial_turns": [],
+          "native_sources": [
+            {
+              "input_id": "f19c481e-7a6b-4b0b-8c18-a9dc61531a4e",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "answer_entry_id": 20,
+              "task_id": 17,
+              "payload_digest": "4b876c5798f0a643bab5709caca9ea4ba25270e043a3738ea0f00036903854d2",
+              "result_digest": "2d6cb63ff10c0ef366bb131c9f69baa820b9808701cdc0e1af6f93ca903204d5",
+              "created_at": "2026-10-25T09:49:38.388Z"
+            },
+            {
+              "input_id": "53b4dce3-4446-4274-9871-e604704abb01",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "answer_entry_id": 23,
+              "task_id": 22,
+              "payload_digest": "5c0dc071a3188412f23599ddcc8a48930181a45221598151a889b673a186504c",
+              "result_digest": "00fa7806d5a45555cad44745bd70a045da323808cd7d0ed243edc94ae38a03d3",
+              "created_at": "2026-10-25T09:49:40.971Z"
+            },
+            {
+              "input_id": "c02a057a-c529-495d-b2f9-a06d823fccc4",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "answer_entry_id": 19,
+              "task_id": 18,
+              "payload_digest": "825e59f322c787bcc5a0f0224958376bfe5926e59f805258b271fa3fcb17dc34",
+              "result_digest": "3a56bcaac2f37c011400cc9e9f9b4a46faefd91e35ba29d402cff5670f0322e4",
+              "created_at": "2026-10-25T09:49:41.797Z"
+            },
+            {
+              "input_id": "c14799e7-6aee-4b20-9d6f-324ce7f784d7",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "answer_entry_id": 19,
+              "task_id": 18,
+              "payload_digest": "389f16f1ba2f3da6ea648cc8bb2039d050cb598f7c9f98a06ba9ea6ccb02c3a6",
+              "result_digest": "3a56bcaac2f37c011400cc9e9f9b4a46faefd91e35ba29d402cff5670f0322e4",
+              "created_at": "2026-10-25T09:49:41.805Z"
+            },
+            {
+              "input_id": "78227527-c72e-4118-bf48-adc8322575ba",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "answer_entry_id": 28,
+              "task_id": 27,
+              "payload_digest": "28baa4c5e9d21d224d145c8d3d67156e0d96c4fe15b6f1d95ec04b05e3855c70",
+              "result_digest": "8cda21ea978d51d29ebbf7f855c98c6fb3873e0fb459f1f3c91364b43de80462",
+              "created_at": "2026-10-25T09:49:44.697Z"
+            },
+            {
+              "input_id": "5073544e-af25-4dc8-a367-fd51f7a641f2",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "answer_entry_id": 24,
+              "task_id": 23,
+              "payload_digest": "96f46f812315bacf8d1dee1d81ab90861c8765d823b9de22a7b0e3e3248a5a43",
+              "result_digest": "ea71a286c30f9ecda5e944dcad042203f7e64a05d3c05db8f0091f9433ae25c0",
+              "created_at": "2026-10-25T09:49:48.552Z"
+            },
+            {
+              "input_id": "740491ea-61b5-4fba-8fc2-9b126ef5dab8",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "answer_entry_id": 33,
+              "task_id": 32,
+              "payload_digest": "04e9fc0b0153e26637464c7c853ee939f2f0f9dbcd026efb280ff2eca3f5400e",
+              "result_digest": "a81977b683a49efd0de80ab2530bbf19b349037a9b929d9c623813d6da5b1bde",
+              "created_at": "2026-10-25T09:49:49.527Z"
+            },
+            {
+              "input_id": "b3c5ada7-5ffc-4e9b-9289-939f1c7b1c2f",
+              "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+              "answer_entry_id": 29,
+              "task_id": 28,
+              "payload_digest": "b15f94143ce25a6a50f1ee6b0a62a05765ba1f1ac11ae2011ab828075024a226",
+              "result_digest": "61454d8a0e1a9c4bb955d758a792860425e19e1bbdc02b6f27db201df8708b1d",
+              "created_at": "2026-10-25T09:50:03.147Z"
+            },
+            {
+              "input_id": "8b43aff4-a84f-4366-8834-6d39dcb77ded",
+              "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+              "answer_entry_id": 38,
+              "task_id": 37,
+              "payload_digest": "08521ffa60243dbf7150d4ae8008a0d5f838a8a416d0648ac0ab9d433df889e7",
+              "result_digest": "43c83c323dec3bb0c00b6d619ca30ac9a4fcb090cfb54f3c11d00848f36c4241",
+              "created_at": "2026-10-25T09:50:04.874Z"
+            }
+          ]
+        }
+      ],
+      "passed": true,
+      "sessions": [
+        {
+          "profile_id": "343916d8-cfc7-4261-b5be-840701438e45",
+          "session_id": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83"
+        },
+        {
+          "profile_id": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "session_id": "7daddc97-1fd6-4523-bd33-d12167a84bf2"
+        }
+      ]
+    },
+    {
+      "mode": "legacy-relay-v1",
+      "group_id": "ad2d1221-76d1-42b0-92ea-2b0e2f7993b7",
+      "project": "青禾b3b472",
+      "rounds": [
+        {
+          "round": 1,
+          "passed": true,
+          "run_id": "67c9d2ee-22f0-4539-aaa0-1a5d7f57bf42",
+          "run": {
+            "policy": "relay-v1",
+            "protocol_version": 2,
+            "execution_contract": "serial-v1",
+            "deadline_at": 1792925406525,
+            "max_turns": 6,
+            "max_turns_per_dot": 3,
+            "max_model_attempts": 12,
+            "model_attempts": 4,
+            "turn_count": 3
+          },
+          "correction_id": "07fd0455-89c5-4153-b124-b1b8cc5ab01c",
+          "restart_evidence": null,
+          "expected": [310, 88, 222],
+          "answers": [
+            {
+              "id": "group-reply:eb57ddf0-0f02-468d-908a-500e72418729",
+              "author_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+              "content": "我独立核对口径后有一处需澄清：题目用「活动预算」而给的是总预算310，属同义还是另有项目层预算，会影响结论表述。我先按「项目总预算=310」独立计算：已支出 61+27+14=102，剩余 310−102=208，算术上唯一，无歧义。@Reviewer 请确认这个不确定点：登记口径应以「项目总预算310」为准，还是另存「活动预算」，若为后者则本组数据不足以判定该活动层级余额？在收到你的实际审查结论前，我先把剩余208作为条件性结果。",
+              "digest": "3770790806d6a9cfbadfb71be1657387dcb8f3ea81639087f27bcf88b94e16d6",
+              "source": {
+                "kind": "group_discussion_reply",
+                "run_id": "67c9d2ee-22f0-4539-aaa0-1a5d7f57bf42",
+                "turn_id": "eb57ddf0-0f02-468d-908a-500e72418729",
+                "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+                "request_id": "group-turn:eb57ddf0-0f02-468d-908a-500e72418729",
+                "input_id": "99943a37-e522-46a1-9a7e-cb87cfa0015d",
+                "submission_id": 9,
+                "task_id": 10,
+                "answer_entry_id": 12,
+                "result_digest": "35e6dd39ccc674d892e865a83aec98ed514997407706115c668a03f37d4b01b4",
+                "action": "reply",
+                "protocol_version": 2
+              }
+            },
+            {
+              "id": "group-reply:8be0c035-5707-40a2-8978-0c38c817bf8a",
+              "author_id": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+              "content": "已收到追加更正（07fd0455）：印刷14取消且不计支出，其余不变。按此进一步审查：累计已用=61+27=88，剩余=310−88=222，算术无歧义。口径不变——本组材料中仍只有总预算310这一个数字，没有独立的「活动预算」字段；若另有活动层级预算，本组数据不足以判定，因此222是「以310为唯一预算」的条件下成立的结果。仅供预览，不写文件、不付款、不部署。项目：青禾b3b472；负责人：林岚；总预算：310；累计已用：88；剩余：222。",
+              "digest": "07659d993e8bd35779e9b9b655869aadb4df867cacdc29654ee868e63b6a6b81",
+              "source": {
+                "kind": "group_discussion_reply",
+                "run_id": "67c9d2ee-22f0-4539-aaa0-1a5d7f57bf42",
+                "turn_id": "8be0c035-5707-40a2-8978-0c38c817bf8a",
+                "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+                "request_id": "group-turn:8be0c035-5707-40a2-8978-0c38c817bf8a",
+                "input_id": "1473e93e-6452-4daa-ba71-6d1f66ec6806",
+                "submission_id": 15,
+                "task_id": 16,
+                "answer_entry_id": 17,
+                "result_digest": "40cebf40526e3be01ae6c51a9f18dd669f0a44f2ca75fb5f8c8c0019f0b70091",
+                "action": "reply",
+                "protocol_version": 2
+              }
+            },
+            {
+              "id": "group-reply:b8caa02b-78ee-4cc8-afde-8c13d323ac34",
+              "author_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+              "content": "已按最新更正复核：印刷14取消、不计支出，其余不变。独立算术 61+27=88，310−88=222，与 Reviewer 实际审查结论一致。口径仍以「310为唯一总预算」成立，未发现独立的「活动预算」字段。仅供预览，不写文件、不付款、不部署。\n\n项目：青禾b3b472；负责人：林岚；总预算：310；累计已用：88；剩余：222。",
+              "digest": "dd82994917adfed6b666c5bee169f078255efaceb7746d530a7a93af6ddc19d5",
+              "source": {
+                "kind": "group_discussion_reply",
+                "run_id": "67c9d2ee-22f0-4539-aaa0-1a5d7f57bf42",
+                "turn_id": "b8caa02b-78ee-4cc8-afde-8c13d323ac34",
+                "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+                "request_id": "group-turn:b8caa02b-78ee-4cc8-afde-8c13d323ac34",
+                "input_id": "08aa1315-2e39-4444-911c-5d7027c9be05",
+                "submission_id": 15,
+                "task_id": 16,
+                "answer_entry_id": 17,
+                "result_digest": "09799b0b65ba349c12b3d8e7ed71a7379062e503805bbc3607c770128b42e4fd",
+                "action": "finish",
+                "protocol_version": 2
+              }
+            }
+          ],
+          "model_calls": 4,
+          "provider_peak": 1,
+          "elapsed_ms": 13849,
+          "reported_tokens": 10537,
+          "usage_complete": true,
+          "identical_same_author_outputs": 0,
+          "native_mail": [],
+          "native_inputs": [
+            {
+              "id": "99943a37-e522-46a1-9a7e-cb87cfa0015d",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "request_id": "group-turn:eb57ddf0-0f02-468d-908a-500e72418729",
+              "submission_id": 9,
+              "state": "completed",
+              "payload_digest": "267802e728cfe821ee6c64b021e2df6a06c2c5f597254ba6e90ff21d5a13137f"
+            },
+            {
+              "id": "149192d8-84e6-4a23-aba8-b88c9587cb7b",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "request_id": "group-turn:cb06eb6e-6075-4f6e-bb3c-42fc5c1d832f",
+              "submission_id": 9,
+              "state": "completed",
+              "payload_digest": "67f5095e3327f6eb8e2f45882ff3c73a1838805bdce3fd35f0e0f97bfe902f02"
+            },
+            {
+              "id": "1473e93e-6452-4daa-ba71-6d1f66ec6806",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "request_id": "group-turn:8be0c035-5707-40a2-8978-0c38c817bf8a",
+              "submission_id": 15,
+              "state": "completed",
+              "payload_digest": "3239a6cb0dd4cbbffb50464707d6c56bec7362922e22a633616d7a74148b3bda"
+            },
+            {
+              "id": "08aa1315-2e39-4444-911c-5d7027c9be05",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "request_id": "group-turn:b8caa02b-78ee-4cc8-afde-8c13d323ac34",
+              "submission_id": 15,
+              "state": "completed",
+              "payload_digest": "0acd6b0d60aa898aba634511e97c8b74011c059040f4c56515b4615aeedd88dd"
+            }
+          ],
+          "serial_turns": [
+            {
+              "id": "eb57ddf0-0f02-468d-908a-500e72418729",
+              "ordinal": 1,
+              "profile_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+              "role": "speaker",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "grant_id": "bd5af821-8472-4cd9-9b06-3bde7bf924a6",
+              "request_id": "group-turn:eb57ddf0-0f02-468d-908a-500e72418729",
+              "input_id": "99943a37-e522-46a1-9a7e-cb87cfa0015d",
+              "state": "completed",
+              "context_through_seq": 9,
+              "model_attempts": 1,
+              "decision": "{\"action\":\"reply\",\"message\":\"我独立核对口径后有一处需澄清：题目用「活动预算」而给的是总预算310，属同义还是另有项目层预算，会影响结论表述。我先按「项目总预算=310」独立计算：已支出 61+27+14=102，剩余 310−102=208，算术上唯一，无歧义。@Reviewer 请确认这个不确定点：登记口径应以「项目总预算310」为准，还是另存「活动预算」，若为后者则本组数据不足以判定该活动层级余额？在收到你的实际审查结论前，我先把剩余208作为条件性结果。\",\"relay_to\":\"2bd34e32-db7c-474b-9d77-b2eb0511a931\"}",
+              "result_message_id": "group-reply:eb57ddf0-0f02-468d-908a-500e72418729",
+              "relay_from_turn_id": null
+            },
+            {
+              "id": "cb06eb6e-6075-4f6e-bb3c-42fc5c1d832f",
+              "ordinal": 2,
+              "profile_id": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+              "role": "speaker",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "grant_id": "2aae0ccf-5c62-4c76-af3a-aaf6623b6cad",
+              "request_id": "group-turn:cb06eb6e-6075-4f6e-bb3c-42fc5c1d832f",
+              "input_id": "149192d8-84e6-4a23-aba8-b88c9587cb7b",
+              "state": "completed",
+              "context_through_seq": 10,
+              "model_attempts": 1,
+              "decision": "{\"action\":\"reply\",\"message\":\"审查结论：在本组可见材料里，只出现一个预算数字——总预算310，并未出现独立的「活动预算」字段或数值。按登记规范，本组数据只能支撑「项目总预算=310」这一口径；尽管题目把「活动预算」与总预算并列提出，但两者之间没有可核对的证据，不能据此判断它们彼此无关。若真存在活动层级预算，则本组数据不足以判定该层级余额，此时208只是「若310即唯一预算」的条件性结果。核算：61+27+14=102，310−102=208，无算术分歧。项目：青禾b3b472；负责人：林岚；总预算：310；累计已用：102；剩余：208。\"}",
+              "result_message_id": null,
+              "relay_from_turn_id": "eb57ddf0-0f02-468d-908a-500e72418729"
+            },
+            {
+              "id": "8be0c035-5707-40a2-8978-0c38c817bf8a",
+              "ordinal": 3,
+              "profile_id": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+              "role": "speaker",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "grant_id": "2aae0ccf-5c62-4c76-af3a-aaf6623b6cad",
+              "request_id": "group-turn:8be0c035-5707-40a2-8978-0c38c817bf8a",
+              "input_id": "1473e93e-6452-4daa-ba71-6d1f66ec6806",
+              "state": "completed",
+              "context_through_seq": 11,
+              "model_attempts": 1,
+              "decision": "{\"action\":\"reply\",\"message\":\"已收到追加更正（07fd0455）：印刷14取消且不计支出，其余不变。按此进一步审查：累计已用=61+27=88，剩余=310−88=222，算术无歧义。口径不变——本组材料中仍只有总预算310这一个数字，没有独立的「活动预算」字段；若另有活动层级预算，本组数据不足以判定，因此222是「以310为唯一预算」的条件下成立的结果。仅供预览，不写文件、不付款、不部署。项目：青禾b3b472；负责人：林岚；总预算：310；累计已用：88；剩余：222。\"}",
+              "result_message_id": "group-reply:8be0c035-5707-40a2-8978-0c38c817bf8a",
+              "relay_from_turn_id": null
+            },
+            {
+              "id": "b8caa02b-78ee-4cc8-afde-8c13d323ac34",
+              "ordinal": 4,
+              "profile_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+              "role": "coordinator",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "grant_id": "bd5af821-8472-4cd9-9b06-3bde7bf924a6",
+              "request_id": "group-turn:b8caa02b-78ee-4cc8-afde-8c13d323ac34",
+              "input_id": "08aa1315-2e39-4444-911c-5d7027c9be05",
+              "state": "completed",
+              "context_through_seq": 12,
+              "model_attempts": 1,
+              "decision": "{\"action\":\"finish\",\"summary\":\"已按最新更正复核：印刷14取消、不计支出，其余不变。独立算术 61+27=88，310−88=222，与 Reviewer 实际审查结论一致。口径仍以「310为唯一总预算」成立，未发现独立的「活动预算」字段。仅供预览，不写文件、不付款、不部署。\\n\\n项目：青禾b3b472；负责人：林岚；总预算：310；累计已用：88；剩余：222。\"}",
+              "result_message_id": "group-reply:b8caa02b-78ee-4cc8-afde-8c13d323ac34",
+              "relay_from_turn_id": null
+            }
+          ],
+          "native_sources": [
+            {
+              "input_id": "99943a37-e522-46a1-9a7e-cb87cfa0015d",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "answer_entry_id": 12,
+              "task_id": 10,
+              "payload_digest": "267802e728cfe821ee6c64b021e2df6a06c2c5f597254ba6e90ff21d5a13137f",
+              "result_digest": "35e6dd39ccc674d892e865a83aec98ed514997407706115c668a03f37d4b01b4",
+              "created_at": "2026-10-25T09:50:09.721Z"
+            },
+            {
+              "input_id": "149192d8-84e6-4a23-aba8-b88c9587cb7b",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "answer_entry_id": 12,
+              "task_id": 10,
+              "payload_digest": "67f5095e3327f6eb8e2f45882ff3c73a1838805bdce3fd35f0e0f97bfe902f02",
+              "result_digest": "b0fdec013a692a40e2cdd5143f77a3e7b65cf893408f76b53574857b56905673",
+              "created_at": "2026-10-25T09:50:12.659Z"
+            },
+            {
+              "input_id": "1473e93e-6452-4daa-ba71-6d1f66ec6806",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "answer_entry_id": 17,
+              "task_id": 16,
+              "payload_digest": "3239a6cb0dd4cbbffb50464707d6c56bec7362922e22a633616d7a74148b3bda",
+              "result_digest": "40cebf40526e3be01ae6c51a9f18dd669f0a44f2ca75fb5f8c8c0019f0b70091",
+              "created_at": "2026-10-25T09:50:16.476Z"
+            },
+            {
+              "input_id": "08aa1315-2e39-4444-911c-5d7027c9be05",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "answer_entry_id": 17,
+              "task_id": 16,
+              "payload_digest": "0acd6b0d60aa898aba634511e97c8b74011c059040f4c56515b4615aeedd88dd",
+              "result_digest": "09799b0b65ba349c12b3d8e7ed71a7379062e503805bbc3607c770128b42e4fd",
+              "created_at": "2026-10-25T09:50:18.848Z"
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "passed": true,
+          "run_id": "acffb552-4fa5-4d74-83ff-d2fc4a33be3d",
+          "run": {
+            "policy": "relay-v1",
+            "protocol_version": 2,
+            "execution_contract": "serial-v1",
+            "deadline_at": 1792925420386,
+            "max_turns": 6,
+            "max_turns_per_dot": 3,
+            "max_model_attempts": 12,
+            "model_attempts": 3,
+            "turn_count": 2
+          },
+          "correction_id": null,
+          "restart_evidence": null,
+          "expected": [310, 111, 199],
+          "answers": [
+            {
+              "id": "group-reply:974556e6-c82d-4640-8faa-b61b4585b676",
+              "author_id": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+              "content": "按最新限制复核：基数仍为场地61、摄影27（印刷14已取消），在此基础上新增已付23，且不重复计入此前款项。累计已用=61+27+23=111，剩余=310−111=199，算术无歧义。口径仍以310为唯一总预算，本组材料未出现独立的「活动预算」字段；若另有活动层级预算，本组数据不足以判定，199为该条件下的结果。仅核对与预览，不写文件、不付款、不部署。项目：青禾b3b472；负责人：林岚；总预算：310；累计已用：111；剩余：199。",
+              "digest": "8573d95a6381b214c368191b94efbc6dd99e9c4d436f20f411b1ab2e10e3c6ab",
+              "source": {
+                "kind": "group_discussion_reply",
+                "run_id": "acffb552-4fa5-4d74-83ff-d2fc4a33be3d",
+                "turn_id": "974556e6-c82d-4640-8faa-b61b4585b676",
+                "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+                "request_id": "group-turn:974556e6-c82d-4640-8faa-b61b4585b676",
+                "input_id": "28d652c3-3632-43eb-aef3-e1a7631812e3",
+                "submission_id": 20,
+                "task_id": 21,
+                "answer_entry_id": 22,
+                "result_digest": "fd5d1465eb2c2a504e5d8c11c318f5044ca674ad5ff804d4df59642cd92094e8",
+                "action": "reply",
+                "protocol_version": 2
+              }
+            },
+            {
+              "id": "group-reply:91a8aa9d-c39c-4e0b-a692-3da9b0f66436",
+              "author_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+              "content": "独立核算：基数沿用场地61、摄影27（印刷14已取消不计），新增已付23，无重复计入；61+27+23=111，310−111=199，与 Reviewer 审查结论一致。仅供预览，不写文件、不付款、不部署。\n\n项目：青禾b3b472；负责人：林岚；总预算：310；累计已用：111；剩余：199。",
+              "digest": "186b8c78a3a34abc35b711fab942d8dc9e3e4fb8eedb479f2612746e333062fe",
+              "source": {
+                "kind": "group_discussion_reply",
+                "run_id": "acffb552-4fa5-4d74-83ff-d2fc4a33be3d",
+                "turn_id": "91a8aa9d-c39c-4e0b-a692-3da9b0f66436",
+                "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+                "request_id": "group-turn:91a8aa9d-c39c-4e0b-a692-3da9b0f66436",
+                "input_id": "5210caa1-8f12-4bb7-a2a4-42ef1b4f9e20",
+                "submission_id": 20,
+                "task_id": 21,
+                "answer_entry_id": 22,
+                "result_digest": "d100bf6bed5749bea0bb1b0d076ae53df6d6abdc97bd43c295ad63938c85617a",
+                "action": "reply",
+                "protocol_version": 2
+              }
+            },
+            {
+              "id": "group-reply:882ac15f-3067-4b1c-b477-211d0da4bf9e",
+              "author_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+              "content": "双方核对一致，采用最新数据（印刷14已取消、不重复计入旧款，新增已付23）。仅供预览，不写文件、不付款、不部署。\n\n项目：青禾b3b472；负责人：林岚；总预算：310；累计已用：111；剩余：199。",
+              "digest": "bf1c31d13179bdff58002d079becc2145283c9c7f2d9578974f0a566b57c7efc",
+              "source": {
+                "kind": "group_discussion_reply",
+                "run_id": "acffb552-4fa5-4d74-83ff-d2fc4a33be3d",
+                "turn_id": "882ac15f-3067-4b1c-b477-211d0da4bf9e",
+                "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+                "request_id": "group-turn:882ac15f-3067-4b1c-b477-211d0da4bf9e",
+                "input_id": "3914ef95-4388-492a-895c-94f60c34ff88",
+                "submission_id": 25,
+                "task_id": 26,
+                "answer_entry_id": 27,
+                "result_digest": "8d2ffe7925081c919780cce226646d07c50b0deb6afe0b0bf4338cca490751d7",
+                "action": "finish",
+                "protocol_version": 2
+              }
+            }
+          ],
+          "model_calls": 3,
+          "provider_peak": 1,
+          "elapsed_ms": 10178,
+          "reported_tokens": 19829,
+          "usage_complete": true,
+          "identical_same_author_outputs": 0,
+          "native_mail": [],
+          "native_inputs": [
+            {
+              "id": "99943a37-e522-46a1-9a7e-cb87cfa0015d",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "request_id": "group-turn:eb57ddf0-0f02-468d-908a-500e72418729",
+              "submission_id": 9,
+              "state": "completed",
+              "payload_digest": "267802e728cfe821ee6c64b021e2df6a06c2c5f597254ba6e90ff21d5a13137f"
+            },
+            {
+              "id": "149192d8-84e6-4a23-aba8-b88c9587cb7b",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "request_id": "group-turn:cb06eb6e-6075-4f6e-bb3c-42fc5c1d832f",
+              "submission_id": 9,
+              "state": "completed",
+              "payload_digest": "67f5095e3327f6eb8e2f45882ff3c73a1838805bdce3fd35f0e0f97bfe902f02"
+            },
+            {
+              "id": "1473e93e-6452-4daa-ba71-6d1f66ec6806",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "request_id": "group-turn:8be0c035-5707-40a2-8978-0c38c817bf8a",
+              "submission_id": 15,
+              "state": "completed",
+              "payload_digest": "3239a6cb0dd4cbbffb50464707d6c56bec7362922e22a633616d7a74148b3bda"
+            },
+            {
+              "id": "08aa1315-2e39-4444-911c-5d7027c9be05",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "request_id": "group-turn:b8caa02b-78ee-4cc8-afde-8c13d323ac34",
+              "submission_id": 15,
+              "state": "completed",
+              "payload_digest": "0acd6b0d60aa898aba634511e97c8b74011c059040f4c56515b4615aeedd88dd"
+            },
+            {
+              "id": "28d652c3-3632-43eb-aef3-e1a7631812e3",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "request_id": "group-turn:974556e6-c82d-4640-8faa-b61b4585b676",
+              "submission_id": 20,
+              "state": "completed",
+              "payload_digest": "49460d00fec86f71a1c836704f7d9c1189e12d7822535bc3d000f291059056f3"
+            },
+            {
+              "id": "5210caa1-8f12-4bb7-a2a4-42ef1b4f9e20",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "request_id": "group-turn:91a8aa9d-c39c-4e0b-a692-3da9b0f66436",
+              "submission_id": 20,
+              "state": "completed",
+              "payload_digest": "d88368c33b2755b887ada04096c3f2f24f1acffa282f15fec6ba812506ae3fe7"
+            },
+            {
+              "id": "3914ef95-4388-492a-895c-94f60c34ff88",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "request_id": "group-turn:882ac15f-3067-4b1c-b477-211d0da4bf9e",
+              "submission_id": 25,
+              "state": "completed",
+              "payload_digest": "aaffd19318a1028e6dbf8e8621ba74a7458807c7023ba904d94e5b7f7a7b9377"
+            }
+          ],
+          "serial_turns": [
+            {
+              "id": "974556e6-c82d-4640-8faa-b61b4585b676",
+              "ordinal": 1,
+              "profile_id": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+              "role": "speaker",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "grant_id": "2aae0ccf-5c62-4c76-af3a-aaf6623b6cad",
+              "request_id": "group-turn:974556e6-c82d-4640-8faa-b61b4585b676",
+              "input_id": "28d652c3-3632-43eb-aef3-e1a7631812e3",
+              "state": "completed",
+              "context_through_seq": 14,
+              "model_attempts": 1,
+              "decision": "{\"action\":\"reply\",\"message\":\"按最新限制复核：基数仍为场地61、摄影27（印刷14已取消），在此基础上新增已付23，且不重复计入此前款项。累计已用=61+27+23=111，剩余=310−111=199，算术无歧义。口径仍以310为唯一总预算，本组材料未出现独立的「活动预算」字段；若另有活动层级预算，本组数据不足以判定，199为该条件下的结果。仅核对与预览，不写文件、不付款、不部署。项目：青禾b3b472；负责人：林岚；总预算：310；累计已用：111；剩余：199。\"}",
+              "result_message_id": "group-reply:974556e6-c82d-4640-8faa-b61b4585b676",
+              "relay_from_turn_id": null
+            },
+            {
+              "id": "91a8aa9d-c39c-4e0b-a692-3da9b0f66436",
+              "ordinal": 2,
+              "profile_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+              "role": "speaker",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "grant_id": "bd5af821-8472-4cd9-9b06-3bde7bf924a6",
+              "request_id": "group-turn:91a8aa9d-c39c-4e0b-a692-3da9b0f66436",
+              "input_id": "5210caa1-8f12-4bb7-a2a4-42ef1b4f9e20",
+              "state": "completed",
+              "context_through_seq": 15,
+              "model_attempts": 1,
+              "decision": "{\"action\":\"reply\",\"message\":\"独立核算：基数沿用场地61、摄影27（印刷14已取消不计），新增已付23，无重复计入；61+27+23=111，310−111=199，与 Reviewer 审查结论一致。仅供预览，不写文件、不付款、不部署。\\n\\n项目：青禾b3b472；负责人：林岚；总预算：310；累计已用：111；剩余：199。\"}",
+              "result_message_id": "group-reply:91a8aa9d-c39c-4e0b-a692-3da9b0f66436",
+              "relay_from_turn_id": null
+            },
+            {
+              "id": "882ac15f-3067-4b1c-b477-211d0da4bf9e",
+              "ordinal": 3,
+              "profile_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+              "role": "coordinator",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "grant_id": "bd5af821-8472-4cd9-9b06-3bde7bf924a6",
+              "request_id": "group-turn:882ac15f-3067-4b1c-b477-211d0da4bf9e",
+              "input_id": "3914ef95-4388-492a-895c-94f60c34ff88",
+              "state": "completed",
+              "context_through_seq": 16,
+              "model_attempts": 1,
+              "decision": "{\"action\":\"finish\",\"summary\":\"双方核对一致，采用最新数据（印刷14已取消、不重复计入旧款，新增已付23）。仅供预览，不写文件、不付款、不部署。\\n\\n项目：青禾b3b472；负责人：林岚；总预算：310；累计已用：111；剩余：199。\"}",
+              "result_message_id": "group-reply:882ac15f-3067-4b1c-b477-211d0da4bf9e",
+              "relay_from_turn_id": null
+            }
+          ],
+          "native_sources": [
+            {
+              "input_id": "99943a37-e522-46a1-9a7e-cb87cfa0015d",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "answer_entry_id": 12,
+              "task_id": 10,
+              "payload_digest": "267802e728cfe821ee6c64b021e2df6a06c2c5f597254ba6e90ff21d5a13137f",
+              "result_digest": "35e6dd39ccc674d892e865a83aec98ed514997407706115c668a03f37d4b01b4",
+              "created_at": "2026-10-25T09:50:09.721Z"
+            },
+            {
+              "input_id": "149192d8-84e6-4a23-aba8-b88c9587cb7b",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "answer_entry_id": 12,
+              "task_id": 10,
+              "payload_digest": "67f5095e3327f6eb8e2f45882ff3c73a1838805bdce3fd35f0e0f97bfe902f02",
+              "result_digest": "b0fdec013a692a40e2cdd5143f77a3e7b65cf893408f76b53574857b56905673",
+              "created_at": "2026-10-25T09:50:12.659Z"
+            },
+            {
+              "input_id": "1473e93e-6452-4daa-ba71-6d1f66ec6806",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "answer_entry_id": 17,
+              "task_id": 16,
+              "payload_digest": "3239a6cb0dd4cbbffb50464707d6c56bec7362922e22a633616d7a74148b3bda",
+              "result_digest": "40cebf40526e3be01ae6c51a9f18dd669f0a44f2ca75fb5f8c8c0019f0b70091",
+              "created_at": "2026-10-25T09:50:16.476Z"
+            },
+            {
+              "input_id": "08aa1315-2e39-4444-911c-5d7027c9be05",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "answer_entry_id": 17,
+              "task_id": 16,
+              "payload_digest": "0acd6b0d60aa898aba634511e97c8b74011c059040f4c56515b4615aeedd88dd",
+              "result_digest": "09799b0b65ba349c12b3d8e7ed71a7379062e503805bbc3607c770128b42e4fd",
+              "created_at": "2026-10-25T09:50:18.848Z"
+            },
+            {
+              "input_id": "28d652c3-3632-43eb-aef3-e1a7631812e3",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "answer_entry_id": 22,
+              "task_id": 21,
+              "payload_digest": "49460d00fec86f71a1c836704f7d9c1189e12d7822535bc3d000f291059056f3",
+              "result_digest": "fd5d1465eb2c2a504e5d8c11c318f5044ca674ad5ff804d4df59642cd92094e8",
+              "created_at": "2026-10-25T09:50:23.186Z"
+            },
+            {
+              "input_id": "5210caa1-8f12-4bb7-a2a4-42ef1b4f9e20",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "answer_entry_id": 22,
+              "task_id": 21,
+              "payload_digest": "d88368c33b2755b887ada04096c3f2f24f1acffa282f15fec6ba812506ae3fe7",
+              "result_digest": "d100bf6bed5749bea0bb1b0d076ae53df6d6abdc97bd43c295ad63938c85617a",
+              "created_at": "2026-10-25T09:50:26.469Z"
+            },
+            {
+              "input_id": "3914ef95-4388-492a-895c-94f60c34ff88",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "answer_entry_id": 27,
+              "task_id": 26,
+              "payload_digest": "aaffd19318a1028e6dbf8e8621ba74a7458807c7023ba904d94e5b7f7a7b9377",
+              "result_digest": "8d2ffe7925081c919780cce226646d07c50b0deb6afe0b0bf4338cca490751d7",
+              "created_at": "2026-10-25T09:50:29.037Z"
+            }
+          ]
+        },
+        {
+          "round": 3,
+          "passed": true,
+          "run_id": "87083774-09a0-409b-805c-df89423f4eae",
+          "run": {
+            "policy": "relay-v1",
+            "protocol_version": 2,
+            "execution_contract": "serial-v1",
+            "deadline_at": 1792925439848,
+            "max_turns": 6,
+            "max_turns_per_dot": 3,
+            "max_model_attempts": 12,
+            "model_attempts": 3,
+            "turn_count": 2
+          },
+          "correction_id": null,
+          "restart_evidence": {
+            "message_ids": [
+              "ab95701d-f54b-42fa-9f05-29b4d8c9cf2b",
+              "group-reply:eb57ddf0-0f02-468d-908a-500e72418729",
+              "07fd0455-89c5-4153-b124-b1b8cc5ab01c",
+              "group-reply:8be0c035-5707-40a2-8978-0c38c817bf8a",
+              "group-reply:b8caa02b-78ee-4cc8-afde-8c13d323ac34",
+              "4883d721-2ad6-4fe4-a859-5738b6a97a56",
+              "group-reply:974556e6-c82d-4640-8faa-b61b4585b676",
+              "group-reply:91a8aa9d-c39c-4e0b-a692-3da9b0f66436",
+              "group-reply:882ac15f-3067-4b1c-b477-211d0da4bf9e"
+            ],
+            "sessions_before": [
+              {
+                "profile_id": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+                "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826"
+              },
+              {
+                "profile_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+                "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92"
+              }
+            ],
+            "sessions_after": [
+              {
+                "profile_id": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+                "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826"
+              },
+              {
+                "profile_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+                "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92"
+              }
+            ],
+            "extra_provider_calls": 0
+          },
+          "expected": [293, 111, 182],
+          "answers": [
+            {
+              "id": "group-reply:1ff70fda-1759-4df9-acf9-1aef1dfdb9d7",
+              "author_id": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+              "content": "沿用上轮数据，不重新初始化：累计已用保持111（场地61＋摄影27＋新增已付23，印刷14已取消不计，无重复计入）；总预算在原310基础上减少17，即293。剩余=293−111=182，算术无歧义。口径同前，仅以本组可见的单一总预算数字为准；不写文件、不付款、不部署。项目：青禾b3b472；负责人：林岚；总预算：293；累计已用：111；剩余：182。",
+              "digest": "ab8bd2bc9339fed63e2254d859c37fc502ac5a4f2a13b2f90bf71c8bfe12eb19",
+              "source": {
+                "kind": "group_discussion_reply",
+                "run_id": "87083774-09a0-409b-805c-df89423f4eae",
+                "turn_id": "1ff70fda-1759-4df9-acf9-1aef1dfdb9d7",
+                "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+                "request_id": "group-turn:1ff70fda-1759-4df9-acf9-1aef1dfdb9d7",
+                "input_id": "69c98931-1aa2-4c65-bb20-9bb6b5f0ffca",
+                "submission_id": 25,
+                "task_id": 26,
+                "answer_entry_id": 27,
+                "result_digest": "b74d77103d868f13aeaebb05a999b86a1d1ff7161b9004520db7db4e43d049b5",
+                "action": "reply",
+                "protocol_version": 2
+              }
+            },
+            {
+              "id": "group-reply:6d9e406a-6ee8-42d8-88d0-7bb3723a2517",
+              "author_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+              "content": "独立核算（沿用上轮，不重新初始化）：累计已用保持61+27+23=111（印刷14已取消不计）；总预算310−17=293；剩余293−111=182，与 Reviewer 结论一致。仅核对，不写文件、不付款、不部署。\n\n项目：青禾b3b472；负责人：林岚；总预算：293；累计已用：111；剩余：182。",
+              "digest": "05b246d63e2853c6c18a40d1542ce7bff8c35cfbe59c8357734333a791744923",
+              "source": {
+                "kind": "group_discussion_reply",
+                "run_id": "87083774-09a0-409b-805c-df89423f4eae",
+                "turn_id": "6d9e406a-6ee8-42d8-88d0-7bb3723a2517",
+                "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+                "request_id": "group-turn:6d9e406a-6ee8-42d8-88d0-7bb3723a2517",
+                "input_id": "6dd9706c-5cff-4c36-bf75-12ecd86e0376",
+                "submission_id": 30,
+                "task_id": 31,
+                "answer_entry_id": 32,
+                "result_digest": "0c6957de8e53b4297395bd10aec27f5bd75a815d75f35aa1c115c1e57cba0096",
+                "action": "reply",
+                "protocol_version": 2
+              }
+            },
+            {
+              "id": "group-reply:8cdf9687-f930-40db-9b80-114a3e3240de",
+              "author_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+              "content": "双方核对一致：总预算310−17=293，累计已用保持111（印刷14已取消不计、无重复计入），剩余293−111=182。仅核对，不写文件、不付款、不部署。\n\n项目：青禾b3b472；负责人：林岚；总预算：293；累计已用：111；剩余：182。",
+              "digest": "639ffc5d088d0c5addc3a9d3baae21b5fb4dfb22eb363ca5a520f42e303a830f",
+              "source": {
+                "kind": "group_discussion_reply",
+                "run_id": "87083774-09a0-409b-805c-df89423f4eae",
+                "turn_id": "8cdf9687-f930-40db-9b80-114a3e3240de",
+                "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+                "request_id": "group-turn:8cdf9687-f930-40db-9b80-114a3e3240de",
+                "input_id": "569b12ca-4ebe-4c1c-ad9b-eab95926f1a9",
+                "submission_id": 35,
+                "task_id": 36,
+                "answer_entry_id": 37,
+                "result_digest": "46e233df5f551d0b4c3056476e4c7787a41e7f184b602eeb39688ed258741680",
+                "action": "finish",
+                "protocol_version": 2
+              }
+            }
+          ],
+          "model_calls": 3,
+          "provider_peak": 1,
+          "elapsed_ms": 10906,
+          "reported_tokens": 33035,
+          "usage_complete": true,
+          "identical_same_author_outputs": 0,
+          "native_mail": [],
+          "native_inputs": [
+            {
+              "id": "99943a37-e522-46a1-9a7e-cb87cfa0015d",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "request_id": "group-turn:eb57ddf0-0f02-468d-908a-500e72418729",
+              "submission_id": 9,
+              "state": "completed",
+              "payload_digest": "267802e728cfe821ee6c64b021e2df6a06c2c5f597254ba6e90ff21d5a13137f"
+            },
+            {
+              "id": "149192d8-84e6-4a23-aba8-b88c9587cb7b",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "request_id": "group-turn:cb06eb6e-6075-4f6e-bb3c-42fc5c1d832f",
+              "submission_id": 9,
+              "state": "completed",
+              "payload_digest": "67f5095e3327f6eb8e2f45882ff3c73a1838805bdce3fd35f0e0f97bfe902f02"
+            },
+            {
+              "id": "1473e93e-6452-4daa-ba71-6d1f66ec6806",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "request_id": "group-turn:8be0c035-5707-40a2-8978-0c38c817bf8a",
+              "submission_id": 15,
+              "state": "completed",
+              "payload_digest": "3239a6cb0dd4cbbffb50464707d6c56bec7362922e22a633616d7a74148b3bda"
+            },
+            {
+              "id": "08aa1315-2e39-4444-911c-5d7027c9be05",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "request_id": "group-turn:b8caa02b-78ee-4cc8-afde-8c13d323ac34",
+              "submission_id": 15,
+              "state": "completed",
+              "payload_digest": "0acd6b0d60aa898aba634511e97c8b74011c059040f4c56515b4615aeedd88dd"
+            },
+            {
+              "id": "28d652c3-3632-43eb-aef3-e1a7631812e3",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "request_id": "group-turn:974556e6-c82d-4640-8faa-b61b4585b676",
+              "submission_id": 20,
+              "state": "completed",
+              "payload_digest": "49460d00fec86f71a1c836704f7d9c1189e12d7822535bc3d000f291059056f3"
+            },
+            {
+              "id": "5210caa1-8f12-4bb7-a2a4-42ef1b4f9e20",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "request_id": "group-turn:91a8aa9d-c39c-4e0b-a692-3da9b0f66436",
+              "submission_id": 20,
+              "state": "completed",
+              "payload_digest": "d88368c33b2755b887ada04096c3f2f24f1acffa282f15fec6ba812506ae3fe7"
+            },
+            {
+              "id": "3914ef95-4388-492a-895c-94f60c34ff88",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "request_id": "group-turn:882ac15f-3067-4b1c-b477-211d0da4bf9e",
+              "submission_id": 25,
+              "state": "completed",
+              "payload_digest": "aaffd19318a1028e6dbf8e8621ba74a7458807c7023ba904d94e5b7f7a7b9377"
+            },
+            {
+              "id": "69c98931-1aa2-4c65-bb20-9bb6b5f0ffca",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "request_id": "group-turn:1ff70fda-1759-4df9-acf9-1aef1dfdb9d7",
+              "submission_id": 25,
+              "state": "completed",
+              "payload_digest": "6c7ab2b43530bdcb10cec1b41bf13762680cab4f630fce10cfee01ece6303f35"
+            },
+            {
+              "id": "6dd9706c-5cff-4c36-bf75-12ecd86e0376",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "request_id": "group-turn:6d9e406a-6ee8-42d8-88d0-7bb3723a2517",
+              "submission_id": 30,
+              "state": "completed",
+              "payload_digest": "3ef8c8497145ae249a9f7640aefe234cccea77e0f2c40599ef63fd1137d18876"
+            },
+            {
+              "id": "569b12ca-4ebe-4c1c-ad9b-eab95926f1a9",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "request_id": "group-turn:8cdf9687-f930-40db-9b80-114a3e3240de",
+              "submission_id": 35,
+              "state": "completed",
+              "payload_digest": "82400de7c595c6d5b3c8a67c4d23e24c3580f0500440db17d4e02c2966097b21"
+            }
+          ],
+          "serial_turns": [
+            {
+              "id": "1ff70fda-1759-4df9-acf9-1aef1dfdb9d7",
+              "ordinal": 1,
+              "profile_id": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+              "role": "speaker",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "grant_id": "2aae0ccf-5c62-4c76-af3a-aaf6623b6cad",
+              "request_id": "group-turn:1ff70fda-1759-4df9-acf9-1aef1dfdb9d7",
+              "input_id": "69c98931-1aa2-4c65-bb20-9bb6b5f0ffca",
+              "state": "completed",
+              "context_through_seq": 18,
+              "model_attempts": 1,
+              "decision": "{\"action\":\"reply\",\"message\":\"沿用上轮数据，不重新初始化：累计已用保持111（场地61＋摄影27＋新增已付23，印刷14已取消不计，无重复计入）；总预算在原310基础上减少17，即293。剩余=293−111=182，算术无歧义。口径同前，仅以本组可见的单一总预算数字为准；不写文件、不付款、不部署。项目：青禾b3b472；负责人：林岚；总预算：293；累计已用：111；剩余：182。\"}",
+              "result_message_id": "group-reply:1ff70fda-1759-4df9-acf9-1aef1dfdb9d7",
+              "relay_from_turn_id": null
+            },
+            {
+              "id": "6d9e406a-6ee8-42d8-88d0-7bb3723a2517",
+              "ordinal": 2,
+              "profile_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+              "role": "speaker",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "grant_id": "bd5af821-8472-4cd9-9b06-3bde7bf924a6",
+              "request_id": "group-turn:6d9e406a-6ee8-42d8-88d0-7bb3723a2517",
+              "input_id": "6dd9706c-5cff-4c36-bf75-12ecd86e0376",
+              "state": "completed",
+              "context_through_seq": 19,
+              "model_attempts": 1,
+              "decision": "{\"action\":\"reply\",\"message\":\"独立核算（沿用上轮，不重新初始化）：累计已用保持61+27+23=111（印刷14已取消不计）；总预算310−17=293；剩余293−111=182，与 Reviewer 结论一致。仅核对，不写文件、不付款、不部署。\\n\\n项目：青禾b3b472；负责人：林岚；总预算：293；累计已用：111；剩余：182。\"}",
+              "result_message_id": "group-reply:6d9e406a-6ee8-42d8-88d0-7bb3723a2517",
+              "relay_from_turn_id": null
+            },
+            {
+              "id": "8cdf9687-f930-40db-9b80-114a3e3240de",
+              "ordinal": 3,
+              "profile_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+              "role": "coordinator",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "grant_id": "bd5af821-8472-4cd9-9b06-3bde7bf924a6",
+              "request_id": "group-turn:8cdf9687-f930-40db-9b80-114a3e3240de",
+              "input_id": "569b12ca-4ebe-4c1c-ad9b-eab95926f1a9",
+              "state": "completed",
+              "context_through_seq": 20,
+              "model_attempts": 1,
+              "decision": "{\"action\":\"finish\",\"summary\":\"双方核对一致：总预算310−17=293，累计已用保持111（印刷14已取消不计、无重复计入），剩余293−111=182。仅核对，不写文件、不付款、不部署。\\n\\n项目：青禾b3b472；负责人：林岚；总预算：293；累计已用：111；剩余：182。\"}",
+              "result_message_id": "group-reply:8cdf9687-f930-40db-9b80-114a3e3240de",
+              "relay_from_turn_id": null
+            }
+          ],
+          "native_sources": [
+            {
+              "input_id": "99943a37-e522-46a1-9a7e-cb87cfa0015d",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "answer_entry_id": 12,
+              "task_id": 10,
+              "payload_digest": "267802e728cfe821ee6c64b021e2df6a06c2c5f597254ba6e90ff21d5a13137f",
+              "result_digest": "35e6dd39ccc674d892e865a83aec98ed514997407706115c668a03f37d4b01b4",
+              "created_at": "2026-10-25T09:50:09.721Z"
+            },
+            {
+              "input_id": "149192d8-84e6-4a23-aba8-b88c9587cb7b",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "answer_entry_id": 12,
+              "task_id": 10,
+              "payload_digest": "67f5095e3327f6eb8e2f45882ff3c73a1838805bdce3fd35f0e0f97bfe902f02",
+              "result_digest": "b0fdec013a692a40e2cdd5143f77a3e7b65cf893408f76b53574857b56905673",
+              "created_at": "2026-10-25T09:50:12.659Z"
+            },
+            {
+              "input_id": "1473e93e-6452-4daa-ba71-6d1f66ec6806",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "answer_entry_id": 17,
+              "task_id": 16,
+              "payload_digest": "3239a6cb0dd4cbbffb50464707d6c56bec7362922e22a633616d7a74148b3bda",
+              "result_digest": "40cebf40526e3be01ae6c51a9f18dd669f0a44f2ca75fb5f8c8c0019f0b70091",
+              "created_at": "2026-10-25T09:50:16.476Z"
+            },
+            {
+              "input_id": "08aa1315-2e39-4444-911c-5d7027c9be05",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "answer_entry_id": 17,
+              "task_id": 16,
+              "payload_digest": "0acd6b0d60aa898aba634511e97c8b74011c059040f4c56515b4615aeedd88dd",
+              "result_digest": "09799b0b65ba349c12b3d8e7ed71a7379062e503805bbc3607c770128b42e4fd",
+              "created_at": "2026-10-25T09:50:18.848Z"
+            },
+            {
+              "input_id": "28d652c3-3632-43eb-aef3-e1a7631812e3",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "answer_entry_id": 22,
+              "task_id": 21,
+              "payload_digest": "49460d00fec86f71a1c836704f7d9c1189e12d7822535bc3d000f291059056f3",
+              "result_digest": "fd5d1465eb2c2a504e5d8c11c318f5044ca674ad5ff804d4df59642cd92094e8",
+              "created_at": "2026-10-25T09:50:23.186Z"
+            },
+            {
+              "input_id": "5210caa1-8f12-4bb7-a2a4-42ef1b4f9e20",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "answer_entry_id": 22,
+              "task_id": 21,
+              "payload_digest": "d88368c33b2755b887ada04096c3f2f24f1acffa282f15fec6ba812506ae3fe7",
+              "result_digest": "d100bf6bed5749bea0bb1b0d076ae53df6d6abdc97bd43c295ad63938c85617a",
+              "created_at": "2026-10-25T09:50:26.469Z"
+            },
+            {
+              "input_id": "3914ef95-4388-492a-895c-94f60c34ff88",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "answer_entry_id": 27,
+              "task_id": 26,
+              "payload_digest": "aaffd19318a1028e6dbf8e8621ba74a7458807c7023ba904d94e5b7f7a7b9377",
+              "result_digest": "8d2ffe7925081c919780cce226646d07c50b0deb6afe0b0bf4338cca490751d7",
+              "created_at": "2026-10-25T09:50:29.037Z"
+            },
+            {
+              "input_id": "69c98931-1aa2-4c65-bb20-9bb6b5f0ffca",
+              "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+              "answer_entry_id": 27,
+              "task_id": 26,
+              "payload_digest": "6c7ab2b43530bdcb10cec1b41bf13762680cab4f630fce10cfee01ece6303f35",
+              "result_digest": "b74d77103d868f13aeaebb05a999b86a1d1ff7161b9004520db7db4e43d049b5",
+              "created_at": "2026-10-25T09:50:44.015Z"
+            },
+            {
+              "input_id": "6dd9706c-5cff-4c36-bf75-12ecd86e0376",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "answer_entry_id": 32,
+              "task_id": 31,
+              "payload_digest": "3ef8c8497145ae249a9f7640aefe234cccea77e0f2c40599ef63fd1137d18876",
+              "result_digest": "0c6957de8e53b4297395bd10aec27f5bd75a815d75f35aa1c115c1e57cba0096",
+              "created_at": "2026-10-25T09:50:46.580Z"
+            },
+            {
+              "input_id": "569b12ca-4ebe-4c1c-ad9b-eab95926f1a9",
+              "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+              "answer_entry_id": 37,
+              "task_id": 36,
+              "payload_digest": "82400de7c595c6d5b3c8a67c4d23e24c3580f0500440db17d4e02c2966097b21",
+              "result_digest": "46e233df5f551d0b4c3056476e4c7787a41e7f184b602eeb39688ed258741680",
+              "created_at": "2026-10-25T09:50:49.228Z"
+            }
+          ]
+        }
+      ],
+      "passed": true,
+      "sessions": [
+        {
+          "profile_id": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+          "session_id": "0f068bc1-aaec-4b73-a5ae-91818ea59826"
+        },
+        {
+          "profile_id": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+          "session_id": "47505f01-95d5-4ed8-bf3d-800da1a7ad92"
+        }
+      ]
+    }
+  ],
+  "provider_traces": [
+    {
+      "sessionId": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+      "requestId": "member-root:0910b409-62aa-4afc-b769-542649089079:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+      "groupId": "97e725e3-d501-4614-8324-8b8af381473d",
+      "runId": "e9af806e-afec-48b4-a128-9687a4aa723d",
+      "inputId": "f19c481e-7a6b-4b0b-8c18-a9dc61531a4e",
+      "nativeSource": {
+        "native_task_id": 10,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":9,\"requestId\":\"member-root:0910b409-62aa-4afc-b769-542649089079:f38d1f95-cbd7-4813-95e3-554daf1a931c\",\"entryId\":8}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [],
+      "userMessageIds": ["0910b409-62aa-4afc-b769-542649089079"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921770787,
+      "inputDigest": "d69cd965173df5988ca337dddffc0de23eb6ea91f713ffd9cc54d3be55f517c8",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 1709,
+        "output": 151,
+        "total": 1860
+      },
+      "status": 200,
+      "finishReason": "tool_calls",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921775324,
+      "output_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "sessionId": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+      "requestId": "member-root:0910b409-62aa-4afc-b769-542649089079:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+      "groupId": "97e725e3-d501-4614-8324-8b8af381473d",
+      "runId": "e9af806e-afec-48b4-a128-9687a4aa723d",
+      "inputId": "f19c481e-7a6b-4b0b-8c18-a9dc61531a4e",
+      "nativeSource": {
+        "native_task_id": 17,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":9,\"requestId\":\"member-root:0910b409-62aa-4afc-b769-542649089079:f38d1f95-cbd7-4813-95e3-554daf1a931c\",\"entryId\":8}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [],
+      "userMessageIds": ["0910b409-62aa-4afc-b769-542649089079"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921775549,
+      "inputDigest": "de896d0b0a3681c4d9378f9113d332065f32ab168f6de1a3414760446c49485a",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 3014,
+        "output": 213,
+        "total": 3227
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921778351,
+      "output_digest": "2d6cb63ff10c0ef366bb131c9f69baa820b9808701cdc0e1af6f93ca903204d5"
+    },
+    {
+      "sessionId": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+      "requestId": "member-question:eaf24c28-6195-4105-9d69-d13bfce9ace5:343916d8-cfc7-4261-b5be-840701438e45",
+      "groupId": "97e725e3-d501-4614-8324-8b8af381473d",
+      "runId": "e9af806e-afec-48b4-a128-9687a4aa723d",
+      "inputId": "c02a057a-c529-495d-b2f9-a06d823fccc4",
+      "nativeSource": {
+        "native_task_id": 10,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":9,\"requestId\":\"member-question:eaf24c28-6195-4105-9d69-d13bfce9ace5:343916d8-cfc7-4261-b5be-840701438e45\",\"entryId\":8}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "group-member:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "ac1a1d315024e21c991bdc5aca227697ba971ba257e16475cdb6f69ac36ff93b",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["0910b409-62aa-4afc-b769-542649089079"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921775682,
+      "inputDigest": "928a857798089b2305dde613c96e4dcad17a83d8f448454bc4aea3bac66a7ef5",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 1924,
+        "output": 36,
+        "total": 1960
+      },
+      "status": 200,
+      "finishReason": "tool_calls",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921777811,
+      "output_digest": "8d97a064e6366b3654f25988152215446ac4dbbcc72ebdcc7b4bdb547c01ef91"
+    },
+    {
+      "sessionId": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+      "requestId": "member-control:5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac:343916d8-cfc7-4261-b5be-840701438e45",
+      "groupId": "97e725e3-d501-4614-8324-8b8af381473d",
+      "runId": "e9af806e-afec-48b4-a128-9687a4aa723d",
+      "inputId": "c14799e7-6aee-4b20-9d6f-324ce7f784d7",
+      "nativeSource": {
+        "native_task_id": 18,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":9,\"requestId\":\"member-question:eaf24c28-6195-4105-9d69-d13bfce9ace5:343916d8-cfc7-4261-b5be-840701438e45\",\"entryId\":8},{\"submissionId\":13,\"requestId\":\"member-control:5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac:343916d8-cfc7-4261-b5be-840701438e45\",\"entryId\":17}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "group-member:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "ac1a1d315024e21c991bdc5aca227697ba971ba257e16475cdb6f69ac36ff93b",
+          "exact": true
+        },
+        {
+          "id": "5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        }
+      ],
+      "userMessageIds": [
+        "0910b409-62aa-4afc-b769-542649089079",
+        "5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac"
+      ],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921778009,
+      "inputDigest": "dfbba157203eddbd00de8f3965674d0abece7912cf1a59b956db7c6319c488dd",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 4643,
+        "output": 255,
+        "total": 4898
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921781736,
+      "output_digest": "3a56bcaac2f37c011400cc9e9f9b4a46faefd91e35ba29d402cff5670f0322e4"
+    },
+    {
+      "sessionId": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+      "requestId": "member-control:5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+      "groupId": "97e725e3-d501-4614-8324-8b8af381473d",
+      "runId": "e9af806e-afec-48b4-a128-9687a4aa723d",
+      "inputId": "53b4dce3-4446-4274-9871-e604704abb01",
+      "nativeSource": {
+        "native_task_id": 22,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":19,\"requestId\":\"member-control:5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac:f38d1f95-cbd7-4813-95e3-554daf1a931c\",\"entryId\":21}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "group-member:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "ac1a1d315024e21c991bdc5aca227697ba971ba257e16475cdb6f69ac36ff93b",
+          "exact": true
+        },
+        {
+          "id": "5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        }
+      ],
+      "userMessageIds": [
+        "0910b409-62aa-4afc-b769-542649089079",
+        "5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac"
+      ],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921778444,
+      "inputDigest": "647af1bc5a6cdd9e774f715d38b46f8b27a0ffc3a8f4d8f3f7853dcc13bff00a",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 4663,
+        "output": 185,
+        "total": 4848
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921780910,
+      "output_digest": "00fa7806d5a45555cad44745bd70a045da323808cd7d0ed243edc94ae38a03d3"
+    },
+    {
+      "sessionId": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+      "requestId": "member-reply:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+      "groupId": "97e725e3-d501-4614-8324-8b8af381473d",
+      "runId": "e9af806e-afec-48b4-a128-9687a4aa723d",
+      "inputId": "78227527-c72e-4118-bf48-adc8322575ba",
+      "nativeSource": {
+        "native_task_id": 27,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":26,\"requestId\":\"member-reply:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5:f38d1f95-cbd7-4813-95e3-554daf1a931c\",\"entryId\":25}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "group-member:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "ac1a1d315024e21c991bdc5aca227697ba971ba257e16475cdb6f69ac36ff93b",
+          "exact": true
+        },
+        {
+          "id": "5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-member:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+          "authorId": "343916d8-cfc7-4261-b5be-840701438e45",
+          "digest": "3a56bcaac2f37c011400cc9e9f9b4a46faefd91e35ba29d402cff5670f0322e4",
+          "exact": true
+        },
+        {
+          "id": "5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        }
+      ],
+      "userMessageIds": [
+        "0910b409-62aa-4afc-b769-542649089079",
+        "5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac"
+      ],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921781914,
+      "inputDigest": "dbf0bda38dbae65e7d267ddf6c3937587cd3895613bced39a5423c6dafb0fb08",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 7050,
+        "output": 189,
+        "total": 7239
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921784631,
+      "output_digest": "8cda21ea978d51d29ebbf7f855c98c6fb3873e0fb459f1f3c91364b43de80462"
+    },
+    {
+      "sessionId": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+      "requestId": "member-root:9b2fbf30-4700-4352-8eab-763ddb49c498:343916d8-cfc7-4261-b5be-840701438e45",
+      "groupId": "97e725e3-d501-4614-8324-8b8af381473d",
+      "runId": "30f879bd-3d9d-4b3b-a095-8dd04d815b3e",
+      "inputId": "5073544e-af25-4dc8-a367-fd51f7a641f2",
+      "nativeSource": {
+        "native_task_id": 23,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":22,\"requestId\":\"member-root:9b2fbf30-4700-4352-8eab-763ddb49c498:343916d8-cfc7-4261-b5be-840701438e45\",\"entryId\":21}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "0910b409-62aa-4afc-b769-542649089079",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "e10a71faf1c6678a5d897937c0ff657df398f42835dd04720aa977b0208449b8",
+          "exact": true
+        },
+        {
+          "id": "group-member:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "ac1a1d315024e21c991bdc5aca227697ba971ba257e16475cdb6f69ac36ff93b",
+          "exact": true
+        },
+        {
+          "id": "5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-member:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+          "authorId": "343916d8-cfc7-4261-b5be-840701438e45",
+          "digest": "3a56bcaac2f37c011400cc9e9f9b4a46faefd91e35ba29d402cff5670f0322e4",
+          "exact": true
+        },
+        {
+          "id": "member-answer:7daddc97-1fd6-4523-bd33-d12167a84bf2:28",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "8cda21ea978d51d29ebbf7f855c98c6fb3873e0fb459f1f3c91364b43de80462",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["9b2fbf30-4700-4352-8eab-763ddb49c498"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921786513,
+      "inputDigest": "3c91304fe1489608ee82821bd3a5fea2a5ae59acd7158451ee0bb5aff0f96d2e",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 7337,
+        "output": 129,
+        "total": 7466
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921788504,
+      "output_digest": "ea71a286c30f9ecda5e944dcad042203f7e64a05d3c05db8f0091f9433ae25c0"
+    },
+    {
+      "sessionId": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+      "requestId": "member-root:9b2fbf30-4700-4352-8eab-763ddb49c498:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+      "groupId": "97e725e3-d501-4614-8324-8b8af381473d",
+      "runId": "30f879bd-3d9d-4b3b-a095-8dd04d815b3e",
+      "inputId": "740491ea-61b5-4fba-8fc2-9b126ef5dab8",
+      "nativeSource": {
+        "native_task_id": 32,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":31,\"requestId\":\"member-root:9b2fbf30-4700-4352-8eab-763ddb49c498:f38d1f95-cbd7-4813-95e3-554daf1a931c\",\"entryId\":30}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "0910b409-62aa-4afc-b769-542649089079",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "e10a71faf1c6678a5d897937c0ff657df398f42835dd04720aa977b0208449b8",
+          "exact": true
+        },
+        {
+          "id": "group-member:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "ac1a1d315024e21c991bdc5aca227697ba971ba257e16475cdb6f69ac36ff93b",
+          "exact": true
+        },
+        {
+          "id": "5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-member:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+          "authorId": "343916d8-cfc7-4261-b5be-840701438e45",
+          "digest": "3a56bcaac2f37c011400cc9e9f9b4a46faefd91e35ba29d402cff5670f0322e4",
+          "exact": true
+        },
+        {
+          "id": "member-answer:7daddc97-1fd6-4523-bd33-d12167a84bf2:28",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "8cda21ea978d51d29ebbf7f855c98c6fb3873e0fb459f1f3c91364b43de80462",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["9b2fbf30-4700-4352-8eab-763ddb49c498"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921786513,
+      "inputDigest": "faf53f75e0d7a6e44a144e1ce602756a720825cd9f861d9fc533e1cd49439a51",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 9665,
+        "output": 145,
+        "total": 9810
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921789475,
+      "output_digest": "a81977b683a49efd0de80ab2530bbf19b349037a9b929d9c623813d6da5b1bde"
+    },
+    {
+      "sessionId": "af709aa8-fa89-4f2a-a328-cdb0d9c1fc83",
+      "requestId": "member-root:27cf5e2d-04d4-4dfe-973f-6db59f60f962:343916d8-cfc7-4261-b5be-840701438e45",
+      "groupId": "97e725e3-d501-4614-8324-8b8af381473d",
+      "runId": "f09d8eba-ca5a-44c4-b46c-fe152ddbe1d4",
+      "inputId": "b3c5ada7-5ffc-4e9b-9289-939f1c7b1c2f",
+      "nativeSource": {
+        "native_task_id": 28,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":27,\"requestId\":\"member-root:27cf5e2d-04d4-4dfe-973f-6db59f60f962:343916d8-cfc7-4261-b5be-840701438e45\",\"entryId\":26}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "0910b409-62aa-4afc-b769-542649089079",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "e10a71faf1c6678a5d897937c0ff657df398f42835dd04720aa977b0208449b8",
+          "exact": true
+        },
+        {
+          "id": "group-member:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "ac1a1d315024e21c991bdc5aca227697ba971ba257e16475cdb6f69ac36ff93b",
+          "exact": true
+        },
+        {
+          "id": "5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-member:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+          "authorId": "343916d8-cfc7-4261-b5be-840701438e45",
+          "digest": "3a56bcaac2f37c011400cc9e9f9b4a46faefd91e35ba29d402cff5670f0322e4",
+          "exact": true
+        },
+        {
+          "id": "member-answer:7daddc97-1fd6-4523-bd33-d12167a84bf2:28",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "8cda21ea978d51d29ebbf7f855c98c6fb3873e0fb459f1f3c91364b43de80462",
+          "exact": true
+        },
+        {
+          "id": "9b2fbf30-4700-4352-8eab-763ddb49c498",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "ff5ea4c5f8c0888a2f281dcca1451a3f09fc767a792ca5f8b308466c60148357",
+          "exact": true
+        },
+        {
+          "id": "member-answer:af709aa8-fa89-4f2a-a328-cdb0d9c1fc83:24",
+          "authorId": "343916d8-cfc7-4261-b5be-840701438e45",
+          "digest": "ea71a286c30f9ecda5e944dcad042203f7e64a05d3c05db8f0091f9433ae25c0",
+          "exact": true
+        },
+        {
+          "id": "member-answer:7daddc97-1fd6-4523-bd33-d12167a84bf2:33",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "a81977b683a49efd0de80ab2530bbf19b349037a9b929d9c623813d6da5b1bde",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["27cf5e2d-04d4-4dfe-973f-6db59f60f962"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921801209,
+      "inputDigest": "e49e39d04f7dda2c7b482ce1af7ce4e9568d1d74f2dc6f07908cbdedbcbb46ba",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 10573,
+        "output": 127,
+        "total": 10700
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921803097,
+      "output_digest": "61454d8a0e1a9c4bb955d758a792860425e19e1bbdc02b6f27db201df8708b1d"
+    },
+    {
+      "sessionId": "7daddc97-1fd6-4523-bd33-d12167a84bf2",
+      "requestId": "member-root:27cf5e2d-04d4-4dfe-973f-6db59f60f962:f38d1f95-cbd7-4813-95e3-554daf1a931c",
+      "groupId": "97e725e3-d501-4614-8324-8b8af381473d",
+      "runId": "f09d8eba-ca5a-44c4-b46c-fe152ddbe1d4",
+      "inputId": "8b43aff4-a84f-4366-8834-6d39dcb77ded",
+      "nativeSource": {
+        "native_task_id": 37,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":36,\"requestId\":\"member-root:27cf5e2d-04d4-4dfe-973f-6db59f60f962:f38d1f95-cbd7-4813-95e3-554daf1a931c\",\"entryId\":35}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "0910b409-62aa-4afc-b769-542649089079",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "e10a71faf1c6678a5d897937c0ff657df398f42835dd04720aa977b0208449b8",
+          "exact": true
+        },
+        {
+          "id": "group-member:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "ac1a1d315024e21c991bdc5aca227697ba971ba257e16475cdb6f69ac36ff93b",
+          "exact": true
+        },
+        {
+          "id": "5aeaa7ad-3ecd-4889-82c2-80d2b2db52ac",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-member:reply:eaf24c28-6195-4105-9d69-d13bfce9ace5",
+          "authorId": "343916d8-cfc7-4261-b5be-840701438e45",
+          "digest": "3a56bcaac2f37c011400cc9e9f9b4a46faefd91e35ba29d402cff5670f0322e4",
+          "exact": true
+        },
+        {
+          "id": "member-answer:7daddc97-1fd6-4523-bd33-d12167a84bf2:28",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "8cda21ea978d51d29ebbf7f855c98c6fb3873e0fb459f1f3c91364b43de80462",
+          "exact": true
+        },
+        {
+          "id": "9b2fbf30-4700-4352-8eab-763ddb49c498",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "ff5ea4c5f8c0888a2f281dcca1451a3f09fc767a792ca5f8b308466c60148357",
+          "exact": true
+        },
+        {
+          "id": "member-answer:af709aa8-fa89-4f2a-a328-cdb0d9c1fc83:24",
+          "authorId": "343916d8-cfc7-4261-b5be-840701438e45",
+          "digest": "ea71a286c30f9ecda5e944dcad042203f7e64a05d3c05db8f0091f9433ae25c0",
+          "exact": true
+        },
+        {
+          "id": "member-answer:7daddc97-1fd6-4523-bd33-d12167a84bf2:33",
+          "authorId": "f38d1f95-cbd7-4813-95e3-554daf1a931c",
+          "digest": "a81977b683a49efd0de80ab2530bbf19b349037a9b929d9c623813d6da5b1bde",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["27cf5e2d-04d4-4dfe-973f-6db59f60f962"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921801398,
+      "inputDigest": "f1dc8ccaf8cbbd7c2ca90906cf25805e45eb8e1acca091df3b934c8349647306",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 12927,
+        "output": 125,
+        "total": 13052
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921804808,
+      "output_digest": "43c83c323dec3bb0c00b6d619ca30ac9a4fcb090cfb54f3c11d00848f36c4241"
+    },
+    {
+      "sessionId": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+      "requestId": "group-turn:eb57ddf0-0f02-468d-908a-500e72418729",
+      "groupId": "ad2d1221-76d1-42b0-92ea-2b0e2f7993b7",
+      "runId": "67c9d2ee-22f0-4539-aaa0-1a5d7f57bf42",
+      "inputId": null,
+      "nativeSource": null,
+      "frozenInputMatches": true,
+      "publicReads": [],
+      "userMessageIds": ["ab95701d-f54b-42fa-9f05-29b4d8c9cf2b"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921806679,
+      "inputDigest": "2640c06d8e414d0d240c8b2b53a9f1ba8f9fc6eaeaced72a662eac8a3e1a7df8",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": [],
+      "usage": {
+        "input": 1397,
+        "output": 178,
+        "total": 1575
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921809665,
+      "output_digest": "35e6dd39ccc674d892e865a83aec98ed514997407706115c668a03f37d4b01b4"
+    },
+    {
+      "sessionId": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+      "requestId": "group-turn:cb06eb6e-6075-4f6e-bb3c-42fc5c1d832f",
+      "groupId": "ad2d1221-76d1-42b0-92ea-2b0e2f7993b7",
+      "runId": "67c9d2ee-22f0-4539-aaa0-1a5d7f57bf42",
+      "inputId": null,
+      "nativeSource": null,
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "group-reply:eb57ddf0-0f02-468d-908a-500e72418729",
+          "authorId": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+          "digest": "3770790806d6a9cfbadfb71be1657387dcb8f3ea81639087f27bcf88b94e16d6",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["ab95701d-f54b-42fa-9f05-29b4d8c9cf2b"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921809904,
+      "inputDigest": "54af0ad6fec137983f9e2e9704e4fb4367851f9271820123402184531cdd47a9",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": [],
+      "usage": {
+        "input": 1690,
+        "output": 174,
+        "total": 1864
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921812617,
+      "output_digest": "b0fdec013a692a40e2cdd5143f77a3e7b65cf893408f76b53574857b56905673"
+    },
+    {
+      "sessionId": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+      "requestId": "group-turn:8be0c035-5707-40a2-8978-0c38c817bf8a",
+      "groupId": "ad2d1221-76d1-42b0-92ea-2b0e2f7993b7",
+      "runId": "67c9d2ee-22f0-4539-aaa0-1a5d7f57bf42",
+      "inputId": null,
+      "nativeSource": null,
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "group-reply:eb57ddf0-0f02-468d-908a-500e72418729",
+          "authorId": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+          "digest": "3770790806d6a9cfbadfb71be1657387dcb8f3ea81639087f27bcf88b94e16d6",
+          "exact": true
+        },
+        {
+          "id": "07fd0455-89c5-4153-b124-b1b8cc5ab01c",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        }
+      ],
+      "userMessageIds": [
+        "ab95701d-f54b-42fa-9f05-29b4d8c9cf2b",
+        "07fd0455-89c5-4153-b124-b1b8cc5ab01c"
+      ],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921812740,
+      "inputDigest": "925942c2ab7bf8d240c5f15e191455f9ff9ed2ca4511b7cc78edad669fdcc0b7",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": [],
+      "usage": {
+        "input": 3539,
+        "output": 155,
+        "total": 3694
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921816405,
+      "output_digest": "40cebf40526e3be01ae6c51a9f18dd669f0a44f2ca75fb5f8c8c0019f0b70091"
+    },
+    {
+      "sessionId": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+      "requestId": "group-turn:b8caa02b-78ee-4cc8-afde-8c13d323ac34",
+      "groupId": "ad2d1221-76d1-42b0-92ea-2b0e2f7993b7",
+      "runId": "67c9d2ee-22f0-4539-aaa0-1a5d7f57bf42",
+      "inputId": null,
+      "nativeSource": null,
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "07fd0455-89c5-4153-b124-b1b8cc5ab01c",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-reply:8be0c035-5707-40a2-8978-0c38c817bf8a",
+          "authorId": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+          "digest": "07659d993e8bd35779e9b9b655869aadb4df867cacdc29654ee868e63b6a6b81",
+          "exact": true
+        }
+      ],
+      "userMessageIds": [
+        "ab95701d-f54b-42fa-9f05-29b4d8c9cf2b",
+        "07fd0455-89c5-4153-b124-b1b8cc5ab01c"
+      ],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921816594,
+      "inputDigest": "be81d0527c7b5644aee6b691140d8719ef5a2450f3d8d440015291940eff5bc0",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": [],
+      "usage": {
+        "input": 3282,
+        "output": 122,
+        "total": 3404
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921818803,
+      "output_digest": "09799b0b65ba349c12b3d8e7ed71a7379062e503805bbc3607c770128b42e4fd"
+    },
+    {
+      "sessionId": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+      "requestId": "group-turn:974556e6-c82d-4640-8faa-b61b4585b676",
+      "groupId": "ad2d1221-76d1-42b0-92ea-2b0e2f7993b7",
+      "runId": "acffb552-4fa5-4d74-83ff-d2fc4a33be3d",
+      "inputId": null,
+      "nativeSource": null,
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "ab95701d-f54b-42fa-9f05-29b4d8c9cf2b",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "37bc9153f5fb0e03242a620f2c4e70ae65cf1e0e76b14f5ff4b63dc2dec60ba9",
+          "exact": true
+        },
+        {
+          "id": "group-reply:eb57ddf0-0f02-468d-908a-500e72418729",
+          "authorId": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+          "digest": "3770790806d6a9cfbadfb71be1657387dcb8f3ea81639087f27bcf88b94e16d6",
+          "exact": true
+        },
+        {
+          "id": "07fd0455-89c5-4153-b124-b1b8cc5ab01c",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-reply:b8caa02b-78ee-4cc8-afde-8c13d323ac34",
+          "authorId": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+          "digest": "dd82994917adfed6b666c5bee169f078255efaceb7746d530a7a93af6ddc19d5",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["4883d721-2ad6-4fe4-a859-5738b6a97a56"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921820529,
+      "inputDigest": "2df2a761f3d95e8e2c18d1ec59dcf34feecbca53a0bd71d8d826066669999cbf",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": [],
+      "usage": {
+        "input": 5898,
+        "output": 155,
+        "total": 6053
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921823109,
+      "output_digest": "fd5d1465eb2c2a504e5d8c11c318f5044ca674ad5ff804d4df59642cd92094e8"
+    },
+    {
+      "sessionId": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+      "requestId": "group-turn:91a8aa9d-c39c-4e0b-a692-3da9b0f66436",
+      "groupId": "ad2d1221-76d1-42b0-92ea-2b0e2f7993b7",
+      "runId": "acffb552-4fa5-4d74-83ff-d2fc4a33be3d",
+      "inputId": null,
+      "nativeSource": null,
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "ab95701d-f54b-42fa-9f05-29b4d8c9cf2b",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "37bc9153f5fb0e03242a620f2c4e70ae65cf1e0e76b14f5ff4b63dc2dec60ba9",
+          "exact": true
+        },
+        {
+          "id": "07fd0455-89c5-4153-b124-b1b8cc5ab01c",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-reply:8be0c035-5707-40a2-8978-0c38c817bf8a",
+          "authorId": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+          "digest": "07659d993e8bd35779e9b9b655869aadb4df867cacdc29654ee868e63b6a6b81",
+          "exact": true
+        },
+        {
+          "id": "group-reply:974556e6-c82d-4640-8faa-b61b4585b676",
+          "authorId": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+          "digest": "8573d95a6381b214c368191b94efbc6dd99e9c4d436f20f411b1ab2e10e3c6ab",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["4883d721-2ad6-4fe4-a859-5738b6a97a56"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921823287,
+      "inputDigest": "4b6180d63ab8d6680547cda8b31adee8ccc29ec778e2809f4b80f0a02b6dc05d",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": [],
+      "usage": {
+        "input": 5648,
+        "output": 108,
+        "total": 5756
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921826416,
+      "output_digest": "d100bf6bed5749bea0bb1b0d076ae53df6d6abdc97bd43c295ad63938c85617a"
+    },
+    {
+      "sessionId": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+      "requestId": "group-turn:882ac15f-3067-4b1c-b477-211d0da4bf9e",
+      "groupId": "ad2d1221-76d1-42b0-92ea-2b0e2f7993b7",
+      "runId": "acffb552-4fa5-4d74-83ff-d2fc4a33be3d",
+      "inputId": null,
+      "nativeSource": null,
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "ab95701d-f54b-42fa-9f05-29b4d8c9cf2b",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "37bc9153f5fb0e03242a620f2c4e70ae65cf1e0e76b14f5ff4b63dc2dec60ba9",
+          "exact": true
+        },
+        {
+          "id": "07fd0455-89c5-4153-b124-b1b8cc5ab01c",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-reply:8be0c035-5707-40a2-8978-0c38c817bf8a",
+          "authorId": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+          "digest": "07659d993e8bd35779e9b9b655869aadb4df867cacdc29654ee868e63b6a6b81",
+          "exact": true
+        },
+        {
+          "id": "group-reply:974556e6-c82d-4640-8faa-b61b4585b676",
+          "authorId": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+          "digest": "8573d95a6381b214c368191b94efbc6dd99e9c4d436f20f411b1ab2e10e3c6ab",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["4883d721-2ad6-4fe4-a859-5738b6a97a56"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921826575,
+      "inputDigest": "d6027b030078816d8be68306e2191236bbeaa114a0607190efa6a36bd01d55dc",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": [],
+      "usage": {
+        "input": 7934,
+        "output": 86,
+        "total": 8020
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921828980,
+      "output_digest": "8d2ffe7925081c919780cce226646d07c50b0deb6afe0b0bf4338cca490751d7"
+    },
+    {
+      "sessionId": "0f068bc1-aaec-4b73-a5ae-91818ea59826",
+      "requestId": "group-turn:1ff70fda-1759-4df9-acf9-1aef1dfdb9d7",
+      "groupId": "ad2d1221-76d1-42b0-92ea-2b0e2f7993b7",
+      "runId": "87083774-09a0-409b-805c-df89423f4eae",
+      "inputId": null,
+      "nativeSource": null,
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "ab95701d-f54b-42fa-9f05-29b4d8c9cf2b",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "37bc9153f5fb0e03242a620f2c4e70ae65cf1e0e76b14f5ff4b63dc2dec60ba9",
+          "exact": true
+        },
+        {
+          "id": "group-reply:eb57ddf0-0f02-468d-908a-500e72418729",
+          "authorId": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+          "digest": "3770790806d6a9cfbadfb71be1657387dcb8f3ea81639087f27bcf88b94e16d6",
+          "exact": true
+        },
+        {
+          "id": "07fd0455-89c5-4153-b124-b1b8cc5ab01c",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-reply:b8caa02b-78ee-4cc8-afde-8c13d323ac34",
+          "authorId": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+          "digest": "dd82994917adfed6b666c5bee169f078255efaceb7746d530a7a93af6ddc19d5",
+          "exact": true
+        },
+        {
+          "id": "4883d721-2ad6-4fe4-a859-5738b6a97a56",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "ff5ea4c5f8c0888a2f281dcca1451a3f09fc767a792ca5f8b308466c60148357",
+          "exact": true
+        },
+        {
+          "id": "group-reply:91a8aa9d-c39c-4e0b-a692-3da9b0f66436",
+          "authorId": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+          "digest": "186b8c78a3a34abc35b711fab942d8dc9e3e4fb8eedb479f2612746e333062fe",
+          "exact": true
+        },
+        {
+          "id": "group-reply:882ac15f-3067-4b1c-b477-211d0da4bf9e",
+          "authorId": "9c4de210-ea13-4c6f-a13c-0271863d1649",
+          "digest": "bf1c31d13179bdff58002d079becc2145283c9c7f2d9578974f0a566b57c7efc",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["3ebd8517-819e-4836-ad58-a51f6725e656"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921840723,
+      "inputDigest": "3e8488593208c21369a45ae54a4375a3a4cf3e8c43691b81535b3fe5356e5670",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": [],
+      "usage": {
+        "input": 8802,
+        "output": 131,
+        "total": 8933
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921843968,
+      "output_digest": "b74d77103d868f13aeaebb05a999b86a1d1ff7161b9004520db7db4e43d049b5"
+    },
+    {
+      "sessionId": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+      "requestId": "group-turn:6d9e406a-6ee8-42d8-88d0-7bb3723a2517",
+      "groupId": "ad2d1221-76d1-42b0-92ea-2b0e2f7993b7",
+      "runId": "87083774-09a0-409b-805c-df89423f4eae",
+      "inputId": null,
+      "nativeSource": null,
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "ab95701d-f54b-42fa-9f05-29b4d8c9cf2b",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "37bc9153f5fb0e03242a620f2c4e70ae65cf1e0e76b14f5ff4b63dc2dec60ba9",
+          "exact": true
+        },
+        {
+          "id": "07fd0455-89c5-4153-b124-b1b8cc5ab01c",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-reply:8be0c035-5707-40a2-8978-0c38c817bf8a",
+          "authorId": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+          "digest": "07659d993e8bd35779e9b9b655869aadb4df867cacdc29654ee868e63b6a6b81",
+          "exact": true
+        },
+        {
+          "id": "4883d721-2ad6-4fe4-a859-5738b6a97a56",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "ff5ea4c5f8c0888a2f281dcca1451a3f09fc767a792ca5f8b308466c60148357",
+          "exact": true
+        },
+        {
+          "id": "group-reply:974556e6-c82d-4640-8faa-b61b4585b676",
+          "authorId": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+          "digest": "8573d95a6381b214c368191b94efbc6dd99e9c4d436f20f411b1ab2e10e3c6ab",
+          "exact": true
+        },
+        {
+          "id": "group-reply:1ff70fda-1759-4df9-acf9-1aef1dfdb9d7",
+          "authorId": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+          "digest": "ab8bd2bc9339fed63e2254d859c37fc502ac5a4f2a13b2f90bf71c8bfe12eb19",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["3ebd8517-819e-4836-ad58-a51f6725e656"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921844238,
+      "inputDigest": "860470e4c90771f61ac9301f8e7e58f08b4bdae26c67b7dfa42c353b80adb2c6",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": [],
+      "usage": {
+        "input": 10621,
+        "output": 111,
+        "total": 10732
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921846530,
+      "output_digest": "0c6957de8e53b4297395bd10aec27f5bd75a815d75f35aa1c115c1e57cba0096"
+    },
+    {
+      "sessionId": "47505f01-95d5-4ed8-bf3d-800da1a7ad92",
+      "requestId": "group-turn:8cdf9687-f930-40db-9b80-114a3e3240de",
+      "groupId": "ad2d1221-76d1-42b0-92ea-2b0e2f7993b7",
+      "runId": "87083774-09a0-409b-805c-df89423f4eae",
+      "inputId": null,
+      "nativeSource": null,
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "ab95701d-f54b-42fa-9f05-29b4d8c9cf2b",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "37bc9153f5fb0e03242a620f2c4e70ae65cf1e0e76b14f5ff4b63dc2dec60ba9",
+          "exact": true
+        },
+        {
+          "id": "07fd0455-89c5-4153-b124-b1b8cc5ab01c",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-reply:8be0c035-5707-40a2-8978-0c38c817bf8a",
+          "authorId": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+          "digest": "07659d993e8bd35779e9b9b655869aadb4df867cacdc29654ee868e63b6a6b81",
+          "exact": true
+        },
+        {
+          "id": "4883d721-2ad6-4fe4-a859-5738b6a97a56",
+          "authorId": "7455a5cd-9198-4ddf-9a96-14a9620ab0f5",
+          "digest": "ff5ea4c5f8c0888a2f281dcca1451a3f09fc767a792ca5f8b308466c60148357",
+          "exact": true
+        },
+        {
+          "id": "group-reply:974556e6-c82d-4640-8faa-b61b4585b676",
+          "authorId": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+          "digest": "8573d95a6381b214c368191b94efbc6dd99e9c4d436f20f411b1ab2e10e3c6ab",
+          "exact": true
+        },
+        {
+          "id": "group-reply:1ff70fda-1759-4df9-acf9-1aef1dfdb9d7",
+          "authorId": "2bd34e32-db7c-474b-9d77-b2eb0511a931",
+          "digest": "ab8bd2bc9339fed63e2254d859c37fc502ac5a4f2a13b2f90bf71c8bfe12eb19",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["3ebd8517-819e-4836-ad58-a51f6725e656"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792921846668,
+      "inputDigest": "045fef39350e9e6f61efc63a6813cdfc9207013d31d2e02e16f34e6b32366bda",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": [],
+      "usage": {
+        "input": 13273,
+        "output": 97,
+        "total": 13370
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792921849201,
+      "output_digest": "46e233df5f551d0b4c3056476e4c7787a41e7f184b602eeb39688ed258741680"
+    }
+  ]
+}

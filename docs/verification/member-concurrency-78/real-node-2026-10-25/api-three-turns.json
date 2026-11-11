@@ -1,0 +1,1282 @@
+{
+  "version": 1,
+  "scope": "actual-node-product-api-and-authorized-real-inference",
+  "browser_acceptance": false,
+  "deployed_cloudflare_acceptance": false,
+  "physical_phone_acceptance": false,
+  "full_acceptance_complete": false,
+  "combined_comparison_passed": false,
+  "member_api_three_turns_passed": true,
+  "source_commit": "976959145e33c63cd38f035227ac96a01ce3dd14",
+  "source_sha256": {
+    "src/bot-groups/member-inbox-store.ts": "ffba68f2ee8956da558d5203de05456815632a4f19823acbd458517a9a87bf4b",
+    "src/bot-groups/member-model-store.ts": "ee3a74262da10ecfd7e810d98499a8f5b6db388ba3e56a49104649f91c4802fa",
+    "src/bot-groups/discussion-service.ts": "0422dc53e51aa0b2443eb90ed55053fb0e1613622089121badb195457631914d",
+    "src/bot-groups/discussion-context.ts": "7f0835c3216f430f414b4722518c8704c822dd2e0b192596507d233253c621d0",
+    "src/personal-agent/durable-runtime.ts": "de6986742748e3e25746b419ef4e85a808672c34501f076d937b41b128027269",
+    "src/personal-agent/product-runtime.ts": "fd9e297043a71ea7d907f9a0f61c81dcdc2660932794ea67c918eda8979a3c5d",
+    "scripts/lib/discussion-real-provider.ts": "30a2ccce24560ed9d1e5bf666ece42a3e760390ac9f87be7937c0d7ae3c29e73",
+    "tests/helpers/bot-handoff-http-fixture.ts": "e29598f8c30618937a54b077f7c25176bf436057913b8be95f32d6b5d813c64c",
+    "tests/helpers/member-envelopes.ts": "9dea3c481c50e58db6ed4c51f8ede65ed5bfcd39e77d5683729d25b127bd2f0b",
+    "package-lock.json": "81cfddeda24b007d450b6c4a146e18cbf27f3f2702971e18e45c4c0be2176fde",
+    "scripts/test-group-member-live.ts": "911d1a43d1ea5ae0d836814dcc34b0458daf63a15cde90186c299d3541c9a5c2"
+  },
+  "private_original_report_sha256": "9f956fadaa777ceb2c2ad2ac32b3cbe71bb9ea2f2bcbc8435397a578ded5b183",
+  "started_at": "2026-10-25T08:22:29.358Z",
+  "finished_at": "2026-10-25T08:23:45.262Z",
+  "synthetic_requests": 0,
+  "member_case": {
+    "mode": "member-inbox-v1",
+    "group_id": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+    "project": "青禾a92bbe",
+    "rounds": [
+      {
+        "round": 1,
+        "passed": true,
+        "run_id": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+        "correction_id": "8002618b-9834-4146-9f09-eb39a3a7960d",
+        "restart_evidence": null,
+        "expected": [310, 88, 222],
+        "answers": [
+          {
+            "id": "group-member:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+            "author_id": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "content": "已按用户最新更正（seq 11：印刷14取消且不计支出）重算，仅预览，不写文件、不付款、不部署。\n\n**最终核对（Reviewer）**\n- 项目：青禾a92bbe\n- 负责人：林岚\n- 总预算：310\n- 累计已用：88（场地61 + 摄影27；印刷14已取消不计）\n- 剩余预算：310 − 88 = **222**\n\n**口径审查结论**\n- 算术无误，222 为最新口径下的差额。\n- 仍保留原不确定点：61 与 27 是否含税、是否为全部已发生项（有无餐饮、交通、押金/预付款、应付款等未列项）。公开数据未声明完整性，故 222 应按“上限值”理解：真实可用余额 ≤ 222。\n- 确认口径所需补充：支出清单完整性声明、是否含税及税率、截至日期与在途/已签未付项、押金可退性、总预算是否含预留，以及逐项源凭证。\n- 印刷14的取消建议确认是否已有预付款或解约费用，如有则需作为独立项计入，否则同样会高估余额。",
+            "digest": "e44c5ae080ed290c5257380a15fd93984a93b8f044c143eb4722051746838e00",
+            "source": {
+              "run_id": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+              "execution_contract": "member-inbox-v1",
+              "kind": "group_member_reply",
+              "message_id": "reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+              "in_reply_to": "f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+              "source_task_id": 16,
+              "source_input_id": "37a951a1-d4be-4530-833e-8075d9f3ca1c",
+              "answer_entry_id": 17
+            }
+          },
+          {
+            "id": "member-answer:7853e6f6-5616-4ac1-81b5-734fa1d6e04c:26",
+            "author_id": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "content": "已收到 Reviewer 的实际审查结论，与我的独立核算一致，最终核对如下：\n\n- 项目：青禾a92bbe\n- 负责人：林岚\n- 总预算：310\n- 累计已用：88（场地 61 + 摄影 27；印刷 14 已按最新更正取消、不计支出）\n- 剩余预算：310 − 88 = 222\n\n一致性确认：Reviewer 计算的 88 与 222 和我的核对相同；双方都认定 61 与 27 是否为全部已发生项、是否含税这一点尚未闭合，因此 222 应作为上限值（真实可用余额 ≤ 222）。另需注意，印刷取消若已有预付款或解约费用，应另计为一笔支出。上述都是预算可行性讨论，未写文件、未付款、未部署。",
+            "digest": "aa84acee24b7d367beec781f28ece8748ea630a7f363e40806918b1d478c2caa",
+            "source": {
+              "run_id": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+              "execution_contract": "member-inbox-v1",
+              "kind": "group_member_final",
+              "source_task_id": 25,
+              "source_input_id": "e2651d59-26a0-491c-a59f-ed2a3e246548",
+              "answer_entry_id": 26,
+              "causal_root_message_id": "0ee7c723-0e97-4290-97f6-5fc4615500bd"
+            }
+          }
+        ],
+        "model_calls": 6,
+        "provider_peak": 2,
+        "elapsed_ms": 21319,
+        "reported_tokens": 21296,
+        "usage_complete": true,
+        "identical_same_author_outputs": 0,
+        "native_mail": [
+          {
+            "id": "f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+            "kind": "question",
+            "in_reply_to": null,
+            "sender_profile_id": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "recipient_profile_id": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "source_input_id": "c9d6030a-fadd-4c28-adde-10e4de48a1b5",
+            "source_task_id": 13,
+            "source_generation_id": 10,
+            "source_inputs": "[{\"submissionId\":9,\"requestId\":\"member-root:0ee7c723-0e97-4290-97f6-5fc4615500bd:6d262a6d-c20d-443f-a8ea-6552b3837e65\",\"entryId\":8}]",
+            "delivery_request_id": "member-question:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "deadline_at": 1792916691918,
+            "state": "replied",
+            "message_id": "group-member:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50"
+          },
+          {
+            "id": "reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+            "kind": "reply",
+            "in_reply_to": "f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+            "sender_profile_id": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "recipient_profile_id": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "source_input_id": "37a951a1-d4be-4530-833e-8075d9f3ca1c",
+            "source_task_id": 16,
+            "source_generation_id": 16,
+            "source_inputs": "[{\"input_id\":\"37a951a1-d4be-4530-833e-8075d9f3ca1c\",\"submission_id\":13,\"request_id\":\"member-control:8002618b-9834-4146-9f09-eb39a3a7960d:50dbb8e2-bd02-4fc4-9ad3-309aa8692068\",\"payload_digest\":\"f33f2e47f8bfc2614e538d0aaa56803f32132f99719aaf96d5328892d37e8163\",\"answer_entry_id\":17}]",
+            "delivery_request_id": "member-reply:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "deadline_at": 1792916691918,
+            "state": "consumed",
+            "message_id": "group-member:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50"
+          }
+        ],
+        "native_inputs": [
+          {
+            "id": "c9d6030a-fadd-4c28-adde-10e4de48a1b5",
+            "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+            "request_id": "member-root:0ee7c723-0e97-4290-97f6-5fc4615500bd:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "submission_id": 9,
+            "state": "completed",
+            "payload_digest": "325c2789a70e0fbb69dea49632af2d0f9314556702f04192916cbc5630caf6d8"
+          },
+          {
+            "id": "04a2b4db-8880-4b08-9686-648658c51e78",
+            "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+            "request_id": "member-question:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "submission_id": 9,
+            "state": "completed",
+            "payload_digest": "26aaff532f4811c9158e42a7750669e665aaa75fb7b990fb628c9cfe42949c95"
+          },
+          {
+            "id": "96fb4fb5-b639-4f84-85a0-f3e19a4faa87",
+            "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+            "request_id": "member-control:8002618b-9834-4146-9f09-eb39a3a7960d:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "submission_id": 17,
+            "state": "completed",
+            "payload_digest": "76dad1c051371e7c2f69a667b782fe61b106f9a00f07e8c71b196bcd17b5fe0c"
+          },
+          {
+            "id": "37a951a1-d4be-4530-833e-8075d9f3ca1c",
+            "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+            "request_id": "member-control:8002618b-9834-4146-9f09-eb39a3a7960d:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "submission_id": 13,
+            "state": "completed",
+            "payload_digest": "f33f2e47f8bfc2614e538d0aaa56803f32132f99719aaf96d5328892d37e8163"
+          },
+          {
+            "id": "e2651d59-26a0-491c-a59f-ed2a3e246548",
+            "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+            "request_id": "member-reply:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "submission_id": 24,
+            "state": "completed",
+            "payload_digest": "84cf7a7323006d3062e3dc38fbb250d115429b73752439e20f0bcbf7a109eb03"
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "passed": true,
+        "run_id": "4b80d69d-04e2-484e-90bc-9fed5fa8488c",
+        "correction_id": null,
+        "restart_evidence": null,
+        "expected": [310, 111, 199],
+        "answers": [
+          {
+            "id": "member-answer:a036e6dd-59e4-457d-9ac4-6076f2f0f30b:22",
+            "author_id": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "content": "最新核对（Reviewer，仅预览，不写文件、不付款、不部署）：\n\n- 项目：青禾a92bbe\n- 负责人：林岚\n- 总预算：310\n- 累计已用：111（场地61 + 摄影27 + 新增已付23；印刷14已取消不计，原有款项未重复计入）\n- 剩余预算：310 − 111 = **199**\n\n说明：算术无误。此前口径不确定点仍保留——61、27、23 是否含税及是否为全部已发生项（餐饮、交通、押金/预付款、应付款等）未声明，故 199 仍应按上限值理解（真实可用余额 ≤ 199）。印刷取消如有预付款或解约费用，需另计为独立支出。",
+            "digest": "6372fd87e4b74076592e846f5d140ea1910074e8a5cc9e92ed0b2af5aa684ddd",
+            "source": {
+              "run_id": "4b80d69d-04e2-484e-90bc-9fed5fa8488c",
+              "execution_contract": "member-inbox-v1",
+              "kind": "group_member_final",
+              "source_task_id": 21,
+              "source_input_id": "bd244356-4ab4-40e2-9177-6831df606b46",
+              "answer_entry_id": 22,
+              "causal_root_message_id": "67a533e5-3da6-4717-bf8d-b6ed73f0127a"
+            }
+          },
+          {
+            "id": "member-answer:7853e6f6-5616-4ac1-81b5-734fa1d6e04c:31",
+            "author_id": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "content": "在这轮新增支出中，我独立核算得到的累计已用为 88 + 23 = 111，剩余预算为 310 − 111 = 199。此前已计入的场地61、摄影27 未重复计入；印刷14仍按已取消处理，所以只把新增的23计入累计已用。\n\n- 项目：青禾a92bbe\n- 负责人：林岚\n- 总预算：310\n- 累计已用：111（场地61 + 摄影27 + 新增已付23）\n- 剩余预算：310 − 111 = 199\n\n可行性：累计已用仍在总预算内，剩余 199 大于 0；但对外口径仍要等这 23 的用途、是否属于此前未列项、是否含税这几项确认后，才能确定真实余额。本次只讨论可行性，未写文件、未付款、未部署。",
+            "digest": "6b81531540710def859097c5d6731f658e59b81b514973c364b2f9b9b93400df",
+            "source": {
+              "run_id": "4b80d69d-04e2-484e-90bc-9fed5fa8488c",
+              "execution_contract": "member-inbox-v1",
+              "kind": "group_member_final",
+              "source_task_id": 30,
+              "source_input_id": "8c54094c-529d-4c9e-b0a1-591e5e4a087a",
+              "answer_entry_id": 31,
+              "causal_root_message_id": "67a533e5-3da6-4717-bf8d-b6ed73f0127a"
+            }
+          }
+        ],
+        "model_calls": 2,
+        "provider_peak": 2,
+        "elapsed_ms": 5912,
+        "reported_tokens": 16097,
+        "usage_complete": true,
+        "identical_same_author_outputs": 0,
+        "native_mail": [],
+        "native_inputs": [
+          {
+            "id": "c9d6030a-fadd-4c28-adde-10e4de48a1b5",
+            "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+            "request_id": "member-root:0ee7c723-0e97-4290-97f6-5fc4615500bd:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "submission_id": 9,
+            "state": "completed",
+            "payload_digest": "325c2789a70e0fbb69dea49632af2d0f9314556702f04192916cbc5630caf6d8"
+          },
+          {
+            "id": "04a2b4db-8880-4b08-9686-648658c51e78",
+            "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+            "request_id": "member-question:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "submission_id": 9,
+            "state": "completed",
+            "payload_digest": "26aaff532f4811c9158e42a7750669e665aaa75fb7b990fb628c9cfe42949c95"
+          },
+          {
+            "id": "96fb4fb5-b639-4f84-85a0-f3e19a4faa87",
+            "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+            "request_id": "member-control:8002618b-9834-4146-9f09-eb39a3a7960d:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "submission_id": 17,
+            "state": "completed",
+            "payload_digest": "76dad1c051371e7c2f69a667b782fe61b106f9a00f07e8c71b196bcd17b5fe0c"
+          },
+          {
+            "id": "37a951a1-d4be-4530-833e-8075d9f3ca1c",
+            "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+            "request_id": "member-control:8002618b-9834-4146-9f09-eb39a3a7960d:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "submission_id": 13,
+            "state": "completed",
+            "payload_digest": "f33f2e47f8bfc2614e538d0aaa56803f32132f99719aaf96d5328892d37e8163"
+          },
+          {
+            "id": "e2651d59-26a0-491c-a59f-ed2a3e246548",
+            "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+            "request_id": "member-reply:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "submission_id": 24,
+            "state": "completed",
+            "payload_digest": "84cf7a7323006d3062e3dc38fbb250d115429b73752439e20f0bcbf7a109eb03"
+          },
+          {
+            "id": "bd244356-4ab4-40e2-9177-6831df606b46",
+            "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+            "request_id": "member-root:67a533e5-3da6-4717-bf8d-b6ed73f0127a:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "submission_id": 20,
+            "state": "completed",
+            "payload_digest": "b92514a69b8258772eb7d6ac6c8cb3d1ff749ad472d0755e425a48dfb0b65a6c"
+          },
+          {
+            "id": "8c54094c-529d-4c9e-b0a1-591e5e4a087a",
+            "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+            "request_id": "member-root:67a533e5-3da6-4717-bf8d-b6ed73f0127a:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "submission_id": 29,
+            "state": "completed",
+            "payload_digest": "6647b2b99e9ff5933369f23db5d0e88ad3605ba62c6aab48e8629ba90dd62db4"
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "passed": true,
+        "run_id": "032243ac-dabf-4364-95e1-eadaec5c3b5a",
+        "correction_id": null,
+        "restart_evidence": {
+          "message_ids": [
+            "0ee7c723-0e97-4290-97f6-5fc4615500bd",
+            "group-member:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+            "8002618b-9834-4146-9f09-eb39a3a7960d",
+            "group-member:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+            "member-answer:7853e6f6-5616-4ac1-81b5-734fa1d6e04c:26",
+            "67a533e5-3da6-4717-bf8d-b6ed73f0127a",
+            "member-answer:a036e6dd-59e4-457d-9ac4-6076f2f0f30b:22",
+            "member-answer:7853e6f6-5616-4ac1-81b5-734fa1d6e04c:31"
+          ],
+          "sessions_before": [
+            {
+              "profile_id": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+              "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b"
+            },
+            {
+              "profile_id": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+              "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c"
+            }
+          ],
+          "sessions_after": [
+            {
+              "profile_id": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+              "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b"
+            },
+            {
+              "profile_id": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+              "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c"
+            }
+          ],
+          "extra_provider_calls": 0
+        },
+        "expected": [293, 111, 182],
+        "answers": [
+          {
+            "id": "member-answer:a036e6dd-59e4-457d-9ac4-6076f2f0f30b:27",
+            "author_id": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "content": "最新核对（Reviewer，仅预览，不写文件、不付款、不部署）：\n\n- 项目：青禾a92bbe\n- 负责人：林岚\n- 总预算：293（310 − 17）\n- 累计已用：111（沿用上轮：场地61 + 摄影27 + 新增已付23；印刷14取消不计，未重新初始化）\n- 剩余预算：293 − 111 = **182**\n\n说明：算术无误。口径不确定点仍保留（61/27/23 是否含税、是否为全部已发生项），故 182 仍按上限值理解（真实可用余额 ≤ 182）。印刷取消如涉及预付款或解约费用需另计。",
+            "digest": "1bf1946bf63643750c344cc4e27b1aea9cad7b4aa8a7f725c8ca9dbc5d0ac8a0",
+            "source": {
+              "run_id": "032243ac-dabf-4364-95e1-eadaec5c3b5a",
+              "execution_contract": "member-inbox-v1",
+              "kind": "group_member_final",
+              "source_task_id": 26,
+              "source_input_id": "ffc4535a-ff07-43ce-b379-24818d159420",
+              "answer_entry_id": 27,
+              "causal_root_message_id": "e9f3c461-c7db-417f-a6eb-9d588c3e9e79"
+            }
+          },
+          {
+            "id": "member-answer:7853e6f6-5616-4ac1-81b5-734fa1d6e04c:36",
+            "author_id": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "content": "我按最新一轮的调整继续核算，没有重新初始化数据：总预算从310减少17，变为293，累计已用保持111不变。\n\n- 项目：青禾a92bbe\n- 负责人：林岚\n- 总预算：293（310 − 17）\n- 累计已用：111（场地61 + 摄影27 + 新增已付23；印刷14已取消不计）\n- 剩余预算：293 − 111 = 182\n\n可行性：剩余预算182仍大于0，仍在预算范围内；不过总预算减少后，可调整空间从199降至182。此前的不确定点不变：111是否含税、是否为全部已发生项尚未闭合，因此182仍要按上限值理解。本次只讨论可行性，未写文件、未付款、未部署。",
+            "digest": "68f9e2411baeaa83f5d9590682d9b743c97082ccd3037afa67a3e13a3cbcf28c",
+            "source": {
+              "run_id": "032243ac-dabf-4364-95e1-eadaec5c3b5a",
+              "execution_contract": "member-inbox-v1",
+              "kind": "group_member_final",
+              "source_task_id": 35,
+              "source_input_id": "e8cf8519-3ff2-478c-88d6-4cea98de432c",
+              "answer_entry_id": 36,
+              "causal_root_message_id": "e9f3c461-c7db-417f-a6eb-9d588c3e9e79"
+            }
+          }
+        ],
+        "model_calls": 2,
+        "provider_peak": 2,
+        "elapsed_ms": 5867,
+        "reported_tokens": 23014,
+        "usage_complete": true,
+        "identical_same_author_outputs": 0,
+        "native_mail": [],
+        "native_inputs": [
+          {
+            "id": "c9d6030a-fadd-4c28-adde-10e4de48a1b5",
+            "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+            "request_id": "member-root:0ee7c723-0e97-4290-97f6-5fc4615500bd:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "submission_id": 9,
+            "state": "completed",
+            "payload_digest": "325c2789a70e0fbb69dea49632af2d0f9314556702f04192916cbc5630caf6d8"
+          },
+          {
+            "id": "04a2b4db-8880-4b08-9686-648658c51e78",
+            "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+            "request_id": "member-question:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "submission_id": 9,
+            "state": "completed",
+            "payload_digest": "26aaff532f4811c9158e42a7750669e665aaa75fb7b990fb628c9cfe42949c95"
+          },
+          {
+            "id": "96fb4fb5-b639-4f84-85a0-f3e19a4faa87",
+            "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+            "request_id": "member-control:8002618b-9834-4146-9f09-eb39a3a7960d:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "submission_id": 17,
+            "state": "completed",
+            "payload_digest": "76dad1c051371e7c2f69a667b782fe61b106f9a00f07e8c71b196bcd17b5fe0c"
+          },
+          {
+            "id": "37a951a1-d4be-4530-833e-8075d9f3ca1c",
+            "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+            "request_id": "member-control:8002618b-9834-4146-9f09-eb39a3a7960d:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "submission_id": 13,
+            "state": "completed",
+            "payload_digest": "f33f2e47f8bfc2614e538d0aaa56803f32132f99719aaf96d5328892d37e8163"
+          },
+          {
+            "id": "e2651d59-26a0-491c-a59f-ed2a3e246548",
+            "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+            "request_id": "member-reply:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "submission_id": 24,
+            "state": "completed",
+            "payload_digest": "84cf7a7323006d3062e3dc38fbb250d115429b73752439e20f0bcbf7a109eb03"
+          },
+          {
+            "id": "bd244356-4ab4-40e2-9177-6831df606b46",
+            "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+            "request_id": "member-root:67a533e5-3da6-4717-bf8d-b6ed73f0127a:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "submission_id": 20,
+            "state": "completed",
+            "payload_digest": "b92514a69b8258772eb7d6ac6c8cb3d1ff749ad472d0755e425a48dfb0b65a6c"
+          },
+          {
+            "id": "8c54094c-529d-4c9e-b0a1-591e5e4a087a",
+            "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+            "request_id": "member-root:67a533e5-3da6-4717-bf8d-b6ed73f0127a:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "submission_id": 29,
+            "state": "completed",
+            "payload_digest": "6647b2b99e9ff5933369f23db5d0e88ad3605ba62c6aab48e8629ba90dd62db4"
+          },
+          {
+            "id": "ffc4535a-ff07-43ce-b379-24818d159420",
+            "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+            "request_id": "member-root:e9f3c461-c7db-417f-a6eb-9d588c3e9e79:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+            "submission_id": 25,
+            "state": "completed",
+            "payload_digest": "a6fb41422e96f10d49075745cc1646318a6c5912e58858946dbf1d8f42ce95e7"
+          },
+          {
+            "id": "e8cf8519-3ff2-478c-88d6-4cea98de432c",
+            "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+            "request_id": "member-root:e9f3c461-c7db-417f-a6eb-9d588c3e9e79:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+            "submission_id": 34,
+            "state": "completed",
+            "payload_digest": "73a6b3597961af8c9e8a339a43d0abb29b7931e384953da3efcce0b78d6ad5bf"
+          }
+        ]
+      }
+    ],
+    "passed": true,
+    "sessions": [
+      {
+        "profile_id": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+        "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b"
+      },
+      {
+        "profile_id": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+        "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c"
+      }
+    ]
+  },
+  "member_runs": [
+    {
+      "id": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+      "group_id": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+      "execution_contract": "member-inbox-v1",
+      "status": "completed",
+      "model_attempts": 6,
+      "error_code": null
+    },
+    {
+      "id": "4b80d69d-04e2-484e-90bc-9fed5fa8488c",
+      "group_id": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+      "execution_contract": "member-inbox-v1",
+      "status": "completed",
+      "model_attempts": 2,
+      "error_code": null
+    },
+    {
+      "id": "032243ac-dabf-4364-95e1-eadaec5c3b5a",
+      "group_id": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+      "execution_contract": "member-inbox-v1",
+      "status": "completed",
+      "model_attempts": 2,
+      "error_code": null
+    }
+  ],
+  "member_model_accounting": [
+    {
+      "run_id": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+      "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+      "native_task_id": 10,
+      "native_attempt": 1,
+      "request_id": "8572e6f8-972f-4dc8-85ff-5fe2659bd127",
+      "state": "released",
+      "reported_tokens": 1926,
+      "accounted_tokens": 1926
+    },
+    {
+      "run_id": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+      "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+      "native_task_id": 15,
+      "native_attempt": 1,
+      "request_id": "59d41f77-ab72-4394-b55c-c87eba3d8743",
+      "state": "released",
+      "reported_tokens": 2226,
+      "accounted_tokens": 2226
+    },
+    {
+      "run_id": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+      "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+      "native_task_id": 10,
+      "native_attempt": 1,
+      "request_id": "9aebbf95-8320-421c-a347-893a2f266b04",
+      "state": "released",
+      "reported_tokens": 2524,
+      "accounted_tokens": 2524
+    },
+    {
+      "run_id": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+      "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+      "native_task_id": 20,
+      "native_attempt": 1,
+      "request_id": "e9486be1-0fad-4b70-a2f3-ea513412fbe0",
+      "state": "released",
+      "reported_tokens": 3914,
+      "accounted_tokens": 3914
+    },
+    {
+      "run_id": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+      "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+      "native_task_id": 16,
+      "native_attempt": 1,
+      "request_id": "8133df22-e1b3-4e2e-8940-f3b14e3ca4ff",
+      "state": "released",
+      "reported_tokens": 4289,
+      "accounted_tokens": 4289
+    },
+    {
+      "run_id": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+      "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+      "native_task_id": 25,
+      "native_attempt": 1,
+      "request_id": "a37d88d0-3d04-45d3-9568-3d8460557c27",
+      "state": "released",
+      "reported_tokens": 6417,
+      "accounted_tokens": 6417
+    },
+    {
+      "run_id": "4b80d69d-04e2-484e-90bc-9fed5fa8488c",
+      "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+      "native_task_id": 21,
+      "native_attempt": 1,
+      "request_id": "a7c04b8d-1399-4315-82e1-17534db5cfa1",
+      "state": "released",
+      "reported_tokens": 6990,
+      "accounted_tokens": 6990
+    },
+    {
+      "run_id": "4b80d69d-04e2-484e-90bc-9fed5fa8488c",
+      "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+      "native_task_id": 30,
+      "native_attempt": 1,
+      "request_id": "9c3bb7e9-103c-49d9-966c-28c2d0578826",
+      "state": "released",
+      "reported_tokens": 9107,
+      "accounted_tokens": 9107
+    },
+    {
+      "run_id": "032243ac-dabf-4364-95e1-eadaec5c3b5a",
+      "session_id": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+      "native_task_id": 26,
+      "native_attempt": 1,
+      "request_id": "b793f3cc-9757-4a9f-b92c-4bc22409944a",
+      "state": "released",
+      "reported_tokens": 10440,
+      "accounted_tokens": 10440
+    },
+    {
+      "run_id": "032243ac-dabf-4364-95e1-eadaec5c3b5a",
+      "session_id": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+      "native_task_id": 35,
+      "native_attempt": 1,
+      "request_id": "136c14c3-8bc3-463a-a797-14b1a8a93fc7",
+      "state": "released",
+      "reported_tokens": 12574,
+      "accounted_tokens": 12574
+    }
+  ],
+  "member_provider_traces": [
+    {
+      "sessionId": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+      "requestId": "member-root:0ee7c723-0e97-4290-97f6-5fc4615500bd:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+      "groupId": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+      "runId": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+      "inputId": "c9d6030a-fadd-4c28-adde-10e4de48a1b5",
+      "nativeSource": {
+        "native_task_id": 10,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":9,\"requestId\":\"member-root:0ee7c723-0e97-4290-97f6-5fc4615500bd:6d262a6d-c20d-443f-a8ea-6552b3837e65\",\"entryId\":8}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [],
+      "userMessageIds": ["0ee7c723-0e97-4290-97f6-5fc4615500bd"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792916567949,
+      "inputDigest": "cbab3dfe9755d6ce5e90cc1c0e6122137cf0f867a757c7c83ce5a92ff3f6c7bf",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 1723,
+        "output": 203,
+        "total": 1926
+      },
+      "status": 200,
+      "finishReason": "tool_calls",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792916571791,
+      "output_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "sessionId": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+      "requestId": "member-root:0ee7c723-0e97-4290-97f6-5fc4615500bd:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+      "groupId": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+      "runId": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+      "inputId": "c9d6030a-fadd-4c28-adde-10e4de48a1b5",
+      "nativeSource": {
+        "native_task_id": 15,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":9,\"requestId\":\"member-root:0ee7c723-0e97-4290-97f6-5fc4615500bd:6d262a6d-c20d-443f-a8ea-6552b3837e65\",\"entryId\":8}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [],
+      "userMessageIds": ["0ee7c723-0e97-4290-97f6-5fc4615500bd"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792916572229,
+      "inputDigest": "e9c698f31e54ce5e7587412539d411eca559749e93f878559ae6559b210210c3",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 2043,
+        "output": 183,
+        "total": 2226
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "finishedAt": 1792916575481,
+      "output_digest": "cfca0ac361c3aa9a68754c99da7178cd6ffb9483466ca08da60b52cb2995ed93"
+    },
+    {
+      "sessionId": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+      "requestId": "member-question:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+      "groupId": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+      "runId": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+      "inputId": "04a2b4db-8880-4b08-9686-648658c51e78",
+      "nativeSource": {
+        "native_task_id": 10,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":9,\"requestId\":\"member-question:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50:50dbb8e2-bd02-4fc4-9ad3-309aa8692068\",\"entryId\":8}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "group-member:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "bde0802b603a71e6cb42779dc6d252ab82bed4d1d7158294183621227598d4d8",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["0ee7c723-0e97-4290-97f6-5fc4615500bd"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792916572832,
+      "inputDigest": "1a88fed10ea49a2584202589171ed3ee2a526dcdbf90ac8a4112c5b3d6e6252f",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 2081,
+        "output": 443,
+        "total": 2524
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "finishedAt": 1792916578299,
+      "output_digest": "c432980dd4a02bd8972c8c55c71ac3dd7519c71be40cfc9f6c09b4ebb7063700"
+    },
+    {
+      "sessionId": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+      "requestId": "member-control:8002618b-9834-4146-9f09-eb39a3a7960d:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+      "groupId": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+      "runId": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+      "inputId": "96fb4fb5-b639-4f84-85a0-f3e19a4faa87",
+      "nativeSource": {
+        "native_task_id": 20,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":17,\"requestId\":\"member-control:8002618b-9834-4146-9f09-eb39a3a7960d:6d262a6d-c20d-443f-a8ea-6552b3837e65\",\"entryId\":19}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "group-member:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "bde0802b603a71e6cb42779dc6d252ab82bed4d1d7158294183621227598d4d8",
+          "exact": true
+        },
+        {
+          "id": "8002618b-9834-4146-9f09-eb39a3a7960d",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        }
+      ],
+      "userMessageIds": [
+        "0ee7c723-0e97-4290-97f6-5fc4615500bd",
+        "8002618b-9834-4146-9f09-eb39a3a7960d"
+      ],
+      "containsIsolationCanary": false,
+      "startedAt": 1792916575806,
+      "inputDigest": "b4b9dcb58273f7e9ff26317ccf50871e6c3fb363c2291985c7bd70ffeba5f291",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 3728,
+        "output": 186,
+        "total": 3914
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792916578266,
+      "output_digest": "6b3c94b385b4f010d58509a2e9a14591e9cf4d6f600764d8a576365514829099"
+    },
+    {
+      "sessionId": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+      "requestId": "member-control:8002618b-9834-4146-9f09-eb39a3a7960d:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+      "groupId": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+      "runId": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+      "inputId": "37a951a1-d4be-4530-833e-8075d9f3ca1c",
+      "nativeSource": {
+        "native_task_id": 16,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":13,\"requestId\":\"member-control:8002618b-9834-4146-9f09-eb39a3a7960d:50dbb8e2-bd02-4fc4-9ad3-309aa8692068\",\"entryId\":15}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "group-member:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "bde0802b603a71e6cb42779dc6d252ab82bed4d1d7158294183621227598d4d8",
+          "exact": true
+        },
+        {
+          "id": "8002618b-9834-4146-9f09-eb39a3a7960d",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        }
+      ],
+      "userMessageIds": [
+        "0ee7c723-0e97-4290-97f6-5fc4615500bd",
+        "8002618b-9834-4146-9f09-eb39a3a7960d"
+      ],
+      "containsIsolationCanary": false,
+      "startedAt": 1792916578629,
+      "inputDigest": "8e020c7c9da9de2c524a69d057f3d22c5896a6c0f113cb7b289f9b6f1f1c91eb",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 4026,
+        "output": 263,
+        "total": 4289
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792916582129,
+      "output_digest": "e44c5ae080ed290c5257380a15fd93984a93b8f044c143eb4722051746838e00"
+    },
+    {
+      "sessionId": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+      "requestId": "member-reply:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+      "groupId": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+      "runId": "aca9cc64-a6af-4218-970a-65541cd4fbbe",
+      "inputId": "e2651d59-26a0-491c-a59f-ed2a3e246548",
+      "nativeSource": {
+        "native_task_id": 25,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":24,\"requestId\":\"member-reply:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50:6d262a6d-c20d-443f-a8ea-6552b3837e65\",\"entryId\":23}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "group-member:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "bde0802b603a71e6cb42779dc6d252ab82bed4d1d7158294183621227598d4d8",
+          "exact": true
+        },
+        {
+          "id": "8002618b-9834-4146-9f09-eb39a3a7960d",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-member:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+          "authorId": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+          "digest": "e44c5ae080ed290c5257380a15fd93984a93b8f044c143eb4722051746838e00",
+          "exact": true
+        },
+        {
+          "id": "8002618b-9834-4146-9f09-eb39a3a7960d",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        }
+      ],
+      "userMessageIds": [
+        "0ee7c723-0e97-4290-97f6-5fc4615500bd",
+        "8002618b-9834-4146-9f09-eb39a3a7960d"
+      ],
+      "containsIsolationCanary": false,
+      "startedAt": 1792916582818,
+      "inputDigest": "c03ba3bdc266c6d26dfd9325de4201823f1f726d5eed8463b2d950eca899e52d",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 6236,
+        "output": 181,
+        "total": 6417
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "finishedAt": 1792916585463,
+      "output_digest": "aa84acee24b7d367beec781f28ece8748ea630a7f363e40806918b1d478c2caa"
+    },
+    {
+      "sessionId": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+      "requestId": "member-root:67a533e5-3da6-4717-bf8d-b6ed73f0127a:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+      "groupId": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+      "runId": "4b80d69d-04e2-484e-90bc-9fed5fa8488c",
+      "inputId": "bd244356-4ab4-40e2-9177-6831df606b46",
+      "nativeSource": {
+        "native_task_id": 21,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":20,\"requestId\":\"member-root:67a533e5-3da6-4717-bf8d-b6ed73f0127a:50dbb8e2-bd02-4fc4-9ad3-309aa8692068\",\"entryId\":19}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "0ee7c723-0e97-4290-97f6-5fc4615500bd",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "4ef0665ed995142100271e818fd0816ef1681a997986ebffdc2eea199ac5a7c7",
+          "exact": true
+        },
+        {
+          "id": "group-member:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "bde0802b603a71e6cb42779dc6d252ab82bed4d1d7158294183621227598d4d8",
+          "exact": true
+        },
+        {
+          "id": "8002618b-9834-4146-9f09-eb39a3a7960d",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-member:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+          "authorId": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+          "digest": "e44c5ae080ed290c5257380a15fd93984a93b8f044c143eb4722051746838e00",
+          "exact": true
+        },
+        {
+          "id": "member-answer:7853e6f6-5616-4ac1-81b5-734fa1d6e04c:26",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "aa84acee24b7d367beec781f28ece8748ea630a7f363e40806918b1d478c2caa",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["67a533e5-3da6-4717-bf8d-b6ed73f0127a"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792916587482,
+      "inputDigest": "c3a93a8625e6fd1180e1a412d0f9bd5ceb058896e8dbf32f3ce9d7d472695c5f",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 6822,
+        "output": 168,
+        "total": 6990
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792916591190,
+      "output_digest": "6372fd87e4b74076592e846f5d140ea1910074e8a5cc9e92ed0b2af5aa684ddd"
+    },
+    {
+      "sessionId": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+      "requestId": "member-root:67a533e5-3da6-4717-bf8d-b6ed73f0127a:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+      "groupId": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+      "runId": "4b80d69d-04e2-484e-90bc-9fed5fa8488c",
+      "inputId": "8c54094c-529d-4c9e-b0a1-591e5e4a087a",
+      "nativeSource": {
+        "native_task_id": 30,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":29,\"requestId\":\"member-root:67a533e5-3da6-4717-bf8d-b6ed73f0127a:6d262a6d-c20d-443f-a8ea-6552b3837e65\",\"entryId\":28}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "0ee7c723-0e97-4290-97f6-5fc4615500bd",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "4ef0665ed995142100271e818fd0816ef1681a997986ebffdc2eea199ac5a7c7",
+          "exact": true
+        },
+        {
+          "id": "group-member:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "bde0802b603a71e6cb42779dc6d252ab82bed4d1d7158294183621227598d4d8",
+          "exact": true
+        },
+        {
+          "id": "8002618b-9834-4146-9f09-eb39a3a7960d",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-member:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+          "authorId": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+          "digest": "e44c5ae080ed290c5257380a15fd93984a93b8f044c143eb4722051746838e00",
+          "exact": true
+        },
+        {
+          "id": "member-answer:7853e6f6-5616-4ac1-81b5-734fa1d6e04c:26",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "aa84acee24b7d367beec781f28ece8748ea630a7f363e40806918b1d478c2caa",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["67a533e5-3da6-4717-bf8d-b6ed73f0127a"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792916587482,
+      "inputDigest": "f3ed79f0784e552bba3783f4fbf6e5ece17b8f96318852c357c3a225993e7cf1",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 8915,
+        "output": 192,
+        "total": 9107
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792916591499,
+      "output_digest": "6b81531540710def859097c5d6731f658e59b81b514973c364b2f9b9b93400df"
+    },
+    {
+      "sessionId": "a036e6dd-59e4-457d-9ac4-6076f2f0f30b",
+      "requestId": "member-root:e9f3c461-c7db-417f-a6eb-9d588c3e9e79:50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+      "groupId": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+      "runId": "032243ac-dabf-4364-95e1-eadaec5c3b5a",
+      "inputId": "ffc4535a-ff07-43ce-b379-24818d159420",
+      "nativeSource": {
+        "native_task_id": 26,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":25,\"requestId\":\"member-root:e9f3c461-c7db-417f-a6eb-9d588c3e9e79:50dbb8e2-bd02-4fc4-9ad3-309aa8692068\",\"entryId\":24}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "0ee7c723-0e97-4290-97f6-5fc4615500bd",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "4ef0665ed995142100271e818fd0816ef1681a997986ebffdc2eea199ac5a7c7",
+          "exact": true
+        },
+        {
+          "id": "group-member:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "bde0802b603a71e6cb42779dc6d252ab82bed4d1d7158294183621227598d4d8",
+          "exact": true
+        },
+        {
+          "id": "8002618b-9834-4146-9f09-eb39a3a7960d",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-member:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+          "authorId": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+          "digest": "e44c5ae080ed290c5257380a15fd93984a93b8f044c143eb4722051746838e00",
+          "exact": true
+        },
+        {
+          "id": "member-answer:7853e6f6-5616-4ac1-81b5-734fa1d6e04c:26",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "aa84acee24b7d367beec781f28ece8748ea630a7f363e40806918b1d478c2caa",
+          "exact": true
+        },
+        {
+          "id": "67a533e5-3da6-4717-bf8d-b6ed73f0127a",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "ff5ea4c5f8c0888a2f281dcca1451a3f09fc767a792ca5f8b308466c60148357",
+          "exact": true
+        },
+        {
+          "id": "member-answer:a036e6dd-59e4-457d-9ac4-6076f2f0f30b:22",
+          "authorId": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+          "digest": "6372fd87e4b74076592e846f5d140ea1910074e8a5cc9e92ed0b2af5aa684ddd",
+          "exact": true
+        },
+        {
+          "id": "member-answer:7853e6f6-5616-4ac1-81b5-734fa1d6e04c:31",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "6b81531540710def859097c5d6731f658e59b81b514973c364b2f9b9b93400df",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["e9f3c461-c7db-417f-a6eb-9d588c3e9e79"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792916611331,
+      "inputDigest": "bde489564fb4a05c4794eda20a6c96210ba2e30182b82d7f5c4a7bcd4da51f48",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 10287,
+        "output": 153,
+        "total": 10440
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792916613844,
+      "output_digest": "1bf1946bf63643750c344cc4e27b1aea9cad7b4aa8a7f725c8ca9dbc5d0ac8a0"
+    },
+    {
+      "sessionId": "7853e6f6-5616-4ac1-81b5-734fa1d6e04c",
+      "requestId": "member-root:e9f3c461-c7db-417f-a6eb-9d588c3e9e79:6d262a6d-c20d-443f-a8ea-6552b3837e65",
+      "groupId": "1024cf3b-2118-4e82-8e17-7071bc4ec9fa",
+      "runId": "032243ac-dabf-4364-95e1-eadaec5c3b5a",
+      "inputId": "e8cf8519-3ff2-478c-88d6-4cea98de432c",
+      "nativeSource": {
+        "native_task_id": 35,
+        "native_attempt": 1,
+        "source_inputs": "[{\"submissionId\":34,\"requestId\":\"member-root:e9f3c461-c7db-417f-a6eb-9d588c3e9e79:6d262a6d-c20d-443f-a8ea-6552b3837e65\",\"entryId\":33}]"
+      },
+      "frozenInputMatches": true,
+      "publicReads": [
+        {
+          "id": "0ee7c723-0e97-4290-97f6-5fc4615500bd",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "4ef0665ed995142100271e818fd0816ef1681a997986ebffdc2eea199ac5a7c7",
+          "exact": true
+        },
+        {
+          "id": "group-member:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "bde0802b603a71e6cb42779dc6d252ab82bed4d1d7158294183621227598d4d8",
+          "exact": true
+        },
+        {
+          "id": "8002618b-9834-4146-9f09-eb39a3a7960d",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+          "exact": true
+        },
+        {
+          "id": "group-member:reply:f9e42335-a2b7-4707-b9f4-a7f9fb5a7f50",
+          "authorId": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+          "digest": "e44c5ae080ed290c5257380a15fd93984a93b8f044c143eb4722051746838e00",
+          "exact": true
+        },
+        {
+          "id": "member-answer:7853e6f6-5616-4ac1-81b5-734fa1d6e04c:26",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "aa84acee24b7d367beec781f28ece8748ea630a7f363e40806918b1d478c2caa",
+          "exact": true
+        },
+        {
+          "id": "67a533e5-3da6-4717-bf8d-b6ed73f0127a",
+          "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+          "digest": "ff5ea4c5f8c0888a2f281dcca1451a3f09fc767a792ca5f8b308466c60148357",
+          "exact": true
+        },
+        {
+          "id": "member-answer:a036e6dd-59e4-457d-9ac4-6076f2f0f30b:22",
+          "authorId": "50dbb8e2-bd02-4fc4-9ad3-309aa8692068",
+          "digest": "6372fd87e4b74076592e846f5d140ea1910074e8a5cc9e92ed0b2af5aa684ddd",
+          "exact": true
+        },
+        {
+          "id": "member-answer:7853e6f6-5616-4ac1-81b5-734fa1d6e04c:31",
+          "authorId": "6d262a6d-c20d-443f-a8ea-6552b3837e65",
+          "digest": "6b81531540710def859097c5d6731f658e59b81b514973c364b2f9b9b93400df",
+          "exact": true
+        }
+      ],
+      "userMessageIds": ["e9f3c461-c7db-417f-a6eb-9d588c3e9e79"],
+      "containsIsolationCanary": false,
+      "startedAt": 1792916611581,
+      "inputDigest": "9e7a0e92db727e657ef47a6eb8dafb38ee5e29fefe13a251a39ad77000f3e3a5",
+      "temperature": null,
+      "maxTokens": 4096,
+      "toolNames": ["ask_group_dot", "read_group_context"],
+      "usage": {
+        "input": 12404,
+        "output": 170,
+        "total": 12574
+      },
+      "status": 200,
+      "finishReason": "stop",
+      "completionSentinel": true,
+      "aborted": true,
+      "closedAfterCompletion": true,
+      "finishedAt": 1792916614269,
+      "output_digest": "68f9e2411baeaa83f5d9590682d9b743c97082ccd3037afa67a3e13a3cbcf28c"
+    }
+  ],
+  "legacy_baseline": {
+    "mode": "legacy-relay-v1",
+    "whole_case_passed": false,
+    "completed_round_records": 0,
+    "failed_check": "Cumulative arithmetic mismatch",
+    "runs": [
+      {
+        "id": "797b5ea9-d8eb-4ada-9852-f69243b40516",
+        "group_id": "612445b4-2eac-449b-b891-5a16935ca8cc",
+        "execution_contract": "serial-v1",
+        "status": "completed",
+        "model_attempts": 3,
+        "error_code": null
+      }
+    ],
+    "messages": [
+      {
+        "id": "cbf808d5-b01a-40ca-9d63-3625b307a882",
+        "group_id": "612445b4-2eac-449b-b891-5a16935ca8cc",
+        "seq": 9,
+        "author_kind": "user",
+        "author_id": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+        "content": "核对项目青禾f013d6的活动预算：负责人林岚，总预算310，已支出场地61、摄影27、印刷14。Developer 在独立检查方案时请 Reviewer 审查一个具体的不确定点并使用实际审查结果；二位最后都简短给出项目、负责人、总预算、累计已用、剩余预算。只讨论可行性，不执行文件、付款或部署。无需规定轮流发言顺序。",
+        "source": "{\"kind\":\"user\",\"actor_user_id\":\"20988dcf-8292-4932-8acd-b10905fbc9c7\",\"event\":null,\"details\":{},\"runtime_id\":null,\"task_id\":null}"
+      },
+      {
+        "id": "group-reply:92f56ebf-206b-45b4-a2f8-b43cced22f2c",
+        "group_id": "612445b4-2eac-449b-b891-5a16935ca8cc",
+        "seq": 10,
+        "author_kind": "bot",
+        "author_id": "858aa23d-c4bd-4ab4-ab13-d08b35bc4a27",
+        "content": "独立核算：场地61+摄影27+印刷14=102，剩余310−102=208，金额一致无冲突。唯一不确定点是印刷14是否含税/是否最终结算额——若未含税或尚有尾款，累计已用和剩余会变动。请Reviewer就这一点给出实际审查结论。当前可行性：预算充足，可继续，但应把印刷费口径（含税/已付讫）确认为最终值。项目青禾f013d6，负责人林岚，总预算310，累计已用102，剩余208。",
+        "source": "{\"kind\":\"group_discussion_reply\",\"run_id\":\"797b5ea9-d8eb-4ada-9852-f69243b40516\",\"turn_id\":\"92f56ebf-206b-45b4-a2f8-b43cced22f2c\",\"session_id\":\"09b0b3c4-3928-484e-8383-17317845d6ea\",\"request_id\":\"group-turn:92f56ebf-206b-45b4-a2f8-b43cced22f2c\",\"input_id\":\"485c88a9-ee8e-496a-bfb7-61cda46664d1\",\"submission_id\":9,\"task_id\":10,\"answer_entry_id\":12,\"result_digest\":\"7fe7a15e86c991382d72da0f747ffc1dddc1341bece2489a694042d98f110a1b\",\"action\":\"reply\",\"protocol_version\":2}"
+      },
+      {
+        "id": "57b62f93-b901-4b1e-a295-917459fc8796",
+        "group_id": "612445b4-2eac-449b-b891-5a16935ca8cc",
+        "seq": 11,
+        "author_kind": "user",
+        "author_id": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+        "content": "追加更正：印刷14已取消且不计支出；其他支出不变。只做预览，不写文件、不付款、不部署。请最终按这一最新限制与金额核对。",
+        "source": "{\"kind\":\"user\",\"actor_user_id\":\"20988dcf-8292-4932-8acd-b10905fbc9c7\",\"event\":null,\"details\":{},\"runtime_id\":null,\"task_id\":null}"
+      },
+      {
+        "id": "group-reply:0aa95118-e5bf-4493-978d-17deac7ecda1",
+        "group_id": "612445b4-2eac-449b-b891-5a16935ca8cc",
+        "seq": 12,
+        "author_kind": "bot",
+        "author_id": "6479c0d0-8ce2-4597-89c9-f50044283364",
+        "content": "审查结论（仅基于公开数据）：场地61+摄影27+印刷14=102，310−102=208，加总与剩余均正确，无计算冲突。关于印刷14的口径：现有公开信息只有金额，未标注含税与否、是否已付讫，我无法核实，因此不能确认其为最终结算额，也不会声称任何税务或付款状态。建议将印刷14暂记“待确认”：若后续确认为含税且已付讫，累计已用102、剩余208成立；若未含税或有尾款，这两项需相应调整。可行性上预算有充足余量，不涉及文件、付款或部署。项目青禾f013d6，负责人林岚，总预算310，累计已用102（印刷口径待确认），剩余208。",
+        "source": "{\"kind\":\"group_discussion_reply\",\"run_id\":\"797b5ea9-d8eb-4ada-9852-f69243b40516\",\"turn_id\":\"0aa95118-e5bf-4493-978d-17deac7ecda1\",\"session_id\":\"9dd52a25-6c38-4d7e-9669-1c28c767c0d1\",\"request_id\":\"group-turn:0aa95118-e5bf-4493-978d-17deac7ecda1\",\"input_id\":\"a031202c-7359-4486-8ed0-3ce7061ad6a6\",\"submission_id\":9,\"task_id\":10,\"answer_entry_id\":12,\"result_digest\":\"9bd0620bbf7682a9b9e7fbc160477305e0e85f13f7b96c72c538fe0ef16e0416\",\"action\":\"reply\",\"protocol_version\":2}"
+      },
+      {
+        "id": "group-reply:fb247aae-b6d9-48c5-afa1-81e06b960252",
+        "group_id": "612445b4-2eac-449b-b891-5a16935ca8cc",
+        "seq": 13,
+        "author_kind": "bot",
+        "author_id": "858aa23d-c4bd-4ab4-ab13-d08b35bc4a27",
+        "content": "按最新更正重算：印刷14已取消、不计支出，故累计已用=场地61+摄影27=88，剩余=310−88=222。Reviewer关于印刷口径的审查因该项取消而不再适用，此前“待确认”点已消解，其余数字无冲突。仅预览，不写文件、不付款、不部署。项目青禾f013d6，负责人林岚，总预算310，累计已用88，剩余222。",
+        "source": "{\"kind\":\"group_discussion_reply\",\"run_id\":\"797b5ea9-d8eb-4ada-9852-f69243b40516\",\"turn_id\":\"fb247aae-b6d9-48c5-afa1-81e06b960252\",\"session_id\":\"09b0b3c4-3928-484e-8383-17317845d6ea\",\"request_id\":\"group-turn:fb247aae-b6d9-48c5-afa1-81e06b960252\",\"input_id\":\"89470e72-7c12-4bef-8bbe-18fbc2760574\",\"submission_id\":15,\"task_id\":16,\"answer_entry_id\":17,\"result_digest\":\"32f753aaf646e32cbcccacee075e6f1bcf2be91e2b5558d404dd0c311491c327\",\"action\":\"finish\",\"protocol_version\":2}"
+      }
+    ],
+    "provider_traces": [
+      {
+        "sessionId": "09b0b3c4-3928-484e-8383-17317845d6ea",
+        "requestId": "group-turn:92f56ebf-206b-45b4-a2f8-b43cced22f2c",
+        "groupId": "612445b4-2eac-449b-b891-5a16935ca8cc",
+        "runId": "797b5ea9-d8eb-4ada-9852-f69243b40516",
+        "inputId": null,
+        "nativeSource": null,
+        "frozenInputMatches": true,
+        "publicReads": [],
+        "userMessageIds": ["cbf808d5-b01a-40ca-9d63-3625b307a882"],
+        "containsIsolationCanary": false,
+        "startedAt": 1792916616411,
+        "inputDigest": "b213df01112d12a3a31725b4978cbf8493fe4c7cba8dfea1daa9f6fb9f072173",
+        "temperature": null,
+        "maxTokens": 4096,
+        "toolNames": [],
+        "usage": {
+          "input": 1368,
+          "output": 136,
+          "total": 1504
+        },
+        "status": 200,
+        "finishReason": "stop",
+        "completionSentinel": true,
+        "aborted": true,
+        "closedAfterCompletion": true,
+        "finishedAt": 1792916619246,
+        "output_digest": "7fe7a15e86c991382d72da0f747ffc1dddc1341bece2489a694042d98f110a1b"
+      },
+      {
+        "sessionId": "9dd52a25-6c38-4d7e-9669-1c28c767c0d1",
+        "requestId": "group-turn:0aa95118-e5bf-4493-978d-17deac7ecda1",
+        "groupId": "612445b4-2eac-449b-b891-5a16935ca8cc",
+        "runId": "797b5ea9-d8eb-4ada-9852-f69243b40516",
+        "inputId": null,
+        "nativeSource": null,
+        "frozenInputMatches": true,
+        "publicReads": [
+          {
+            "id": "group-reply:92f56ebf-206b-45b4-a2f8-b43cced22f2c",
+            "authorId": "858aa23d-c4bd-4ab4-ab13-d08b35bc4a27",
+            "digest": "0c4fe94ce23084956d10afaa5b0f85f4fa431c250a12fff1fe2e4fd27550376b",
+            "exact": true
+          }
+        ],
+        "userMessageIds": ["cbf808d5-b01a-40ca-9d63-3625b307a882"],
+        "containsIsolationCanary": false,
+        "startedAt": 1792916619527,
+        "inputDigest": "2320ec373203d6869c0604ca9600b5cb380a66bdaafba2e9343a95828dc0cd57",
+        "temperature": null,
+        "maxTokens": 4096,
+        "toolNames": [],
+        "usage": {
+          "input": 1624,
+          "output": 186,
+          "total": 1810
+        },
+        "status": 200,
+        "finishReason": "stop",
+        "completionSentinel": true,
+        "aborted": true,
+        "closedAfterCompletion": true,
+        "finishedAt": 1792916622497,
+        "output_digest": "9bd0620bbf7682a9b9e7fbc160477305e0e85f13f7b96c72c538fe0ef16e0416"
+      },
+      {
+        "sessionId": "09b0b3c4-3928-484e-8383-17317845d6ea",
+        "requestId": "group-turn:fb247aae-b6d9-48c5-afa1-81e06b960252",
+        "groupId": "612445b4-2eac-449b-b891-5a16935ca8cc",
+        "runId": "797b5ea9-d8eb-4ada-9852-f69243b40516",
+        "inputId": null,
+        "nativeSource": null,
+        "frozenInputMatches": true,
+        "publicReads": [
+          {
+            "id": "57b62f93-b901-4b1e-a295-917459fc8796",
+            "authorId": "20988dcf-8292-4932-8acd-b10905fbc9c7",
+            "digest": "848444efaec3ac66aeabdaeacba6f6fd3a6e884b1b29f4af95f293f15a48aa71",
+            "exact": true
+          },
+          {
+            "id": "group-reply:0aa95118-e5bf-4493-978d-17deac7ecda1",
+            "authorId": "6479c0d0-8ce2-4597-89c9-f50044283364",
+            "digest": "21e5a655e0562cda42f8ae0ac924161e9ed8309cd0aa83326180ead824a54a58",
+            "exact": true
+          }
+        ],
+        "userMessageIds": [
+          "cbf808d5-b01a-40ca-9d63-3625b307a882",
+          "57b62f93-b901-4b1e-a295-917459fc8796"
+        ],
+        "containsIsolationCanary": false,
+        "startedAt": 1792916622706,
+        "inputDigest": "37279b2ce35e49c33dcbaab4edfcfa52d2ffa93efe05235301c1da87fb05e064",
+        "temperature": null,
+        "maxTokens": 4096,
+        "toolNames": [],
+        "usage": {
+          "input": 3202,
+          "output": 118,
+          "total": 3320
+        },
+        "status": 200,
+        "finishReason": "stop",
+        "completionSentinel": true,
+        "aborted": true,
+        "closedAfterCompletion": true,
+        "finishedAt": 1792916625166,
+        "output_digest": "32f753aaf646e32cbcccacee075e6f1bcf2be91e2b5558d404dd0c311491c327"
+      }
+    ],
+    "finding": "Reviewer answered the pre-correction frozen snapshot; Developer final used the correction. The original overall comparison remains failed."
+  }
+}

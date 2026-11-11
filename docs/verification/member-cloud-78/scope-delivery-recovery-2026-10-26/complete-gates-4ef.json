@@ -1,0 +1,183 @@
+{
+  "source_commit": "4ef473890b1135d1b231325017454201b749783e",
+  "byte_audit_files": 2019,
+  "started_at": "2026-10-25T18:43:24.993263+00:00",
+  "steps": [
+    {
+      "name": "types",
+      "cwd": ".",
+      "command": ["make", "typecheck"],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 66.92,
+      "log_sha256": "14137f117b20764259a7e76b747d7ce4a93e0ece81cf7022f6557c0a4931fc75",
+      "finished_at": "2026-10-25T18:44:31.925339+00:00"
+    },
+    {
+      "name": "worker-types",
+      "cwd": "apps/cloud-agent",
+      "command": ["npm", "run", "typecheck"],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 10.62,
+      "log_sha256": "5a541be57ebdc7cbfe8e53504a2431fcbd57ecd2a161ad261686f5b7c2a73946",
+      "finished_at": "2026-10-25T18:44:42.551885+00:00"
+    },
+    {
+      "name": "worker-build",
+      "cwd": "apps/cloud-agent",
+      "command": [
+        "node",
+        "../../scripts/run-node-cli.mjs",
+        "wrangler",
+        "deploy",
+        "--dry-run",
+        "--outdir",
+        "dist"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 7.0,
+      "log_sha256": "4d7a09ecceab4ac68cd9d06636627d516fb90be7509ae7c7925e4b58d6c657ec",
+      "finished_at": "2026-10-25T18:44:49.557592+00:00"
+    },
+    {
+      "name": "web-build",
+      "cwd": "web",
+      "command": ["node", "../scripts/run-node-cli.mjs", "vite", "build"],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 101.3,
+      "log_sha256": "522a4f3a906e8700dde3e7e49615d7ea02d562b4111c13b15893602aeeb829b2",
+      "finished_at": "2026-10-25T18:46:30.861351+00:00"
+    },
+    {
+      "name": "runner-build",
+      "cwd": "container/agent-runner",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--incremental",
+        "false"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 6.89,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "finished_at": "2026-10-25T18:46:37.758064+00:00"
+    },
+    {
+      "name": "workerd",
+      "cwd": "apps/cloud-agent",
+      "command": ["npm", "test"],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 292.72,
+      "log_sha256": "cac41994a6e977a35122884764e3ae8ae9f8d77559d2c80ea79a4d0b738a1622",
+      "finished_at": "2026-10-25T18:51:30.478418+00:00"
+    },
+    {
+      "name": "authority",
+      "cwd": ".",
+      "command": ["npm", "run", "test:cloud-authority"],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 2233.99,
+      "log_sha256": "a562d6c10dfebc0d58025bbbf6c6d7237c8bffcf2e7fdd2e54727be46538eb19",
+      "finished_at": "2026-10-25T19:28:44.480705+00:00"
+    },
+    {
+      "name": "root",
+      "cwd": ".",
+      "command": ["make", "test"],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 1560.64,
+      "log_sha256": "50aaa77d2a54c0fb6f579f200dae5bb7e38258cae47b05c405c7bba216942823",
+      "finished_at": "2026-10-25T19:54:45.193795+00:00"
+    },
+    {
+      "name": "group-browser",
+      "cwd": "web",
+      "command": [
+        "node",
+        "../scripts/run-node-cli.mjs",
+        "playwright",
+        "test",
+        "--config",
+        "playwright.group-create.config.ts"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 142.64,
+      "log_sha256": "056bfb1296cc16f24577596110ae34689a3e4f11d1441e67e2efbe8be95f48be",
+      "finished_at": "2026-10-25T19:57:07.835574+00:00"
+    },
+    {
+      "name": "member-concurrency-browser",
+      "cwd": "web",
+      "command": [
+        "node",
+        "../scripts/run-node-cli.mjs",
+        "playwright",
+        "test",
+        "--config",
+        "playwright.member-concurrency.config.ts"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 15.88,
+      "log_sha256": "dbd5e647fdf49663cb52c69c487cf200cdb6f3a36edc8970f5060fe3d0400f1f",
+      "finished_at": "2026-10-25T19:57:23.722414+00:00"
+    },
+    {
+      "name": "member-stop-browser",
+      "cwd": "web",
+      "command": [
+        "node",
+        "../scripts/run-node-cli.mjs",
+        "playwright",
+        "test",
+        "--config",
+        "playwright.member-stop.config.ts"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "duration_seconds": 17.3,
+      "log_sha256": "71118758093dfec24a3f46fa9440a8bcded2cdcea6628ec3f3fc444f2d0428d9",
+      "finished_at": "2026-10-25T19:57:41.029085+00:00"
+    }
+  ],
+  "running": null,
+  "running_started_at": "2026-10-25T19:57:23.722473+00:00",
+  "exit_code": 0,
+  "finished_at": "2026-10-25T19:57:41.029148+00:00",
+  "observed_results": {
+    "root": {
+      "files": 435,
+      "passed": 3361,
+      "skipped": 23
+    },
+    "authority": {
+      "files": 21,
+      "passed": 120
+    },
+    "workerd": {
+      "files": 5,
+      "passed": 86
+    },
+    "group-browser": {
+      "passed": 8
+    },
+    "member-concurrency-browser": {
+      "passed": 1
+    },
+    "member-stop-browser": {
+      "passed": 1
+    }
+  },
+  "limits": [
+    "Actual Node and local workerd with controlled inference; not vendor inference or deployed Cloudflare.",
+    "Frozen 4ef gate; later 108154d adds one test only, not rerun as a full Root gate."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "checked_at": "2026-10-25T21:05:15.801569+00:00",
+  "wrangler_authenticated": false,
+  "required_live_bindings_present": {
+    "MINICLAW_CLOUD_LIVE_URL": false,
+    "MINICLAW_CLOUD_SHARED_SECRET": false,
+    "MINICLAW_ZEN_MODEL": false,
+    "MINICLAW_CLOUD_LIVE_PROVIDER_ID": false
+  },
+  "staging_execution_authorized": false,
+  "deployment_attempted": false,
+  "live_model_requests": 0,
+  "scope": "Read-only Wrangler authentication and current process binding presence, not a search of all user credentials or remote accounts.",
+  "wrangler_whoami": {
+    "exit_code": 0,
+    "authenticated": false,
+    "private_log_sha256": "98a6a33bf165f4c52f1f21f835c61c7fac8ad6eadd93cada3de1491f99dd2f2f"
+  },
+  "live_preflight": {
+    "cwd": "apps/cloud-agent",
+    "command": [
+      "node",
+      "--use-env-proxy",
+      "--import",
+      "tsx",
+      "scripts/test-live.ts"
+    ],
+    "exit_code": 2,
+    "output": {
+      "status": "pending",
+      "reason": "secure_environment_binding_missing",
+      "missing": [
+        "MINICLAW_CLOUD_LIVE_URL",
+        "MINICLAW_CLOUD_SHARED_SECRET",
+        "MINICLAW_ZEN_MODEL",
+        "MINICLAW_CLOUD_LIVE_PROVIDER_ID"
+      ]
+    },
+    "requests_issued": 0,
+    "source_sha256": "05272945d02b3cd29fda9b7f7c5cb19a38aa63179ba6e02da1bd94b1dbc7fb20"
+  }
+}

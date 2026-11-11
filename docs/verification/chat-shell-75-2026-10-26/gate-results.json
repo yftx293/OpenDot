@@ -1,0 +1,162 @@
+{
+  "build": {
+    "source_commit": "0f8ecd6abc9451c458de881e3ce9ef8349c66687",
+    "steps": [
+      {
+        "name": "types",
+        "command": ["make", "typecheck"],
+        "exit_code": 0,
+        "output_guard": 0,
+        "seconds": 62.56,
+        "log_sha256": "6869fe6b1c6125dbec8bda5f2b1bcad3e89b90366b04fb33012bed39f85a4379"
+      },
+      {
+        "name": "ui-unit",
+        "command": [
+          "node",
+          "scripts/run-node-cli.mjs",
+          "vitest",
+          "run",
+          "tests/bot-mention-composer.test.ts",
+          "tests/bot-group-client.test.tsx",
+          "tests/conversation-surface.test.tsx",
+          "tests/conversation-entry-links.test.ts"
+        ],
+        "exit_code": 0,
+        "output_guard": 0,
+        "seconds": 26.92,
+        "log_sha256": "9af4371c16c0877e4ab20b2ac18aa5d347f7070daf191ae19778ed7593d474bb"
+      },
+      {
+        "name": "web-build",
+        "command": ["node", "../scripts/run-node-cli.mjs", "vite", "build"],
+        "exit_code": 0,
+        "output_guard": 0,
+        "seconds": 97.67,
+        "log_sha256": "2d738e4545287c05026e033756ceff391d5f04512a17de5b860225003ea01156"
+      }
+    ],
+    "ui_unit": {
+      "files": 4,
+      "passed": 17
+    },
+    "scope": "Types, four UI unit files and Web build passed. The subsequent old-state measurement failure is retained separately."
+  },
+  "browser": {
+    "source_commit": "864f1d55cb7687e940fc6a4d65edfa6fceeef9cc",
+    "steps": [
+      {
+        "name": "remaining-browser",
+        "command": [
+          "node",
+          "../scripts/run-node-cli.mjs",
+          "playwright",
+          "test",
+          "--config",
+          "$PRIVATE_EVIDENCE/member-recovery-browser-revoked.config.ts"
+        ],
+        "exit_code": 0,
+        "output_guard": 0,
+        "seconds": 131.5,
+        "log_sha256": "c21f18216812d103e619a5e701f5d6dd039b8082eb3c2af09d33ab38cd83b3ec"
+      },
+      {
+        "name": "creation-browser",
+        "command": [
+          "node",
+          "../scripts/run-node-cli.mjs",
+          "playwright",
+          "test",
+          "--config",
+          "playwright.group-create.config.ts"
+        ],
+        "exit_code": 0,
+        "output_guard": 0,
+        "seconds": 141.45,
+        "log_sha256": "90c47e88fe55b92051a28ae3e3df46ecc2f344a0bffa93c226cb006cb32670f4"
+      },
+      {
+        "name": "concurrency-browser",
+        "command": [
+          "node",
+          "../scripts/run-node-cli.mjs",
+          "playwright",
+          "test",
+          "--config",
+          "playwright.member-concurrency.config.ts"
+        ],
+        "exit_code": 0,
+        "output_guard": 0,
+        "seconds": 15.64,
+        "log_sha256": "92bf2ab71f001ed6a69a8730f31d4b7524941d69cdfd6611a87290b551f8fdd5"
+      },
+      {
+        "name": "stop-browser",
+        "command": [
+          "node",
+          "../scripts/run-node-cli.mjs",
+          "playwright",
+          "test",
+          "--config",
+          "playwright.member-stop.config.ts"
+        ],
+        "exit_code": 0,
+        "output_guard": 0,
+        "seconds": 16.86,
+        "log_sha256": "f1b9cf326e1f71a06654419eef2109d75f6c334ee56ffbe03cda6b978fcdda11"
+      }
+    ],
+    "exit_code": 0,
+    "running": null,
+    "running_started_at": "2026-10-25T20:45:02.182816+00:00",
+    "finished_at": "2026-10-25T20:45:19.051610+00:00",
+    "observed_results": {
+      "remaining_browser": 8,
+      "creation_browser": 8,
+      "member_concurrency": 1,
+      "member_stop": 1,
+      "unique_cases": 18
+    }
+  },
+  "byte_audit": {
+    "source_commit": "864f1d55cb7687e940fc6a4d65edfa6fceeef9cc",
+    "tracked_files_checked": 2020,
+    "only_intentional_documentation_differs": [
+      "docs/member-cloud-78.md",
+      "docs/member-inbox-compatibility-77.md",
+      "docs/member-inbox-node-77.md",
+      "docs/verification/member-cloud-78/scope-delivery-recovery-2026-10-26/README.md"
+    ],
+    "checked_at": "2026-10-25T20:45:24.788497+00:00",
+    "changes_from_full_4ef": [
+      "tests/group-member-cross-user-http.test.ts",
+      "web/src/features/bot-groups/MentionComposer.tsx",
+      "web/src/pages/BotGroupsPage.tsx",
+      "web/src/pages/BotsPage.tsx",
+      "web/src/styles/product.css",
+      "web/tests/e2e/bot-groups.spec.ts"
+    ]
+  },
+  "images": [
+    {
+      "name": "desktop-group-mention.png",
+      "sha256": "3c2a44823ff67f170dbb2b87b732d295889b9f7e748cdc19e454304fa177e01d",
+      "bytes": 72050
+    },
+    {
+      "name": "mention-menu-before.png",
+      "sha256": "91785974c2f41b50bf8258b720ca569919af00894e5f7e20b097af2d232ff2f5",
+      "bytes": 67212
+    },
+    {
+      "name": "mobile-group-mention.png",
+      "sha256": "73e730afe2b174f7c60f0145652d605f6150873641cac1a905122beea1b23f7b",
+      "bytes": 25383
+    }
+  ],
+  "limits": [
+    "Actual isolated Node runtime and Chromium UI; provider responses controlled where needed.",
+    "No current Chrome vendor-model, Cloudflare staging or physical-phone claim.",
+    "The complete Root/Authority/workerd queue remains attributed to4ef; it is not renamed to these later UI commits."
+  ]
+}

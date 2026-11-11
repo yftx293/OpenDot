@@ -1,0 +1,57 @@
+{
+  "tier": "actual-workerd-native-checkpoint-and-Lifecycle-with-fixture-policy-and-model",
+  "scope": "Existing managed Goal/Handoff recovery and idle product Session. Cloud Group member admission remains disabled; mixed-member-runtime acceptance is pending.",
+  "source_sha256": {
+    "apps/cloud-agent/src/session-object.ts": "16df7ca8383841b2e33eb1a30941a697640cffb65e42ca0c0309a24455d66acd",
+    "apps/cloud-agent/src/execution-recovery.ts": "5c82f2ee6e34df74c68b8542870eefedd39058ff02c463fdafe02de0daae2ec6",
+    "apps/cloud-agent/src/execution-ownership.ts": "ec2d4a0e25a5d8d00d75d1a5197b08777469c259c6b4a77879b969b5ff73aa27",
+    "apps/cloud-agent/src/input-checkpoints.ts": "7b422fb4fe5ff5d424bc14978d183e8da2aba0e1e7312155b6b0b813c949ed0b",
+    "apps/cloud-agent/test/runtime.test.ts": "314c549f6247fa900022adee52049c373ee2eac4138f19a48171b184ea149c2f",
+    "apps/cloud-agent/test/execution-grants.test.ts": "32cc539ab12f1670af7bc74e38322218048aacb156526d82877a5642dd1fade2",
+    "apps/cloud-agent/scripts/test-runtime.mjs": "860e40081423c31461177db21a66bd74850e43b33d963f0bdcfc422ca5282e49",
+    "apps/cloud-agent/package.json": "3cc773b107efbed82f84cd6d054f67207ebb016d741821ae7e9ba6c07ac29523"
+  },
+  "validation": {
+    "workerd": {
+      "files": 5,
+      "passed": 69,
+      "duration_seconds": 301.28,
+      "uncaught_or_unhandled_failures": 0,
+      "raw_log_sha256": "8dd57cc3098313ec0eaa9a48e353a0ba69c3f4a1d439f139c6fc1b2b2244d7f2"
+    },
+    "node_authority": {
+      "files": 8,
+      "passed": 14,
+      "duration_seconds": 277.49,
+      "raw_log_sha256": "1aadb443e6a8118244d7d53ff61a559a6695c71d2f3ee6546029dd0dd66d4e5a"
+    },
+    "standalone": "Cloud-only typecheck and Wrangler dry-run passed; no deployment",
+    "negative_output_guard": "Earlier raw workerd output with 67 passing assertions and five uncaught startup rejections is rejected with exit 1."
+  },
+  "native_recovery": {
+    "inference": "synthetic-workerd",
+    "run_id": "4eccb3ad-c649-46c5-b16e-04b4c696884e",
+    "submission_id": 9,
+    "task_id": 10,
+    "parked": {
+      "state": "recovering",
+      "native_task_status": "running",
+      "inputs": 1,
+      "model_calls": 1,
+      "steps": 1
+    },
+    "completed": {
+      "status": "done",
+      "inputs": 1,
+      "model_calls": 2,
+      "steps": 2,
+      "recovery": "resumed"
+    }
+  },
+  "asserted_in_integration_tests": [
+    "One denied recovery Alarm increments attempts to 1 without another model request; reconstruction preserves that counter; authorized resume completes at attempt 2.",
+    "Original Submission and Generation Task remain associated; no new user input or fabricated terminal state.",
+    "Idle revoked Session returns explicit 409, preserves native records and does not start a model; history access remains denied.",
+    "Lost acknowledged native submission and corrupt admission gap retain the previous 503 factory rejection and no extra model call."
+  ]
+}

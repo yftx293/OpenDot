@@ -1,0 +1,61 @@
+{
+  "source_commit": "65dd6b11d5e0c0ef0781b57882dde5bfcf3dce3f",
+  "steps": [
+    {
+      "name": "types",
+      "command": ["make", "typecheck"],
+      "exit_code": 0,
+      "output_guard": 0,
+      "seconds": 63.07,
+      "log_sha256": "6869fe6b1c6125dbec8bda5f2b1bcad3e89b90366b04fb33012bed39f85a4379"
+    },
+    {
+      "name": "ui-unit",
+      "command": [
+        "node",
+        "scripts/run-node-cli.mjs",
+        "vitest",
+        "run",
+        "tests/bot-mention-composer.test.ts",
+        "tests/bot-group-client.test.tsx",
+        "tests/conversation-surface.test.tsx"
+      ],
+      "exit_code": 0,
+      "output_guard": 0,
+      "seconds": 27.51,
+      "log_sha256": "1ab433d4a019cb3ee2da4f5013d07015d9e9114122db6bd94181975b705e499c"
+    },
+    {
+      "name": "web-build",
+      "command": ["node", "../scripts/run-node-cli.mjs", "vite", "build"],
+      "exit_code": 0,
+      "output_guard": 0,
+      "seconds": 97.51,
+      "log_sha256": "d72d7dd0a0e7e68720caf357d133f4a2d53e8bb3322834cebf01acf5bd8405bc"
+    },
+    {
+      "name": "remaining-browser",
+      "command": [
+        "node",
+        "../scripts/run-node-cli.mjs",
+        "playwright",
+        "test",
+        "--config",
+        "$PRIVATE_EVIDENCE/member-recovery-browser-current.config.ts"
+      ],
+      "exit_code": 1,
+      "output_guard": 0,
+      "seconds": 125.1,
+      "log_sha256": "4e4f3c94ac23f105122e8d7c8b42017f9b6287cb7ec49c3cfc3fe33cb04574bf"
+    }
+  ],
+  "exit_code": 1,
+  "running": null,
+  "running_started_at": "2026-10-25T20:27:28.508098+00:00",
+  "observed_browser_results": {
+    "passed": 7,
+    "failed": 1,
+    "failure": "Strict selector for desktop Research team matched both the sidebar link and the list row; recovery, paging and member revocation reached this stage.",
+    "classification": "test locator ambiguity; af37598 narrows the link name to the actual list row, no production change."
+  }
+}

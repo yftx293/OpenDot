@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-25T22:44:31.777328+00:00",
+  "failed_source": "b5a36c552fa92831db9d35a5fd2ec701868287c1",
+  "raw_record_sha256": "9d416dbcbb09c3db1c5c2807417f860a3f1eeef761c9910d2f651ce0bbfb2ea2",
+  "failure_before_user_correction": true,
+  "observed_mail_hops": [
+    1,
+    2,
+    2,
+    3
+  ],
+  "provider_request_7_question_triggers": [
+    "BOUNDARY_NATIVE_CYCLE_0_1"
+  ],
+  "actual_send_hop": 2,
+  "actual_send_native_inputs": [
+    {
+      "submissionId": 9,
+      "requestId": "member-question:e9095780-98fd-4568-aeea-d24bc81a3142:96d7bb1d-f98f-45e2-96ea-0891f148248b",
+      "entryId": 8
+    }
+  ],
+  "not_yet_received_question": {
+    "mail_id": "69134cb9-dcd1-4923-acaf-11bfb6cbb1f6",
+    "hop": 3,
+    "content": "BOUNDARY_NATIVE_CYCLE_0_3"
+  },
+  "conclusion": "The provider emitted its next question based on the old hop1 native input before the new hop3 question was placed. Hop2 is correct for that branch; the test driver incorrectly assumed a continuous chain from request counts.",
+  "fix_scope": "Test-only original native Submission ACK barriers plus actual provider parent/control assertions. No production/global hop changes, no deadline/budget/oracle relaxation.",
+  "unrelated_original_b9_startup_failure": "Still unknown; this causal test race does not explain it."
+}

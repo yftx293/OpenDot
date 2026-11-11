@@ -1,0 +1,158 @@
+{
+  "case_execution_sources": [
+    "64ebbfc52a79497f3355d2f651ab79e200870591",
+    "7b1edb247142cf0f0a8a80381d9b1ab6c74b4c01"
+  ],
+  "complete_authority": "pending for combined implementation",
+  "complete_root": "pending; previous full failure and targeted repair preserved in parent policy evidence",
+  "remote_ci": "manual-only; no exact-head remote CI pass claimed",
+  "new_complete_files": [
+    {
+      "name": "resource-conflict-fixed-all",
+      "source_commit": "64ebbfc52a79497f3355d2f651ab79e200870591",
+      "command": [
+        "npm",
+        "run",
+        "test:cloud-authority",
+        "--",
+        "tests/group-member-resource-conflict-cloud-http.test.ts"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "passed_tests": 4,
+      "log_sha256": "758c47e6c0461de4c75ba10284f3865cc8e0e474e5723fd7c4a6163001374e66",
+      "vitest_seconds": 268.39
+    },
+    {
+      "name": "budget-denial-fixed-all",
+      "source_commit": "7b1edb247142cf0f0a8a80381d9b1ab6c74b4c01",
+      "command": [
+        "npm",
+        "run",
+        "test:cloud-authority",
+        "--",
+        "tests/group-member-attempt-budget-cloud-http.test.ts"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "passed_tests": 8,
+      "log_sha256": "70e1d4102504381e14e21a903bc76711bfc469c8a9a9588d134f0bd3070a8abb",
+      "vitest_seconds": 156.52
+    },
+    {
+      "name": "gray-off-first-all",
+      "source_commit": "7b1edb247142cf0f0a8a80381d9b1ab6c74b4c01",
+      "command": [
+        "npm",
+        "run",
+        "test:cloud-authority",
+        "--",
+        "tests/group-member-gray-off-cloud-http.test.ts"
+      ],
+      "exit_code": 0,
+      "repository_output_guard_exit_code": 0,
+      "passed_tests": 8,
+      "log_sha256": "964cc52fdd9ca4cc77187cce38344bf3f7afd3b2bdc82a7be9b346db9983ffdf",
+      "vitest_seconds": 217.98
+    }
+  ],
+  "first_failures": [
+    {
+      "name": "resource-conflict-all",
+      "failed_tests": 2,
+      "passed_tests": 2,
+      "exit_code": 1,
+      "log_sha256": "5cf892eaa0a0875cba2ec4f8ad6d9d07cec65fe7c79a6d83107cf63a1dfdd639",
+      "preserved_privately": true,
+      "source_commit": "0c9c361ae0330043f7d211dd9c50573bb2ff4e79"
+    },
+    {
+      "name": "attempt-budget-first-all",
+      "failed_tests": 2,
+      "passed_tests": 6,
+      "exit_code": 1,
+      "log_sha256": "cf2a2490c59e9d63c541c1f765264a54c038757304ec17c5a720de066d35c3ce",
+      "preserved_privately": true,
+      "source_commit": "64ebbfc52a79497f3355d2f651ab79e200870591"
+    }
+  ],
+  "budget-denial-complete-types": {
+    "command": [
+      "make",
+      "typecheck"
+    ],
+    "source_commit": "59bf5d215fa155596f2834ff4ddeea2a6ac3df5c",
+    "exit_code": 0,
+    "log_sha256": "888225172c223828dc9498a4c94bcf75f313b3b6ad776928db393f7e80307b50"
+  },
+  "budget-denial-worker-build-fixed-command": {
+    "command": [
+      "node",
+      "../../scripts/run-node-cli.mjs",
+      "wrangler",
+      "deploy",
+      "--dry-run",
+      "--outdir",
+      "dist"
+    ],
+    "source_commit": "59bf5d215fa155596f2834ff4ddeea2a6ac3df5c",
+    "exit_code": 0,
+    "log_sha256": "ca32eca9abac51f7f8979f5b95e611bd2097829a54b237a882b177c1910ffd0e",
+    "scope_note": "Worker production bytes match 59bf5d2; build occurred before the source commit. No complete-head CI claim."
+  },
+  "initial_worker_command_error": {
+    "exit_code": 1,
+    "reason": "CLI path was relative to the wrong working directory; no build executed.",
+    "log_sha256": "392ece6a8541511696106e13b429f84dc456fced4833e064c7c44766b74eeadb"
+  },
+  "first_combined_gate_attempt": {
+    "source_commit": "e379ba258fd6fd3358c40ccf18fe993a65d39327",
+    "byte_audit_files": 1950,
+    "started_at": "2026-10-25T15:17:58.299009+00:00",
+    "steps": [
+      {
+        "name": "types",
+        "cwd": ".",
+        "command": [
+          "make",
+          "typecheck"
+        ],
+        "exit_code": 0,
+        "repository_output_guard_exit_code": 0,
+        "duration_seconds": 60.41,
+        "log_sha256": "bd5e1ba220c652eeaf37c08c9f43438d32debdc5ded83bec0ab4ef8b271e00bb",
+        "finished_at": "2026-10-25T15:18:58.720399+00:00"
+      },
+      {
+        "name": "worker-types",
+        "cwd": "apps/cloud-agent",
+        "command": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "exit_code": 2,
+        "repository_output_guard_exit_code": 0,
+        "duration_seconds": 10.21,
+        "log_sha256": "181bbf787f1a995b44ad25162224bd4e93bf363550af48a142cb897392d35b88",
+        "finished_at": "2026-10-25T15:19:08.933876+00:00"
+      }
+    ],
+    "running": null,
+    "running_started_at": "2026-10-25T15:18:58.720465+00:00",
+    "exit_code": 2,
+    "finished_at": "2026-10-25T15:19:08.933927+00:00",
+    "note": "Stopped at Worker typecheck before native complete suites: Request.clone Cloudflare generic mismatch. One-line request pass-through fix follows; original failure preserved."
+  },
+  "worker_type_fix": {
+    "source_commit": "0ac72f282582272b81deffce8955a034708c1a28",
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "cwd": "apps/cloud-agent",
+    "exit_code": 0,
+    "log_sha256": "5a541be57ebdc7cbfe8e53504a2431fcbd57ecd2a161ad261686f5b7c2a73946"
+  }
+}

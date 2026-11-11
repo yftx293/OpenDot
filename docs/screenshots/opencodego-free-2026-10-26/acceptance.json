@@ -1,0 +1,79 @@
+{
+  "source_commit": "fa8c3d215a90a0945df81d39c014d51b6b0c57cf",
+  "date": "2026-10-26",
+  "browser": "actual Chrome, local user service",
+  "model": "opencode-go-3/beam-free",
+  "provider": "user-authorized existing Magpie integration",
+  "runtime": "existing Host Pi default Dot; container/private Dot and Group scopes differ",
+  "state_checks": [
+    {
+      "round": 1,
+      "project": "星桥1026C",
+      "owner": "林",
+      "budget": 1000,
+      "spent": 125,
+      "remaining": 875,
+      "observed_text": "项目：星桥1026C，负责人：林，预算：1000元，累计支出：125元，余额：875元\n\n我刚醒来，是 Miniclaw。主人希望我怎么称呼您？",
+      "persisted_message_id_sha256": "f907aec1eae3609fe5331aee0d08a60af04d3625493a168a648830a7b3a6b38a"
+    },
+    {
+      "round": 2,
+      "project": "星桥1026C",
+      "owner": "林",
+      "budget": 1200,
+      "spent": 200,
+      "remaining": 1000,
+      "observed_text": "项目：星桥1026C，负责人：林，预算：1200元，累计支出：200元，余额：1000元\n\n（我刚醒来，是 Miniclaw。主人希望我怎么称呼您？）",
+      "persisted_message_id_sha256": "90e467f5d119f08bcf3e5353c3707f4d89fa6b916a914b56634f83a3a540c172"
+    },
+    {
+      "round": 3,
+      "project": "星桥1026C",
+      "owner": "周",
+      "budget": 1200,
+      "spent": 175,
+      "remaining": 1025,
+      "observed_text": "项目：星桥1026C，负责人：周，预算：1200元，累计支出：175元，余额：1025元\n\n（我刚醒来，是 Miniclaw。主人希望我怎么称呼您？）",
+      "persisted_message_id_sha256": "3ff518f8fcead7813e0f32eb88175ae5df20480ca2444db91035b197fe79a137"
+    }
+  ],
+  "persistence": {
+    "user_messages": 3,
+    "assistant_messages": 3,
+    "unique_message_ids": 6,
+    "reload_before_third": true,
+    "reload_after_third": true,
+    "reopened_via_dot_navigation": true
+  },
+  "executor": {
+    "same_host_pid_observed_before_and_after_third": true,
+    "native_sdk_session_unchanged": true,
+    "native_session_id_sha256": "1d2ccbfcdd4f674db162ac6de55b8be6e3132a92e042464acff200390eb07b74",
+    "warm_ipc_receipts": "not captured; warm IPC acceptance remains pending"
+  },
+  "verdicts": {
+    "state_accuracy": "3 of 3 correct",
+    "strict_one_line_format": "FAIL; repeated first-run greeting appended",
+    "complete_current_chat_ux": "not passed",
+    "current_group_three_rounds": "not executed; new container workspace is incompatible with required Host workspace",
+    "mobile_and_physical_phone": "not executed in this run",
+    "all_http_success": "not established; no complete network event capture",
+    "provider_http_attempt_count": "not captured; do not infer it from three visible answers"
+  },
+  "retained_failures": [
+    "Earlier container attempt returned first correct answer then a warm Request timed out. without visible failure.",
+    "A later restored container could not read its credential file (EACCES); eventual retry answered after the initial failure.",
+    "Group discussion enable was rejected by runtime configuration.",
+    "Chrome logged six extension-origin errors during earlier model settings interaction; no blanket clean-console claim."
+  ],
+  "repair": {
+    "description": "Recognize the exact SDK request-timeout diagnostic in error frames; preserve warm IPC correlation, ordinary answers and explicit non-provider errors.",
+    "targeted_tests": "2 files / 65 tests PASS",
+    "backend_build": "PASS",
+    "full_gate_scope": "Earlier complete 12-step queue remains pinned to a296; not rerun at this changed Runtime source."
+  },
+  "screenshots_sha256": {
+    "default-free-model.jpg": "452f14654cc4ba5d39ebd09fd647c7a3484f42fb432f4ec1943c4e99faf51c5e",
+    "host-three-turns-after-reload.jpg": "27cca799d0ab67055ffb1f3841724fc5e769056232d3a97eb97789c74ed8ab95"
+  }
+}
