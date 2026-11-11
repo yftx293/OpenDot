@@ -1,0 +1,102 @@
+name: Build desktop installers
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: Package ${{ matrix.platform }}-${{ matrix.arch }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: win
+            arch: x64
+            artifact_arch: x64
+            runner: windows-2025
+            extensions: exe
+          - platform: mac
+            arch: arm64
+            artifact_arch: arm64
+            runner: macos-15
+            extensions: dmg zip
+          - platform: mac
+            arch: x64
+            artifact_arch: x64
+            runner: macos-15-intel
+            extensions: dmg zip
+          - platform: linux
+            arch: x64
+            artifact_arch: x86_64
+            runner: ubuntu-24.04
+            extensions: AppImage
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+        env:
+          ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+
+      - name: Check and bundle desktop client
+        run: |
+          npm run desktop:typecheck
+          npm test -- --run tests/electron-shell-contract.test.ts
+          npm run desktop:build
+
+      - name: Package desktop client
+        env:
+          PLATFORM: ${{ matrix.platform }}
+          ARCH: ${{ matrix.arch }}
+        run: |
+          signing=()
+          if [[ "$PLATFORM" == mac ]]; then
+            signing=(-c.mac.identity=- -c.mac.hardenedRuntime=false)
+          fi
+          npm exec -- electron-builder --projectDir electron --config electron-builder.yml \
+            "--$PLATFORM" "--$ARCH" --publish never "${signing[@]}"
+
+      - name: Verify expected installers
+        id: installers
+        env:
+          PLATFORM: ${{ matrix.platform }}
+          ARTIFACT_ARCH: ${{ matrix.artifact_arch }}
+          EXTENSIONS: ${{ matrix.extensions }}
+        run: |
+          version=$(node -p 'require("./electron/package.json").version')
+          prefix="electron/release/OpenDot-$version-$PLATFORM-$ARTIFACT_ARCH"
+          read -ra extensions <<< "$EXTENSIONS"
+          {
+            echo 'paths<<EOF'
+            for extension in "${extensions[@]}"; do
+              installer="$prefix.$extension"
+              test -s "$installer" || { echo "Missing installer $installer" >&2; exit 1; }
+              echo "$installer"
+            done
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Upload installers
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: OpenDot-${{ matrix.platform }}-${{ matrix.arch }}
+          path: ${{ steps.installers.outputs.paths }}
+          if-no-files-found: error
+          compression-level: 0
