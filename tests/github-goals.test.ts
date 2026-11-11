@@ -724,7 +724,10 @@ test('v74 migration backs up before additive DDL and preserves existing identiti
       f.startsWith(`messages-v74-to-v${db.CURRENT_SCHEMA_VERSION}-`),
     )!;
   const backupPath = path.join(root, 'db/migration-backups', backupName);
-  expect(fs.statSync(backupPath).mode & 0o777).toBe(0o600);
+  // Windows does not report POSIX owner-only permissions through fs.statSync.
+  if (process.platform !== 'win32') {
+    expect(fs.statSync(backupPath).mode & 0o777).toBe(0o600);
+  }
   const backup = new Database(backupPath, { readonly: true });
   try {
     expect(backup.pragma('integrity_check', { simple: true })).toBe('ok');

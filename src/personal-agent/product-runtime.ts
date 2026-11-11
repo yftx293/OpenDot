@@ -81,7 +81,7 @@ import {
   listChannelMountsBySession,
   claimRouterStateOnce,
 } from '../db.js';
-import { getChannelType } from '../im-channel.js';
+import { getChannelFromJid } from '../channel-prefixes.js';
 import { deliverDurableNotice } from './durable-im-notice.js';
 import { validateAndResolvePath } from '../file-manager.js';
 import { logger } from '../logger.js';
@@ -874,7 +874,7 @@ export class ProductRuntimeService {
         }
       })
       .find((jid): jid is string => typeof jid === 'string' && jid.length > 0);
-    if (origin && getChannelType(origin))
+    if (origin && getChannelFromJid(origin) !== 'web')
       setSessionChannelOwnerOnce(runtime.group_folder, sessionId, origin);
     const dot = getAgent(sessionId)?.name ?? '';
     void deliverDurableNotice({
@@ -888,7 +888,7 @@ export class ProductRuntimeService {
       mountedChannelJids: listChannelMountsBySession(sessionId).map(
         (mount) => mount.channel_jid,
       ),
-      isIm: (jid) => getChannelType(jid) !== null,
+      isIm: (jid) => getChannelFromJid(jid) !== 'web',
       claim: (key) => claimRouterStateOnce(key, '1'),
     }).catch(() =>
       logger.warn({ sessionId, kind }, 'Durable IM notice was not delivered'),
