@@ -11,7 +11,6 @@ describe('Docker image distribution contract', () => {
   test('manual publishing builds and smokes on pinned native runners before promoting latest', () => {
     const workflow = read('.github/workflows/docker-publish.yml');
 
-    // Main deliberately paused automatic workflows; retain the publish gates.
     expect(workflow).toContain('workflow_dispatch:');
     expect(workflow).not.toMatch(/^  push:/m);
     expect(workflow).not.toMatch(/^  pull_request:/m);
@@ -33,7 +32,7 @@ describe('Docker image distribution contract', () => {
     expect(workflow).toContain(
       '[[ "$IMAGE_DIGEST" =~ ^sha256:[a-f0-9]{64}$ ]]',
     );
-    expect(workflow).toContain('needs: [registry-preflight, build-and-smoke]');
+    expect(workflow).toContain('needs: build-and-smoke');
     expect(workflow).toContain(
       'docker buildx imagetools create --tag "$commit_tag"',
     );
@@ -45,9 +44,12 @@ describe('Docker image distribution contract', () => {
     expect(workflow).toContain('--tag "${IMAGE_NAME}:latest"');
     expect(workflow).toContain('for attempt in {1..12}');
     expect(workflow).toContain('if [ "$latest_digest" = "$MANIFEST_DIGEST" ]');
-    expect(workflow).toContain('username: ${{ secrets.DOCKERHUB_USERNAME }}');
-    expect(workflow).toContain('password: ${{ secrets.DOCKERHUB_TOKEN }}');
-    expect(workflow).not.toContain(`${['dckr', 'pat'].join('_')}_`);
+    expect(workflow).toContain('IMAGE_NAME: ghcr.io/yftx293/opendot-agent');
+    expect(workflow.match(/packages: write/g)).toHaveLength(2);
+    expect(workflow.match(/registry: ghcr\.io/g)).toHaveLength(2);
+    expect(workflow).toContain('username: ${{ github.actor }}');
+    expect(workflow).toContain('password: ${{ secrets.GITHUB_TOKEN }}');
+    expect(workflow).not.toContain('DOCKERHUB_');
     expect(workflow).not.toContain('docker/setup-qemu-action');
 
     const actionUses = [
