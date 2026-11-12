@@ -2,6 +2,11 @@ name: Build desktop installers
 
 on:
   workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the verified installers as a GitHub prerelease
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -51,7 +56,9 @@ jobs:
           cache: npm
 
       - name: Install locked dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm --prefix container/agent-runner ci
         env:
           ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
 
@@ -93,6 +100,24 @@ jobs:
             echo EOF
           } >> "$GITHUB_OUTPUT"
 
+      - name: Launch the packaged client against a loopback backend
+        env:
+          PLATFORM: ${{ matrix.platform }}
+        run: |
+          case "$PLATFORM" in
+            linux)
+              executable=$(find electron/release -maxdepth 1 -name '*.AppImage' -print -quit)
+              APPIMAGE_EXTRACT_AND_RUN=1 xvfb-run -a node .github/scripts/smoke-desktop.mjs "$executable" --no-sandbox
+              ;;
+            mac)
+              executable=$(find electron/release -path '*/OpenDot.app/Contents/MacOS/OpenDot' -type f -print -quit)
+              node .github/scripts/smoke-desktop.mjs "$executable"
+              ;;
+            win)
+              node .github/scripts/smoke-desktop.mjs electron/release/win-unpacked/OpenDot.exe
+              ;;
+          esac
+
       - name: Upload installers
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
@@ -100,3 +125,51 @@ jobs:
           path: ${{ steps.installers.outputs.paths }}
           if-no-files-found: error
           compression-level: 0
+
+  publish:
+    if: inputs.publish && github.ref == 'refs/heads/main'
+    needs: package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    concurrency:
+      group: desktop-release
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          pattern: OpenDot-*
+          path: installers
+          merge-multiple: true
+
+      - name: Attach installers and checksums to a prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(jq -er '.version' electron/package.json)
+          [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          tag="v$version"
+          prefix="OpenDot-$version"
+          cd installers
+          assets=(
+            "$prefix-win-x64.exe"
+            "$prefix-mac-arm64.dmg" "$prefix-mac-arm64.zip"
+            "$prefix-mac-x64.dmg" "$prefix-mac-x64.zip"
+            "$prefix-linux-x86_64.AppImage"
+          )
+          for asset in "${assets[@]}"; do test -s "$asset"; done
+          sha256sum "${assets[@]}" > SHA256SUMS
+          cat > release-notes.md <<'EOF'
+          OpenDot 桌面客户端预览版。提供 Windows x64、macOS Apple Silicon / Intel 和 Linux x64 安装包。
+
+          请先按 [README](https://github.com/yftx293/OpenDot#快速开始) 启动 Backend，然后打开客户端。默认地址为 `http://127.0.0.1:3000`，也可通过 `--server-url` 或 `MINICLAW_SERVER_URL` 指定远程 Backend。
+
+          Windows 安装包未签名。macOS 构建使用临时签名，尚未公证。系统可能提示未知开发者。可使用 `SHA256SUMS` 校验下载文件。
+          EOF
+          gh release create "$tag" "${assets[@]}" SHA256SUMS \
+            --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --title "OpenDot $version Desktop Preview" --prerelease --notes-file release-notes.md
