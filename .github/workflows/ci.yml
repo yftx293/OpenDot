@@ -1,8 +1,11 @@
-# CI paused 2026-10-25 (Actions minutes exhausted). Restore the original triggers to re-enable.
 name: CI
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: read
@@ -10,9 +13,8 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-24.04
-    # The existing main run already takes ~19m on hosted runners, including
-    # natural lease/process recovery. Keep every test and its own timeout.
-    timeout-minutes: 30
+    # The backend suites alone take about 19 minutes before build and browser tests.
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
@@ -96,7 +98,11 @@ jobs:
 
   cloud-authority:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
     env:
       WRANGLER_SEND_METRICS: 'false'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
@@ -116,4 +122,4 @@ jobs:
       - name: Bundle actual Worker without deployment
         run: npm --prefix apps/cloud-agent run build
       - name: Actual workerd to Node authority and encrypted Provider HTTP integration
-        run: npm run test:cloud-authority
+        run: npm run test:cloud-authority -- --shard=${{ matrix.shard }}/2
