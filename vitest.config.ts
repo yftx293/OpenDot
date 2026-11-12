@@ -74,9 +74,9 @@ export default defineConfig({
     // macOS exposes its temporary directory through /var -> /private/var.
     // Owned scratch roots must be real paths for the unchanged Device checks.
     env: { TMPDIR: realpathSync(tmpdir()) },
-    // Product HTTP fault tests execute the production entry, including test-only
-    // module fault injection. Build once before workers, also on a fresh clone.
+    // Product HTTP tests spawn the compiled backend and Host runner.
     globalSetup: ['./tests/helpers/compiled-backend.ts'],
+    provide: { compileHostRunner: true },
     exclude: excludedSuites,
     projects: [
       {

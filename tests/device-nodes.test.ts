@@ -130,21 +130,56 @@ function approved() {
 
 test('heartbeat advertises and safely projects KimiCU diagnosis without granting control', async () => {
   const p = approved();
-  const heartbeat = (readiness: unknown) => routes.request('/transport/heartbeat', {
-    method: 'POST',
-    headers: { Authorization: 'Bearer ' + p.token, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ manifest_hash: p.device.manifest_hash, ready: true, kimi_readiness: readiness }),
-  });
+  const heartbeat = (readiness: unknown) =>
+    routes.request('/transport/heartbeat', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + p.token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        manifest_hash: p.device.manifest_hash,
+        ready: true,
+        kimi_readiness: readiness,
+      }),
+    });
   const browser = { state: 'connected', scopedControlAvailable: false };
   const legacy = await heartbeat(browser);
   expect(legacy.status).toBe(200);
-  expect((await legacy.json() as any).capabilities.kimi_cu_readiness).toBe(true);
-  const computer = { state: 'registered', permissions: 'unknown', scopedControlAvailable: false, doctorPermissions: { accessibility: 'reported_granted', screenRecording: 'unknown' } };
-  expect((await heartbeat({ ...browser, computerUse: computer })).status).toBe(200);
-  expect(nodes.listPersonalDevices('alice').find((device) => device.id === p.device.id)?.kimi_readiness).toEqual({ ...browser, computerUse: computer });
+  expect(((await legacy.json()) as any).capabilities.kimi_cu_readiness).toBe(
+    true,
+  );
+  const computer = {
+    state: 'registered',
+    permissions: 'unknown',
+    scopedControlAvailable: false,
+    doctorPermissions: {
+      accessibility: 'reported_granted',
+      screenRecording: 'unknown',
+    },
+  };
+  expect((await heartbeat({ ...browser, computerUse: computer })).status).toBe(
+    200,
+  );
+  expect(
+    nodes
+      .listPersonalDevices('alice')
+      .find((device) => device.id === p.device.id)?.kimi_readiness,
+  ).toEqual({ ...browser, computerUse: computer });
   expect(nodes.listPersonalDevices('bob')).toEqual([]);
-  expect((await heartbeat({ ...browser, computerUse: { ...computer, scopedControlAvailable: true } })).status).toBe(400);
-  expect(nodes.listPersonalDevices('alice').find((device) => device.id === p.device.id)?.kimi_readiness).toEqual({ ...browser, computerUse: computer });
+  expect(
+    (
+      await heartbeat({
+        ...browser,
+        computerUse: { ...computer, scopedControlAvailable: true },
+      })
+    ).status,
+  ).toBe(400);
+  expect(
+    nodes
+      .listPersonalDevices('alice')
+      .find((device) => device.id === p.device.id)?.kimi_readiness,
+  ).toEqual({ ...browser, computerUse: computer });
 });
 function binding(p: ReturnType<typeof approved>) {
   const id = randomUUID();
@@ -459,7 +494,9 @@ test('v76 upgrade keeps native Personal Memory and writes a verified private pre
       n.startsWith(`messages-v76-to-v${db.CURRENT_SCHEMA_VERSION}-`),
     )!;
   const full = path.join(root, 'db/migration-backups', file);
-  expect(fs.statSync(full).mode & 0o777).toBe(0o600);
+  if (process.platform !== 'win32') {
+    expect(fs.statSync(full).mode & 0o777).toBe(0o600);
+  }
   const backup = new Database(full, { readonly: true });
   expect(backup.pragma('integrity_check', { simple: true })).toBe('ok');
   expect(

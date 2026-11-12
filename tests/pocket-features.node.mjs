@@ -681,7 +681,7 @@ test('mobile notifications use a child-scope worker and no lock-screen content',
   assert.equal(h.registrations[0].config.updateViaCache, 'none');
   assert.equal(h.shown[0].payload.data.url, 'https://host.test/app/chat');
   assert.equal(h.shown[0].payload.icon, '/app/icons/icon-192.png?v=robot');
-  assert.equal(h.shown[0].payload.body, '有新的会话结果，打开 Miniclaw 查看。');
+  assert.equal(h.shown[0].payload.body, '有新的会话结果，打开查看。');
 });
 test('explicit opt-out overrides a previously granted browser permission', async () => {
   const h = await notificationHarness({ saved: 'disabled' });
