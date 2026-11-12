@@ -69,10 +69,12 @@ describe('Docker image distribution contract', () => {
   });
 
   test('uses published images by default without implicit local builds at runtime', () => {
-    expect(read('src/config.ts')).toContain("'helsome/miniclaw-agent:latest'");
+    expect(read('src/config.ts')).toContain(
+      "'ghcr.io/yftx293/opendot-agent:latest'",
+    );
     const makefile = read('Makefile');
     expect(makefile).toContain(
-      'CONTAINER_IMAGE ?= helsome/miniclaw-agent:latest',
+      'CONTAINER_IMAGE ?= ghcr.io/yftx293/opendot-agent:latest',
     );
     expect(makefile).toContain('docker-pull:');
     expect(makefile).toContain('docker pull "$(CONTAINER_IMAGE)"');

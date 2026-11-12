@@ -531,7 +531,7 @@ describe('entrypoint permission contract', () => {
 
 const integrationImage =
   process.env.MINICLAW_CONTAINER_PERMISSION_TEST_IMAGE ??
-  'helsome/miniclaw-agent:latest';
+  'ghcr.io/yftx293/opendot-agent:latest';
 let integrationImageAvailable = false;
 try {
   execFileSync('docker', ['image', 'inspect', integrationImage], {
@@ -1102,10 +1102,13 @@ NODE
     });
 
     test('native virtualized watcher keeps SDK locks live and protects new directories', () => {
-      const mountedSession = fs.mkdtempSync(path.join(testRoot, 'native-session-'));
+      const mountedSession = fs.mkdtempSync(
+        path.join(testRoot, 'native-session-'),
+      );
       try {
         expect(
-          runHelper(`
+          runHelper(
+            `
             mkdir -p /home/node/.claude/agent /workspace/{group,ipc,extra}
             chown -R node:node /home/node/.claude /workspace/{group,ipc,extra}
             export MINICLAW_INTERNAL_IDENTITY_MODE=virtualized
@@ -1145,7 +1148,12 @@ NODE
             chmod -R a+rwx /home/node/.claude
             trap - EXIT
             printf 'sdk-locks-and-protection-ok'
-          `, ['--mount', `type=bind,src=${mountedSession},dst=/home/node/.claude`]),
+          `,
+            [
+              '--mount',
+              `type=bind,src=${mountedSession},dst=/home/node/.claude`,
+            ],
+          ),
         ).toBe('sdk-locks-and-protection-ok');
       } finally {
         fs.rmSync(mountedSession, { recursive: true, force: true });

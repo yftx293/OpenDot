@@ -17,7 +17,7 @@ and About/report labels for #64 without renaming execution/persistence identitie
 | Desktop                        | `cc.miniclaw.desktop`, narrow IPC bridge and existing `Miniclaw` user-data directory retained                          |
 | Runtime/data                   | SQLite tables, migrations, cookies, storage keys, `MINICLAW_*`, API/tool identifiers and memory reserved keys retained |
 | Cloudflare                     | Existing worker/binding/class/namespace/DO identities retained; no deployment or resource rename                       |
-| Docker                         | Existing `helsome/miniclaw-agent` image/tag references retained; no registry move or publication                       |
+| Docker                         | Public agent image at `ghcr.io/yftx293/opendot-agent:latest`; existing environment overrides remain supported          |
 | Diagnostic API                 | Legacy `Miniclaw版本` JSON key retained; UI presents it as `OpenDot版本`                                               |
 
 The About page no longer attributes the current execution engine to Claude Agent
@@ -40,12 +40,10 @@ Desktop 1440×900 and mobile 390×844 About views (Chromium emulation):
 <p><img src="frontend-redesign/opendot-metadata/desktop-dark-about.png" alt="OpenDot About, desktop dark" width="640" /></p>
 <p><img src="frontend-redesign/opendot-metadata/mobile-light-about.png" alt="OpenDot About, mobile light" width="260" /> <img src="frontend-redesign/opendot-metadata/mobile-dark-about.png" alt="OpenDot About, mobile dark" width="260" /></p>
 
-External review remains Pending: existing GitHub Goal/webhook references,
-external service integrations, signed/native distribution, Cloudflare staging
-and registry credentials. Main's previously observed Docker publication failure
-(`Username and password required`) is a publication blocker, distinct from
-product CI. This metadata change does not repair credentials, edit stored Goals,
-move namespaces, alter production resources or claim real-device acceptance.
+The [agent image workflow](../.github/workflows/docker-publish.yml) publishes
+verified Linux amd64 and arm64 images to GitHub Container Registry. Existing
+GitHub Goal/webhook references, external service integrations, signed desktop
+distribution and Cloudflare staging are tracked separately.
 
 Rollback reverts metadata/copy/links without a data migration. Prefer keeping the
 canonical repository URLs, since long-term availability of old redirects is not

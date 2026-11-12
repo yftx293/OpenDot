@@ -168,15 +168,17 @@ npm run dev:all
 
 首次进入时完成管理员初始化和 Provider 配置即可。Provider/渠道接入步骤现在可以选择“稍后设置”，跳过后仍可进入工作台，之后在设置中补齐模型和渠道配置。
 
-Agent 容器镜像默认使用 `helsome/miniclaw-agent:latest`，可以通过 `MINICLAW_CONTAINER_IMAGE` 或 `CONTAINER_IMAGE` 覆盖。
+Agent 容器镜像默认使用 `ghcr.io/yftx293/opendot-agent:latest`，可以通过 `MINICLAW_CONTAINER_IMAGE` 或 `CONTAINER_IMAGE` 覆盖。
 
-容器模式要求 Docker 可用且镜像已安装。`make start` / `make dev` 优先使用本地已有镜像；缺失时拉取远程镜像。若出现 `pull access denied`，先确认镜像确实已发布、当前账号有读取权限，或配置可访问的镜像地址。管理员也可以在仓库根目录执行 `docker build --pull -t helsome/miniclaw-agent:latest container` 从当前源码构建。服务启动与镜像构建必须连接同一个 Docker daemon；使用独立 Docker 环境时，给服务和构建命令设置相同的 `DOCKER_HOST`。需要使用本机已有 HTTP(S) 代理时，可通过 `MINICLAW_CONTAINER_PROXY` 指定容器能访问的代理地址；容器里的 `127.0.0.1` 指向容器本身。该默认值只作用于 Container Runner，显式的 Provider / 工作区代理配置优先。
+容器模式要求 Docker 可用。`make start` / `make dev` 优先使用本地已有镜像，缺失时从 GitHub Container Registry 拉取公开镜像。使用 `npm start` 时，可以先执行 `docker pull ghcr.io/yftx293/opendot-agent:latest`。需要用当前源码构建时，在仓库根目录执行 `docker build --pull -t ghcr.io/yftx293/opendot-agent:latest container`。服务启动与镜像构建必须连接同一个 Docker daemon；使用独立 Docker 环境时，给服务和构建命令设置相同的 `DOCKER_HOST`。需要使用本机已有 HTTP(S) 代理时，可通过 `MINICLAW_CONTAINER_PROXY` 指定容器能访问的代理地址；容器里的 `127.0.0.1` 指向容器本身。该默认值只作用于 Container Runner，显式的 Provider / 工作区代理配置优先。
 
 第三方 OpenAI Completions 接口需在 Provider 的自定义环境变量中设置 `MINICLAW_MODEL_API=openai-completions`；默认协议为 `anthropic-messages`。该设置同时用于普通 Dot 对话的 Host / Container Runner。生产容器使用镜像内配套的源码和 Prompt；仅开发时可显式设置 `MINICLAW_CONTAINER_LIVE_SOURCE=true` 挂载本机源码，修改正式 Runner 后应重新构建镜像。
 
 原生群聊由 `MINICLAW_BOT_GROUPS=true` 启用；需要 Bot 执行协作时另设 `MINICLAW_BOT_HANDOFFS=true`。创建入口位于「Dot 和对话 → ＋新建群聊」。Bot 执行仍需群聊管理员在设置中明确授予运行权限与调用预算。
 
 ### 启动 Electron Desktop
+
+可从 [GitHub Releases](https://github.com/yftx293/OpenDot/releases) 下载桌面客户端。先按上文启动 Backend，再打开客户端连接默认地址 `http://127.0.0.1:3000`。连接远程服务时，启动已安装的客户端并传入 `--server-url=https://your-miniclaw.example.com`，或在启动前设置 `MINICLAW_SERVER_URL`。
 
 先启动 Backend 与 Vite：
 
@@ -234,15 +236,15 @@ npm run desktop:package
 
 ## 配置入口
 
-| 环境变量                   | 用途                                                | 默认值                          |
-| -------------------------- | --------------------------------------------------- | ------------------------------- |
-| `MINICLAW_SERVER_URL`      | Electron 要连接的 Backend 地址                      | `http://127.0.0.1:3000`         |
-| `MINICLAW_RENDERER_URL`    | Electron 要加载的 Renderer 地址，适合本地 Vite 开发 | 与 Server URL 相同              |
-| `MINICLAW_CONTAINER_IMAGE` | Agent Runner 使用的容器镜像                         | `helsome/miniclaw-agent:latest` |
-| `CONTAINER_IMAGE`          | 容器镜像的兼容覆盖项                                | 同上                            |
-| `WEB_PORT`                 | Makefile 启动 Backend 使用的端口                    | `3000`                          |
-| `MINICLAW_DEMO_OPEN`       | 回环地址免登录演示模式，详见 [`DEMO.md`](DEMO.md)   | 关闭                            |
-| `PROVIDER_SETUP_SKIPPED`   | 没有系统设置文件时跳过 Provider 引导                | 关闭                            |
+| 环境变量                   | 用途                                                | 默认值                                 |
+| -------------------------- | --------------------------------------------------- | -------------------------------------- |
+| `MINICLAW_SERVER_URL`      | Electron 要连接的 Backend 地址                      | `http://127.0.0.1:3000`                |
+| `MINICLAW_RENDERER_URL`    | Electron 要加载的 Renderer 地址，适合本地 Vite 开发 | 与 Server URL 相同                     |
+| `MINICLAW_CONTAINER_IMAGE` | Agent Runner 使用的容器镜像                         | `ghcr.io/yftx293/opendot-agent:latest` |
+| `CONTAINER_IMAGE`          | 容器镜像的兼容覆盖项                                | 同上                                   |
+| `WEB_PORT`                 | Makefile 启动 Backend 使用的端口                    | `3000`                                 |
+| `MINICLAW_DEMO_OPEN`       | 回环地址免登录演示模式，详见 [`DEMO.md`](DEMO.md)   | 关闭                                   |
+| `PROVIDER_SETUP_SKIPPED`   | 没有系统设置文件时跳过 Provider 引导                | 关闭                                   |
 
 不要把 API Key、Session Cookie 或其他凭证写入命令行历史、截图或提交到仓库。远程部署时使用 HTTPS/WSS，并为反向代理、Cookie 和访问控制配置独立的安全边界。
 

@@ -6,7 +6,7 @@ import { describe, expect, test } from 'vitest';
 const repoRoot = path.resolve(import.meta.dirname, '..');
 const integrationImage =
   process.env.MINICLAW_CONTAINER_PERMISSION_TEST_IMAGE ??
-  'helsome/miniclaw-agent:latest';
+  'ghcr.io/yftx293/opendot-agent:latest';
 let integrationImageAvailable = false;
 try {
   execFileSync('docker', ['image', 'inspect', integrationImage], {
