@@ -69,10 +69,10 @@ if (candidates.length === 0) {
   process.exit(0);
 }
 
-const prettier = path.join(root, 'node_modules', '.bin', 'prettier');
+const cliRunner = path.join(root, 'scripts', 'run-node-cli.mjs');
 const result = spawnSync(
-  prettier,
-  [write ? '--write' : '--check', ...candidates],
+  process.execPath,
+  [cliRunner, 'prettier', write ? '--write' : '--check', ...candidates],
   {
     cwd: root,
     stdio: 'inherit',
