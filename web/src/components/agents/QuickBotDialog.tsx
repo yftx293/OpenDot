@@ -142,7 +142,7 @@ export function BotShapePicker({
             aria-pressed={color === value}
             disabled={disabled}
             onClick={() => onColor(value)}
-            className="flex size-11 items-center justify-center rounded-full outline-none aria-pressed:ring-2 aria-pressed:ring-primary focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+            className="flex size-11 shrink-0 items-center justify-center rounded-full outline-none aria-pressed:ring-2 aria-pressed:ring-primary focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
           >
             <span
               className="size-7 rounded-full border border-foreground/10"
@@ -593,7 +593,7 @@ export function QuickBotProvider({ children }: { children: ReactNode }) {
                 <Button
                   type="button"
                   variant="outline"
-                  className="min-h-11"
+                  className="min-h-11 min-w-11"
                   disabled={busy}
                   onClick={browse}
                 >
@@ -602,7 +602,7 @@ export function QuickBotProvider({ children }: { children: ReactNode }) {
                 <Button
                   form="quick-dot-form"
                   type="submit"
-                  className="min-h-11"
+                  className="min-h-11 min-w-11"
                   disabled={busy || !draft.name.trim()}
                 >
                   {busy && <Loader2 className="size-4 animate-spin" />}
