@@ -319,9 +319,7 @@ test('one navigation surface creates a Dot, finds existing Dots and switches old
             .every((member) => member.can_execute),
         ).toBe(true);
         // Group headers expose the same drawer instead of another directional overlay.
-        await page
-          .getByRole('button', { name: 'Dot 和对话', exact: true })
-          .click();
+        await open();
         await checkSurface();
         await panel
           .getByLabel('搜索 Dot 和对话', { exact: true })
