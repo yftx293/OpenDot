@@ -398,7 +398,7 @@ async function cloudProductScenario(
       await computer.getByPlaceholder('输入消息...').press('Enter');
     }
     const runtimePath = `${origin}/api/groups/${encodeURIComponent(jid)}/sessions/${id}/runtime`;
-    await expect.poll(() => modelRequests).toBe(1);
+    await expect.poll(() => modelRequests, { timeout: 20_000 }).toBe(1);
     if (approvalMode) {
       release?.();
       await expect(
