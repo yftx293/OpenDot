@@ -22,6 +22,7 @@ export type DurableApproval = {
 export type DurableSnapshot = {
   epoch: string;
   revision: number;
+  runtimeKind?: 'cloudflare-durable' | 'node-durable';
   runtime: { session_id: string; revision: number };
   goal: { status: string } | null;
   executionState: string;
@@ -134,6 +135,8 @@ export function useDurableControl(
     error: string;
     reconnecting: boolean;
   }>({ key, snapshot: null, progress: null, error: '', reconnecting: false });
+  const latestState = useRef(state);
+  latestState.current = state;
   const refreshRef = useRef<() => Promise<void>>(async () => {});
   useEffect(() => {
     let alive = true;
@@ -232,11 +235,13 @@ export function useDurableControl(
           setState((current) => ({
             ...current,
             key,
-            snapshot: applyDurableProgress(current.snapshot, progress),
+            snapshot:
+              current.snapshot?.runtimeKind === 'cloudflare-durable'
+                ? current.snapshot
+                : applyDurableProgress(current.snapshot, progress),
             progress,
             error: '',
           }));
-        return;
       }
       visible();
     });
@@ -263,6 +268,18 @@ export function useDurableControl(
     const reconnectTimer = setInterval(() => {
       if (!wsManager.isConnected()) visible();
     }, 8000);
+    // Remote waits can change before a new local receipt is committed.
+    const cloudTimer = setInterval(() => {
+      const snapshot = latestState.current.snapshot;
+      if (
+        wsManager.isConnected() &&
+        latestState.current.key === key &&
+        snapshot?.runtimeKind === 'cloudflare-durable' &&
+        (snapshot.executionState === 'active' ||
+          snapshot.executionState.startsWith('waiting_for_'))
+      )
+        visible();
+    }, 2000);
     const reconcileTimer = setInterval(visible, 30000);
     document.addEventListener('visibilitychange', visible);
     window.addEventListener('online', visible);
@@ -273,6 +290,7 @@ export function useDurableControl(
       offConnected();
       offDisconnected();
       clearInterval(reconnectTimer);
+      clearInterval(cloudTimer);
       clearInterval(reconcileTimer);
       document.removeEventListener('visibilitychange', visible);
       window.removeEventListener('online', visible);

@@ -115,7 +115,7 @@ test('OpenDot applies the canonical design and preserves a renamed default Dot a
             await expect(
               page
                 .getByRole('navigation', { name: '桌面导航' })
-                .getByRole('link', { name: '小点', exact: true }),
+                .getByRole('link', { name: /^小点(?:\s|$)/ }),
             ).toBeVisible();
           await page
             .getByRole('button', { name: '提及 Dot', exact: true })

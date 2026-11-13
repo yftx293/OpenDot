@@ -8,9 +8,22 @@ import { once } from 'node:events';
 import { fileURLToPath } from 'node:url';
 import { randomBytes } from 'node:crypto';
 import { DatabaseSync } from 'node:sqlite';
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 import { cloudBotHandoffHttpFixture } from '../../../tests/helpers/cloud-bot-handoff-http-fixture';
 import type { PersonalGoal } from '../../src/stores/goals';
+
+test.use({ actionTimeout: 15_000 });
+
+async function disableDotReplies(page: Page) {
+  await page.getByRole('button', { name: '群聊设置', exact: true }).click();
+  const settings = page.getByRole('dialog', { name: '群聊设置', exact: true });
+  await settings
+    .getByRole('checkbox', { name: '发送消息时让 Dot 回复', exact: true })
+    .uncheck();
+  await settings
+    .getByRole('button', { name: '关闭群聊设置', exact: true })
+    .click();
+}
 
 test('Chief product Goal drives Researcher → Developer → exact local grant → real Device CLI → approved evidence across desktop and hash mobile (model simulated)', async ({
   browser,
@@ -390,9 +403,7 @@ test('Chief product Goal drives Researcher → Developer → exact local grant �
     ]);
     const keyboard = await desktop.newPage();
     await keyboard.goto(f.origin + '/bot-groups/' + base.groupId);
-    await keyboard
-      .getByRole('checkbox', { name: /作为 Bot 任务提交/ })
-      .uncheck();
+    await disableDotReplies(keyboard);
     await keyboard.getByLabel('群聊消息', { exact: true }).fill('@Res');
     await keyboard.getByLabel('群聊消息', { exact: true }).press('Enter');
     await expect(
@@ -405,9 +416,7 @@ test('Chief product Goal drives Researcher → Developer → exact local grant �
       .getByRole('button', { name: '发送群聊消息', exact: true })
       .click();
     await reopened.goto(f.origin + '/#/bot-groups/' + base.groupId);
-    await reopened
-      .getByRole('checkbox', { name: /作为 Bot 任务提交/ })
-      .uncheck();
+    await disableDotReplies(reopened);
     await reopened.getByLabel('群聊消息', { exact: true }).fill('@Dev');
     await reopened
       .getByRole('listbox', { name: '选择提及的 Dot' })

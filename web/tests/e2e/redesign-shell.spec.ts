@@ -244,7 +244,7 @@ test('product shell preserves real Bot, Group, Goal and approval views on deskto
             animations: 'disabled',
             scale: 'css',
           });
-          await composer.press('Enter');
+          await composer.press('Tab');
           await expect(
             page.getByRole('button', { name: '移除 @Miniclaw ×', exact: true }),
           ).toBeVisible();
@@ -475,14 +475,16 @@ test('product shell preserves real Bot, Group, Goal and approval views on deskto
         if (!mobile) {
           await page.setViewportSize({ width: 1000, height: 900 });
           const rail = page.getByRole('navigation', { name: '桌面导航' });
-          expect((await rail.boundingBox())!.width).toBe(68);
+          await expect
+            .poll(async () => (await rail.boundingBox())?.width)
+            .toBe(68);
           const toggle = page.getByRole('button', {
             name: '展开侧栏',
             exact: true,
           });
           await toggle.click();
           await expect(
-            page.getByRole('dialog', { name: '导航与会话' }),
+            page.getByRole('dialog', { name: 'Dot 和对话' }),
           ).toBeVisible();
           await page.keyboard.press('Escape');
           await expect(toggle).toBeFocused();

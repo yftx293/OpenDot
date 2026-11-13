@@ -29,9 +29,7 @@ export function DiscussionSettingsForm({
     initial.participant_profile_ids,
   );
   const [maxTurns, setMaxTurns] = useState(initial.max_turns);
-  const [maxTurnsPerDot, setMaxTurnsPerDot] = useState(
-    initial.max_turns_per_dot,
-  );
+  const [maxTurnsPerDot, setMaxTurnsPerDot] = useState<number>();
   const saved = JSON.stringify(settings);
   const botIds = bots.map((m) => m.subject_id).join('|');
   useEffect(() => {
@@ -42,13 +40,27 @@ export function DiscussionSettingsForm({
     setCoordinator(defaults.coordinator_profile_id);
     setParticipants(defaults.participant_profile_ids);
     setMaxTurns(defaults.max_turns);
-    setMaxTurnsPerDot(defaults.max_turns_per_dot);
+    setMaxTurnsPerDot(undefined);
     // Progress observations must not replace the user's unsaved selections.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [saved, botIds]);
   const field =
     'min-h-11 min-w-0 max-w-full rounded-lg border bg-background px-3 text-sm';
   const memberLimit = snapshot.discussion?.member_inbox_max_participants ?? 2;
+  const draft = buildDiscussionSettings(snapshot, {
+    enabled,
+    policy: peerRelay ? 'relay-v1' : 'coordinator-v1',
+    coordinator_profile_id: coordinator,
+    participant_profile_ids: participants,
+    max_turns: maxTurns,
+    max_turns_per_dot: maxTurnsPerDot,
+    ...(snapshot.discussion?.member_inbox_available ||
+    initial.execution_contract === 'member-inbox-v1'
+      ? {
+          execution_contract: memberInbox ? 'member-inbox-v1' : 'serial-v1',
+        }
+      : {}),
+  });
   return (
     <section aria-label="按轮讨论设置" className="space-y-3 border-b px-4 py-4">
       <h3 className="text-sm font-medium">
@@ -63,24 +75,7 @@ export function DiscussionSettingsForm({
         className="space-y-3"
         onSubmit={(e) => {
           e.preventDefault();
-          void save(
-            buildDiscussionSettings(snapshot, {
-              enabled,
-              policy: peerRelay ? 'relay-v1' : 'coordinator-v1',
-              coordinator_profile_id: coordinator,
-              participant_profile_ids: participants,
-              max_turns: maxTurns,
-              max_turns_per_dot: maxTurnsPerDot,
-              ...(snapshot.discussion?.member_inbox_available ||
-              initial.execution_contract === 'member-inbox-v1'
-                ? {
-                    execution_contract: memberInbox
-                      ? 'member-inbox-v1'
-                      : 'serial-v1',
-                  }
-                : {}),
-            }),
-          );
+          void save(draft);
         }}
       >
         <label className="flex min-h-11 items-center gap-2 text-sm">
@@ -206,7 +201,7 @@ export function DiscussionSettingsForm({
           <select
             className={field}
             aria-label="每个 Dot 最多发言"
-            value={maxTurnsPerDot}
+            value={draft.max_turns_per_dot}
             disabled={!verified}
             onChange={(e) => setMaxTurnsPerDot(Number(e.target.value))}
           >

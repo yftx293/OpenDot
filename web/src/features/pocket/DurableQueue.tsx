@@ -120,7 +120,7 @@ export function DurableQueue({
       {pending && (
         <button
           className="min-h-11 rounded-lg border px-3"
-          disabled={inactive || busy || !snapshot}
+          disabled={busy || !snapshot}
           onClick={() => void send(pending)}
         >
           使用原回执核对队列操作

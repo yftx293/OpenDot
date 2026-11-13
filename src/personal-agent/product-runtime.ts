@@ -2199,6 +2199,7 @@ export class ProductRuntimeService {
     this.progressAt.set(sessionId, Date.now());
     const receipt = await this.submitExisting(input, freshlyAdmitted);
     await this.publishStatus(sessionId);
+    this.publishUpdate(sessionId);
     const { broadcastNewMessage } = await import('../web.js');
     // Stable persisted ID makes a retried receipt a reconciliation, not a new message.
     // Group context is an internal native input, not another private chat.

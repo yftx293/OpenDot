@@ -24,8 +24,9 @@ export function DurableInlineStatus({
 }) {
   const control = useDurableControl(jid, sessionId, true);
   const [open, setOpen] = useState(false);
-  const progress = control.progress;
   const snapshot = control.snapshot;
+  const progress =
+    snapshot?.runtimeKind === 'cloudflare-durable' ? null : control.progress;
   const pendingApprovals =
     progress?.pendingApprovals ??
     (snapshot?.approvals ?? []).filter((row) => row.state === 'pending')
@@ -45,7 +46,12 @@ export function DurableInlineStatus({
     ? 'failed'
     : pendingApprovals > 0
       ? 'waiting_for_approval'
-      : (progress?.executionState ?? snapshot?.executionState);
+      : snapshot?.goal?.status === 'waiting_for_device' ||
+          snapshot?.device_commands?.some(
+            (command) => command.state === 'queued',
+          )
+        ? 'waiting_for_device'
+        : (progress?.executionState ?? snapshot?.executionState);
   const line = durableStatusLine({
     dotName,
     executionState,

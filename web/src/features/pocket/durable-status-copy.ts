@@ -39,6 +39,8 @@ export function durableStatusLine(input: {
     return `${name} · 没有完成`;
   if (input.executionState === 'waiting_for_scheduler')
     return `${name} · 排队中`;
+  if (input.executionState === 'waiting_for_device')
+    return `${name} · 等待设备`;
   if (input.executionState === 'cancelled') return null;
   const tool = friendlyComputerTool(input.currentTool);
   if (input.busy || input.executionState === 'active') {

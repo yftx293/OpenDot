@@ -109,9 +109,15 @@ test('mobile creates three Dots in one Group and explicitly enables bounded coop
     await expect(
       settings.getByRole('checkbox', { name: '边工作边互相提问', exact: true }),
     ).not.toBeChecked();
+    const maxTurnsPerDot = settings.getByRole('combobox', {
+      name: '每个 Dot 最多发言',
+      exact: true,
+    });
+    await expect(maxTurnsPerDot).toHaveValue('2');
     await settings
       .getByRole('checkbox', { name: '边工作边互相提问', exact: true })
       .check();
+    await expect(maxTurnsPerDot).toHaveValue('3');
     await settings
       .getByLabel('先响应的 Dot', { exact: true })
       .selectOption(people[0].id);

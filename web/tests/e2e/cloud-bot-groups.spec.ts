@@ -4,6 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { cloudBotHandoffHttpFixture } from '../../../tests/helpers/cloud-bot-handoff-http-fixture';
 
+test.use({ actionTimeout: 15_000 });
+
 test('formal Cloud Group phone approval keeps original receipts across desktop detach, Node SIGKILL and workerd restart (model simulated)', async ({
   browser,
 }) => {
@@ -58,20 +60,34 @@ test('formal Cloud Group phone approval keeps original receipts across desktop d
     await computer
       .getByRole('button', { name: '群聊设置', exact: true })
       .click();
-    await computer.getByText('授权 Bot 执行', { exact: true }).click();
-    await computer
+    const settings = computer.getByRole('dialog', {
+      name: '群聊设置',
+      exact: true,
+    });
+    await settings.getByText('文件与工具（高级）', { exact: true }).click();
+    await settings.getByText('授权 Bot 执行', { exact: true }).click();
+    await settings
       .getByLabel('执行授权 Bot', { exact: true })
       .selectOption(memberId);
-    await computer
+    await settings
       .getByLabel('Bot 执行位置', { exact: true })
       .selectOption('cloudflare-durable');
-    await computer
+    await settings
       .getByLabel('创建逐次审批的私有文本成果', { exact: true })
       .check();
-    await computer
+    const grant = computer.waitForResponse(
+      (response) =>
+        new URL(response.url()).pathname ===
+          `/api/bot-groups/${groupId}/members/${memberId}/runtime-grants` &&
+        response.request().method() === 'POST',
+    );
+    await settings
       .getByRole('button', { name: '确认执行授权', exact: true })
       .click();
-    await computer.keyboard.press('Escape');
+    expect((await grant).ok()).toBe(true);
+    await settings
+      .getByRole('button', { name: '关闭群聊设置', exact: true })
+      .click();
     await expect(
       computer.getByLabel('群聊消息', { exact: true }),
     ).toBeEnabled();
@@ -195,6 +211,7 @@ test('formal Cloud Group phone approval keeps original receipts across desktop d
   } catch (error) {
     throw new Error(
       String(error) + '\nPrivate Cloud product:\n' + fixture.diagnostics(),
+      { cause: error },
     );
   } finally {
     await desktop.close();

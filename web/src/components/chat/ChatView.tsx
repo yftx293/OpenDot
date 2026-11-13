@@ -1352,21 +1352,21 @@ export function ChatView({ groupJid, onBack, headerLeft }: ChatViewProps) {
                     handleActiveAgentSend(content);
                   }}
                 />
-                {activeAgent?.runtime_kind === 'pi-durable' && (
-                  <DurableInlineStatus
-                    key={activeAgentTab}
-                    jid={groupJid}
-                    sessionId={activeAgentTab}
-                    dotName={agentProfileLabel}
-                    onContinue={() => {
-                      void handleActiveAgentSend('继续');
-                    }}
-                    onRetry={() => {
-                      void handleActiveAgentSend('重试');
-                    }}
-                  />
-                )}
                 <ConversationDock>
+                  {activeAgent?.runtime_kind === 'pi-durable' && (
+                    <DurableInlineStatus
+                      key={activeAgentTab}
+                      jid={groupJid}
+                      sessionId={activeAgentTab}
+                      dotName={agentProfileLabel}
+                      onContinue={() => {
+                        void handleActiveAgentSend('继续');
+                      }}
+                      onRetry={() => {
+                        void handleActiveAgentSend('重试');
+                      }}
+                    />
+                  )}
                   <MessageInput
                     onSend={handleActiveAgentSend}
                     groupJid={groupJid}

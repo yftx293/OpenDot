@@ -5,7 +5,7 @@ import { randomBytes, randomUUID } from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { setTimeout as delay } from 'node:timers/promises';
 import type { BotGroupSnapshot } from '../../src/bot-groups/types.js';
 
@@ -190,8 +190,13 @@ export async function botHandoffHttpFixture(
       process.execPath,
       [
         '--import',
-        path.join(repository, 'tests/helpers/announce-listening.mjs'),
-        ...(preload ? ['--import', preload] : []),
+        new URL('./announce-listening.mjs', import.meta.url).href,
+        ...(preload
+          ? [
+              '--import',
+              path.isAbsolute(preload) ? pathToFileURL(preload).href : preload,
+            ]
+          : []),
         path.join(repository, 'dist/index.js'),
       ],
       {

@@ -266,12 +266,12 @@ test('two independent logins reconcile a Durable product Session and observe det
         page.getByText('POCKET_OTHER_SESSION_PRIVATE', { exact: true }),
       ).toHaveCount(0);
       await expect(
-        page.getByText('已连接服务端', { exact: true }),
-      ).toBeVisible();
+        page.getByText('连接已断开，正在重新连接…', { exact: true }),
+      ).toHaveCount(0);
     }
     await mobile.setOffline(true);
     await expect(
-      phone.getByText('连接已断开，服务端任务不会因此停止', { exact: true }),
+      phone.getByText('连接已断开，正在重新连接…', { exact: true }),
     ).toBeVisible();
     seed(selected, 'POCKET_SHARED_AFTER_OFFLINE');
     await mobile.setOffline(false);
@@ -296,7 +296,9 @@ test('two independent logins reconcile a Durable product Session and observe det
     await computer.getByPlaceholder('输入消息...').press('Enter');
     await expect.poll(() => modelRequests).toBe(1);
     for (const page of [computer, phone]) {
-      await expect(page.getByLabel('持久执行状态')).toContainText('正在执行');
+      await expect(
+        page.getByRole('button', { name: /· 正在(?:处理|回复)/ }),
+      ).toBeVisible();
     }
     await expect(
       phone.getByText('Read fixture.txt and report.', { exact: true }),
@@ -359,8 +361,8 @@ test('two independent logins reconcile a Durable product Session and observe det
       .getByRole('button', { name: '取消此输入', exact: true })
       .click();
     for (const page of [computer, phone])
-      await expect(page.getByLabel('持久执行状态')).toContainText(
-        '已排队 0 条',
+      await expect(page.getByLabel('服务端待执行输入')).not.toContainText(
+        'BROWSER_QUEUE_EDITED',
       );
     await phone.unroute('**/controls');
     await expect(
@@ -371,7 +373,9 @@ test('two independent logins reconcile a Durable product Session and observe det
     await expect(
       phone.getByText('DURABLE_BROWSER_RESULT', { exact: true }),
     ).toHaveCount(1);
-    await expect(phone.getByLabel('持久执行状态')).toContainText('暂未运行');
+    await expect(
+      phone.getByRole('button', { name: /· 正在(?:处理|回复)/ }),
+    ).toHaveCount(0);
     const snapshot = await phone.request.get(
       `${origin}/api/groups/${encodeURIComponent(jid)}/sessions/${selected}/runtime`,
     );
@@ -408,9 +412,12 @@ test('two independent logins reconcile a Durable product Session and observe det
       } else await route.fulfill({ response: result });
     });
     await computer
-      .getByRole('button', { name: '停止当前运行', exact: true })
+      .getByRole('button', { name: '中止当前执行', exact: true })
       .click();
-    await expect(phone.getByLabel('持久执行状态')).toContainText('暂未运行');
+    await expect.poll(() => stopOperations.length).toBe(1);
+    await expect(
+      phone.getByRole('button', { name: /· 正在(?:处理|回复)/ }),
+    ).toHaveCount(0);
     releaseHeldGeneration();
     await computer.reload();
     await computer

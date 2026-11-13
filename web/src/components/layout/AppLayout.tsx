@@ -31,7 +31,7 @@ import {
 export function AppLayout() {
   const location = useLocation();
   const hasSidebar = useMediaQuery('(min-width: 768px)');
-  const isDesktop = hasSidebar;
+  const isDesktop = useMediaQuery('(min-width: 1101px)');
   const owner = useAuthStore((state) => state.user?.id);
   const isGroupThread = /^\/bot-groups\/.+/.test(location.pathname);
   const isChatRoute = location.pathname.startsWith('/chat');

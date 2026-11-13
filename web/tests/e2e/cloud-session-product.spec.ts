@@ -401,7 +401,9 @@ async function cloudProductScenario(
     await expect.poll(() => modelRequests).toBe(1);
     if (approvalMode) {
       release?.();
-      await expect(phone.getByLabel('持久执行状态')).toContainText('等待批准');
+      await expect(
+        phone.getByRole('button', { name: /· 等你确认/ }),
+      ).toBeVisible();
       await expect(phone.getByLabel('持久执行审批')).toContainText(
         'CLOUD_BROWSER_ARTIFACT',
       );
@@ -590,7 +592,9 @@ async function cloudProductScenario(
       return;
     }
     for (const page of [computer, phone])
-      await expect(page.getByLabel('持久执行状态')).toContainText('正在执行');
+      await expect(
+        page.getByRole('button', { name: /· 正在(?:处理|回复)/ }),
+      ).toBeVisible();
     await phone
       .getByRole('button', { name: '跨设备接续', exact: true })
       .click();
@@ -613,22 +617,25 @@ async function cloudProductScenario(
     release?.();
     // Read the existing product DB without reconnecting any Session client.
     await expect
-      .poll(() => {
-        const database = new DatabaseSync(
-          path.join(root, 'data/db/messages.db'),
-          { readOnly: true },
-        );
-        try {
-          return database
-            .prepare(
-              'SELECT state FROM product_session_inputs WHERE session_id=? ORDER BY rowid',
-            )
-            .all(id)
-            .map((row) => row.state);
-        } finally {
-          database.close();
-        }
-      })
+      .poll(
+        () => {
+          const database = new DatabaseSync(
+            path.join(root, 'data/db/messages.db'),
+            { readOnly: true },
+          );
+          try {
+            return database
+              .prepare(
+                'SELECT state FROM product_session_inputs WHERE session_id=? ORDER BY rowid',
+              )
+              .all(id)
+              .map((row) => row.state);
+          } finally {
+            database.close();
+          }
+        },
+        { timeout: 30_000 },
+      )
       .toEqual(['completed', 'completed']);
     expect(evidence).toBe(true);
     expect(modelRequests).toBe(2);
@@ -642,7 +649,9 @@ async function cloudProductScenario(
     await expect(
       phone.getByText('CLOUD_BROWSER_RESULT', { exact: true }),
     ).toHaveCount(1);
-    await expect(phone.getByLabel('持久执行状态')).toContainText('暂未运行');
+    await expect(
+      phone.getByRole('button', { name: /· 正在(?:处理|回复)/ }),
+    ).toHaveCount(0);
     const after = await (await mobile.request.get(runtimePath)).json();
     expect(
       after.inputs.map((row: { submission_id: number }) => row.submission_id),

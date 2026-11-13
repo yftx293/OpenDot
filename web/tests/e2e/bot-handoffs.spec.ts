@@ -80,9 +80,26 @@ test('formal Group UI uses actual Chief and Researcher native tasks, explicit de
     await expect(
       phone.getByRole('heading', { name: 'Native fault team', exact: true }),
     ).toBeVisible();
+    const openSettings = computer.getByRole('button', {
+      name: '群聊设置',
+      exact: true,
+    });
+    const settings = computer.getByRole('dialog', {
+      name: '群聊设置',
+      exact: true,
+    });
+    const closeSettings = settings.getByRole('button', {
+      name: '关闭群聊设置',
+      exact: true,
+    });
+    await openSettings.click();
     await expect(
-      computer.getByRole('checkbox', { name: /作为 Bot 任务/ }),
+      settings.getByRole('checkbox', {
+        name: '发送消息时让 Dot 回复',
+        exact: true,
+      }),
     ).toBeChecked();
+    await closeSettings.click();
     await computer
       .getByLabel('群聊消息', { exact: true })
       .fill('Prepare a bounded research plan.');
@@ -100,22 +117,26 @@ test('formal Group UI uses actual Chief and Researcher native tasks, explicit de
     ).toBeVisible();
     expect(fixture.requests).toHaveLength(1);
     expect((await fixture.snapshot(groupId)).handoffs).toHaveLength(1);
-    await computer
-      .getByRole('button', { name: '群聊设置', exact: true })
-      .click();
-    await computer.getByText('授权 Bot 执行', { exact: true }).click();
-    await computer
-      .getByLabel('执行授权 Bot')
-      .selectOption(
-        snapshot.members.find((member) => member.subject_id === profile.id)!.id,
-      );
-    await computer
+    const researcherMemberId = snapshot.members.find(
+      (member) => member.subject_id === profile.id,
+    )!.id;
+    await openSettings.click();
+    await settings.getByText('文件与工具（高级）', { exact: true }).click();
+    await settings.getByText('授权 Bot 执行', { exact: true }).click();
+    await settings
+      .getByLabel('执行授权 Bot', { exact: true })
+      .selectOption(researcherMemberId);
+    const grant = computer.waitForResponse(
+      (response) =>
+        new URL(response.url()).pathname ===
+          `/api/bot-groups/${groupId}/members/${researcherMemberId}/runtime-grants` &&
+        response.request().method() === 'POST',
+    );
+    await settings
       .getByRole('button', { name: '确认执行授权', exact: true })
       .click();
-    await expect(
-      computer.getByRole('button', { name: '确认执行授权', exact: true }),
-    ).toBeEnabled();
-    await computer.keyboard.press('Escape');
+    expect((await grant).ok()).toBe(true);
+    await closeSettings.click();
     await computer
       .locator('.group-task-activity')
       .filter({ hasText: 'Miniclaw' })

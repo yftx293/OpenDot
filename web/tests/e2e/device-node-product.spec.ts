@@ -352,7 +352,9 @@ test('paired finite-file node resumes the original Goal after Node and Gateway S
     const route = await link.getAttribute('href');
     await Promise.all([link.click(), phone.goto(`${origin}${route}`)]);
     await computer.close();
-    await expect(phone.getByLabel('持久执行状态')).toContainText('等待设备');
+    await expect(
+      phone.getByRole('button', { name: /· 等待设备/ }),
+    ).toBeVisible();
     const before = await (await mobile.request.get(runtimeApi)).json();
     const commandId = before.device_commands[0].id;
     // Pause fences dispatch but retains the same native memo and operation.
