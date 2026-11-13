@@ -74,14 +74,11 @@ test('one navigation surface creates a Dot, finds existing Dots and switches old
         if (width === 1440)
           await expect(page.locator('html')).toHaveClass(/dark/);
         const mainUrl = page.url();
-        const open = async () => {
-          await page
-            .getByRole('button', {
-              name: width >= 768 && width <= 1100 ? '展开侧栏' : 'Dot 和对话',
-              exact: true,
-            })
-            .click();
-        };
+        const navigationTrigger = page.getByRole('button', {
+          name: width >= 768 && width <= 1100 ? '展开侧栏' : 'Dot 和对话',
+          exact: true,
+        });
+        const open = () => navigationTrigger.click();
         const panel = page.locator('[data-conversation-navigation]');
         const checkSurface = async () => {
           await expect(panel).toBeVisible();
@@ -258,12 +255,7 @@ test('one navigation surface creates a Dot, finds existing Dots and switches old
         await expect(panel).toHaveAccessibleName('Dot 和对话');
         await page.keyboard.press('Escape');
         await expect(panel).not.toBeVisible();
-        await expect(
-          page.getByRole('button', {
-            name: 'Dot 和对话',
-            exact: true,
-          }),
-        ).toBeFocused();
+        await expect(navigationTrigger).toBeFocused();
         // Native team groups share the same creation/navigation surface on phones.
         await open();
         await panel
