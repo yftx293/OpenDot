@@ -542,7 +542,7 @@ test('two independent logins reconcile a Durable product Session and observe det
     expect(await exited).toEqual([null, 'SIGKILL']);
     server = undefined;
     await expect(
-      phone.getByText('连接已断开，服务端任务不会因此停止', { exact: true }),
+      phone.getByText('连接已断开，正在重新连接…', { exact: true }),
     ).toBeVisible();
     // Disposable lease-clock injection exercises the normal takeover path
     // immediately. It does not turn a fresh prompt into checkpoint recovery.
