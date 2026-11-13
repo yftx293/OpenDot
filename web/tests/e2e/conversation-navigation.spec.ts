@@ -76,7 +76,10 @@ test('one navigation surface creates a Dot, finds existing Dots and switches old
         const mainUrl = page.url();
         const open = async () => {
           await page
-            .getByRole('button', { name: 'Dot 和对话', exact: true })
+            .getByRole('button', {
+              name: width >= 768 && width <= 1100 ? '展开侧栏' : 'Dot 和对话',
+              exact: true,
+            })
             .click();
         };
         const panel = page.locator('[data-conversation-navigation]');
