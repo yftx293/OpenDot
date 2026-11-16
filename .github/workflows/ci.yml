@@ -41,11 +41,11 @@ jobs:
         working-directory: web
         run: npx playwright install --with-deps chromium
 
-      - name: Audit production dependencies
+      - name: Audit dependencies
         run: |
-          npm audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org
-          npm --prefix web audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org
-          npm --prefix container/agent-runner audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org
+          npm audit --audit-level=high --registry=https://registry.npmjs.org
+          npm --prefix web audit --audit-level=high --registry=https://registry.npmjs.org
+          npm --prefix container/agent-runner audit --audit-level=high --registry=https://registry.npmjs.org
 
       - name: Check changed-file formatting
         run: npm run format:check
@@ -93,8 +93,8 @@ jobs:
           cache-dependency-path: apps/cloud-agent/package-lock.json
       - name: Install locked Cloud Runtime dependencies
         run: npm ci
-      - name: Audit Cloud Runtime production dependencies
-        run: npm audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org
+      - name: Audit Cloud Runtime dependencies
+        run: npm audit --audit-level=high --registry=https://registry.npmjs.org
       - name: Cloud Runtime Typecheck
         run: npm run typecheck
       - name: Actual workerd SQLite and lifecycle fault tests
