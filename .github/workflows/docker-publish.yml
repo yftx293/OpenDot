@@ -14,8 +14,14 @@ env:
   IMAGE_NAME: ghcr.io/yftx293/opendot-agent
 
 jobs:
+  verify-ci:
+    permissions:
+      actions: read
+    uses: ./.github/workflows/verify-release-ci.yml
+
   build-and-smoke:
     name: Build and smoke (${{ matrix.platform }})
+    needs: verify-ci
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 45
     permissions:

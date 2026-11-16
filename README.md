@@ -147,9 +147,9 @@ Web Client / Electron Desktop / Message Channels
 git clone https://github.com/yftx293/OpenDot.git
 cd OpenDot
 
-npm install
-npm --prefix web install
-npm --prefix container/agent-runner install
+npm ci
+npm --prefix web ci
+npm --prefix container/agent-runner ci
 
 # 首次安装或依赖更新后构建 Backend、Web 与 Agent Runner
 npm run build:all
@@ -158,7 +158,7 @@ npm run build:all
 npm start
 ```
 
-默认地址：<http://127.0.0.1:3000>
+默认地址：<http://127.0.0.1:3000>。仅供本机使用时，可在运行 `npm start` 前将环境变量 `WEB_HOST` 设为 `127.0.0.1`。
 
 开发模式可以直接启动 Backend 和 Vite Web Client：
 
@@ -242,7 +242,8 @@ npm run desktop:package
 | `MINICLAW_RENDERER_URL`    | Electron 要加载的 Renderer 地址，适合本地 Vite 开发 | 与 Server URL 相同                     |
 | `MINICLAW_CONTAINER_IMAGE` | Agent Runner 使用的容器镜像                         | `ghcr.io/yftx293/opendot-agent:latest` |
 | `CONTAINER_IMAGE`          | 容器镜像的兼容覆盖项                                | 同上                                   |
-| `WEB_PORT`                 | Makefile 启动 Backend 使用的端口                    | `3000`                                 |
+| `WEB_HOST`                 | Backend 监听地址，例如仅本机访问时使用 `127.0.0.1`  | Node.js 默认监听地址                   |
+| `WEB_PORT`                 | Backend 监听端口                                    | `3000`                                 |
 | `MINICLAW_DEMO_OPEN`       | 回环地址免登录演示模式，详见 [`DEMO.md`](DEMO.md)   | 关闭                                   |
 | `PROVIDER_SETUP_SKIPPED`   | 没有系统设置文件时跳过 Provider 引导                | 关闭                                   |
 

@@ -1,0 +1,35 @@
+name: Verify release CI
+
+on:
+  workflow_call:
+
+permissions:
+  actions: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Require successful CI on the release commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$GITHUB_REF" != refs/heads/main ]]; then
+            echo "::error::Publish releases from main."
+            exit 1
+          fi
+          gh api --method GET "repos/$GITHUB_REPOSITORY/actions/workflows/ci.yml/runs" \
+            -f "head_sha=$GITHUB_SHA" -f branch=main -F per_page=100 |
+            jq -er --arg sha "$GITHUB_SHA" '
+              [.workflow_runs[] | select(.head_sha == $sha and .head_branch == "main"
+                and (.event == "push" or .event == "workflow_dispatch"))]
+              | sort_by(.created_at, .id) | last
+              | select(.status == "completed" and .conclusion == "success")
+              | .html_url
+            ' || {
+              echo "::error::The newest main CI run for $GITHUB_SHA must complete successfully before publishing."
+              exit 1
+            }

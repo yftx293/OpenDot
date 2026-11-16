@@ -41,6 +41,12 @@ jobs:
         working-directory: web
         run: npx playwright install --with-deps chromium
 
+      - name: Audit production dependencies
+        run: |
+          npm audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org
+          npm --prefix web audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org
+          npm --prefix container/agent-runner audit --omit=dev --audit-level=high --registry=https://registry.npmjs.org
+
       - name: Check changed-file formatting
         run: npm run format:check
         env:

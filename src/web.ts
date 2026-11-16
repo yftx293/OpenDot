@@ -126,6 +126,7 @@ import type {
   RunFinishReason,
 } from './types.js';
 import {
+  WEB_HOST,
   WEB_PORT,
   SESSION_COOKIE_NAME_SECURE,
   SESSION_COOKIE_NAME_PLAIN,
@@ -3595,6 +3596,7 @@ export function startWebServer(webDeps: WebDeps): void {
   httpServer = serve(
     {
       fetch: app.fetch,
+      hostname: WEB_HOST,
       port: WEB_PORT,
       // Node HTTP server 默认 requestTimeout=300s（5min）会掐断慢速的大文件
       // 上传/下载。放宽到 10min，让大文件在一般网络下也能传完。

@@ -1,5 +1,9 @@
 # Security Notes
 
+## Report a vulnerability
+
+Use GitHub's [private vulnerability reporting form](https://github.com/yftx293/OpenDot/security/advisories/new). Include the affected version, a description of the behavior, and any relevant logs with credentials and personal data removed.
+
 ## `yaml` parser trust boundary
 
 `yaml` (npm package) is used in `src/plugin-command-index.ts:39` to parse

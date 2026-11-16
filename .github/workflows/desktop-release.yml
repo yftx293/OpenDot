@@ -12,8 +12,16 @@ permissions:
   contents: read
 
 jobs:
+  verify-ci:
+    if: inputs.publish
+    permissions:
+      actions: read
+    uses: ./.github/workflows/verify-release-ci.yml
+
   package:
     name: Package ${{ matrix.platform }}-${{ matrix.arch }}
+    needs: verify-ci
+    if: ${{ !cancelled() && (!inputs.publish || needs.verify-ci.result == 'success') }}
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 30
     strategy:
@@ -127,8 +135,8 @@ jobs:
           compression-level: 0
 
   publish:
-    if: inputs.publish && github.ref == 'refs/heads/main'
-    needs: package
+    if: inputs.publish && needs.verify-ci.result == 'success'
+    needs: [verify-ci, package]
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     permissions:

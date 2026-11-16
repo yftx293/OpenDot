@@ -55,6 +55,7 @@ export const TIMEZONE =
   'Asia/Shanghai';
 
 // Web server configuration
+export const WEB_HOST = process.env.WEB_HOST?.trim() || undefined;
 export const WEB_PORT = parseInt(process.env.WEB_PORT || '3000', 10);
 
 // Cookie configuration

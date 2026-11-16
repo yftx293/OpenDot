@@ -2,7 +2,7 @@
 
 ## Pinned API
 
-The pilot pins `@earendil-works/pi-durable`, `@earendil-works/pi-ai`, and `@earendil-works/chord` to 1.3.0. Pi Durable declares Node `>=22.19.0` and documents its API as experimental. The repository CI and container use Node 24. The existing MiniClaw Pi Coding Agent is still pinned to 0.84.2; Pi Durable is a different runtime API, not a drop-in adapter.
+The pilot pins `@earendil-works/pi-durable`, `@earendil-works/pi-ai`, and `@earendil-works/chord` to 1.3.0. Pi Durable declares Node `>=22.19.0` and documents its API as experimental. The repository CI and container use Node 24. Pi Coding Agent 1.5.2 is used by the separate Coding Session runtime.
 
 The adapter uses `Harness.open(openNodeSqliteStorage(path), { models, registry }, context)`. It does not resume work during `open`: the caller validates recovered ownership before `activate()`. Submission is rejected until activation succeeds. The product-session service now supplies the persisted mapping and real authorization/admission callbacks; the original standalone pilot tests remain useful. Input bindings include queue/steer mode when supplied, so changing control parameters under the same ID is rejected.
 
