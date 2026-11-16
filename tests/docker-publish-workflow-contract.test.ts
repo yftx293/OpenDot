@@ -51,12 +51,18 @@ describe('Docker image distribution contract', () => {
     expect(workflow).toContain('password: ${{ secrets.GITHUB_TOKEN }}');
     expect(workflow).not.toContain('DOCKERHUB_');
     expect(workflow).not.toContain('docker/setup-qemu-action');
+    expect(workflow).toContain(
+      'uses: ./.github/workflows/verify-release-ci.yml',
+    );
+    expect(workflow).toContain('needs: verify-ci');
 
-    const actionUses = [
+    const externalUses = [
       ...workflow.matchAll(/^\s*uses:\s+(\S+)(?:\s+#.*)?$/gm),
-    ].map(([, value]) => value);
-    expect(actionUses.length).toBeGreaterThan(0);
-    for (const action of actionUses) {
+    ]
+      .map(([, value]) => value)
+      .filter((value) => value !== './.github/workflows/verify-release-ci.yml');
+    expect(externalUses.length).toBeGreaterThan(0);
+    for (const action of externalUses) {
       expect(action).toMatch(/^[^@\s]+@[a-f0-9]{40}$/);
     }
 

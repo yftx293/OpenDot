@@ -42,7 +42,8 @@ for (const base of ['', '/mini']) {
     let models = 0,
       researchModels = 0;
     const provider = createServer(async (request, response) => {
-      if (!request.url?.endsWith('/messages')) {
+      const pathname = new URL(request.url ?? '/', 'http://127.0.0.1').pathname;
+      if (!pathname.endsWith('/messages')) {
         response.writeHead(404);
         response.end();
         return;
