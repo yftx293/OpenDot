@@ -4,7 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       publish:
-        description: Publish the verified installers as a GitHub prerelease
+        description: Publish verified artifacts on GitHub
+        type: boolean
+        default: false
+      stable:
+        description: Mark the self-hosted release as stable with desktop preview downloads
         type: boolean
         default: false
 
@@ -154,9 +158,10 @@ jobs:
           path: installers
           merge-multiple: true
 
-      - name: Attach installers and checksums to a prerelease
+      - name: Publish verified installers and checksums
         env:
           GH_TOKEN: ${{ github.token }}
+          STABLE_RELEASE: ${{ inputs.stable }}
         run: |
           version=$(jq -er '.version' electron/package.json)
           [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
@@ -171,13 +176,26 @@ jobs:
           )
           for asset in "${assets[@]}"; do test -s "$asset"; done
           sha256sum "${assets[@]}" > SHA256SUMS
-          cat > release-notes.md <<'EOF'
-          OpenDot 桌面客户端预览版。提供 Windows x64、macOS Apple Silicon / Intel 和 Linux x64 安装包。
+          title="OpenDot $version Desktop Preview"
+          release_args=(--prerelease)
+          if [[ "$STABLE_RELEASE" == true ]]; then
+            title="OpenDot $version"
+            release_args=(--latest)
+            {
+              printf '## 自托管版\n\n'
+              printf '从本页下载源码，按[快速开始](%s/%s/tree/%s#快速开始)构建并启动 Backend 和 Web Client。首次访问时创建管理员并配置模型 Provider。\n\n' \
+                "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$tag"
+              printf '容器执行使用公开的 AMD64 / ARM64 Runner 镜像。使用与当前源码对应的镜像时，将 `MINICLAW_CONTAINER_IMAGE` 设为 `ghcr.io/yftx293/opendot-agent:git-%s`。\n\n' "$GITHUB_SHA"
+            } > release-notes.md
+          fi
 
-          请先按 [README](https://github.com/yftx293/OpenDot#快速开始) 启动 Backend，然后打开客户端。默认地址为 `http://127.0.0.1:3000`，也可通过 `--server-url` 或 `MINICLAW_SERVER_URL` 指定远程 Backend。
+          cat >> release-notes.md <<'EOF'
+          ## 桌面客户端预览
 
-          Windows 安装包未签名。macOS 构建使用临时签名，尚未公证。系统可能提示未知开发者。可使用 `SHA256SUMS` 校验下载文件。
+          提供 Windows x64、macOS Apple Silicon / Intel 和 Linux x64 安装包。客户端默认连接本地 Backend `http://127.0.0.1:3000`。也可通过 `--server-url` 或 `MINICLAW_SERVER_URL` 指定远程 Backend。
+
+          Windows 安装包未签名。macOS 构建使用临时签名，尚未公证。使用 `SHA256SUMS` 校验下载文件。
           EOF
           gh release create "$tag" "${assets[@]}" SHA256SUMS \
             --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
-            --title "OpenDot $version Desktop Preview" --prerelease --notes-file release-notes.md
+            --title "$title" "${release_args[@]}" --notes-file release-notes.md
